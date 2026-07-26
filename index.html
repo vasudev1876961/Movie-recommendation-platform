@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieRec — Premium AI Movie Recommendation Platform</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header/Navigation Bar -->
+    <header>
+      <div class="logo" id="logo-trigger">
+        <i class="fas fa-magic"></i>
+        <span>MovieRec</span>
+      </div>
+
+      <!-- Search Component -->
+      <div class="search-wrapper glass-panel">
+        <div class="search-input-container">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-input" placeholder="Search by title, genre, actor..." autocomplete="off">
+          <button class="search-semantic-toggle" id="search-semantic-btn" title="Toggle Semantic AI Search">
+            <i class="fas fa-robot"></i> Semantic
+          </button>
+        </div>
+        
+        <!-- Suggestions/Recent Searches Dropdown -->
+        <div class="search-dropdown glass-panel" id="search-dropdown">
+          <div class="search-dropdown-section" id="recent-searches-section">
+            <div class="search-dropdown-section-title">Recent Searches</div>
+            <div id="recent-searches-list"></div>
+          </div>
+          <div class="search-dropdown-section">
+            <div class="search-dropdown-section-title">Trending Searches</div>
+            <div id="trending-searches-list"></div>
+          </div>
+          <div class="search-dropdown-section" id="autocomplete-section" style="display: none;">
+            <div class="search-dropdown-section-title">Suggestions</div>
+            <div id="autocomplete-results"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+          <a href="#/" class="nav-tab active" id="tab-home">
+            <i class="fas fa-th-large"></i> Home
+          </a>
+          <a href="#/wizard" class="nav-tab" id="tab-wizard">
+            <i class="fas fa-magic"></i> Wizard
+          </a>
+          <a href="#/watchlist" class="nav-tab" id="tab-watchlist">
+            <i class="fas fa-bookmark"></i> Watchlist
+          </a>
+        </nav>
+
+        <!-- Settings Button -->
+        <button class="icon-btn glass-panel" id="settings-toggle-btn" aria-label="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Viewport Section -->
+    <main>
+      <!-- DASHBOARD VIEW -->
+      <section class="view-section active" id="view-dashboard">
+        <div id="hero-viewport"></div>
+        <div id="shelves-viewport"></div>
+      </section>
+
+      <!-- RECOMMENDATION WIZARD VIEW -->
+      <section class="view-section" id="view-wizard">
+        <div id="wizard-viewport"></div>
+      </section>
+
+      <!-- PERSISTENT WATCHLIST VIEW -->
+      <section class="view-section" id="view-watchlist">
+        <div class="shelf-header">
+          <h2 class="shelf-title"><i class="fas fa-bookmark"></i> My Watchlist</h2>
+        </div>
+        <div class="search-results-grid" id="watchlist-viewport">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- SEARCH RESULTS VIEW -->
+      <section class="view-section" id="view-search">
+        <div class="shelf-header">
+          <h2 class="shelf-title" id="search-title">Search Results</h2>
+        </div>
+        <!-- Active Search Filters Row -->
+        <div class="search-results-grid" id="search-viewport">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Settings Drawer -->
+    <aside class="settings-drawer" id="settings-drawer">
+      <div class="settings-header">
+        <h3 class="settings-title"><i class="fas fa-cog"></i> Platform Settings</h3>
+        <button class="settings-close-btn" id="settings-close-btn" aria-label="Close settings">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label" for="setting-apikey">TMDB API Key</label>
+        <input type="password" class="setting-input" id="setting-apikey" placeholder="Enter API Key...">
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+          Enables live trending data, posters, and details from TMDb. If empty, the system uses the 100-movie local database.
+        </p>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label" for="setting-animations">Animations Speed</label>
+        <select class="setting-select" id="setting-animations">
+          <option value="normal">Normal</option>
+          <option value="fast">Fast (Reduced Motion)</option>
+          <option value="slow">Slow & Immersive</option>
+        </select>
+      </div>
+
+      <div class="setting-item">
+        <label class="setting-label" for="setting-cursor">Cursor Spotlight</label>
+        <select class="setting-select" id="setting-cursor">
+          <option value="true">Enabled</option>
+          <option value="false">Disabled</option>
+        </select>
+      </div>
+
+      <div class="setting-item" style="margin-top: auto; border-top: 1px solid var(--glass-border); padding-top: 20px;">
+        <button class="btn-glow" id="settings-reset-btn" style="background: linear-gradient(135deg, #ef4444, #b91c1c); width: 100%; justify-content: center; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);">
+          <i class="fas fa-trash-alt"></i> Reset All Data
+        </button>
+      </div>
+
+      <div style="font-size: 11px; text-align: center; color: var(--text-muted);">
+        MovieRec Platform Phase 1 v1.0.0
+      </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+      <div>&copy; 2026 MovieRec Recommendation Engine. Created for Phase 1.</div>
+      <div class="footer-links">
+        <a href="#/">Home</a>
+        <a href="#/wizard">Wizard</a>
+        <a href="#/watchlist">Watchlist</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Entry Module -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* animations.css */
+
+/* Fade & Slide In Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Card Flip (for recommendation wizard results or detail flips) */
+@keyframes flipIn {
+  from {
+    transform: perspective(1000px) rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Floating Animation for Hero images/details */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Glowing Aura Pulse */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.2), 0 0 10px rgba(108, 99, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(108, 99, 255, 0.6), 0 0 25px rgba(168, 85, 247, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.2), 0 0 10px rgba(108, 99, 255, 0.1);
+  }
+}
+
+/* Shimmer Effect for Loading Skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Loading Spinners */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Wizard step transition */
+@keyframes stepTransition {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Utility Animation Classes */
+.anim-fade {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+.anim-slide-up {
+  animation: slideUp var(--transition-normal) forwards;
+}
+
+.anim-slide-down {
+  animation: slideDown var(--transition-normal) forwards;
+}
+
+.anim-scale-in {
+  animation: scaleIn var(--transition-normal) forwards;
+}
+
+.anim-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.anim-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 37%,
+    rgba(255, 255, 255, 0.03) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.anim-pulse-glow {
+  animation: glowPulse 2s infinite ease-in-out;
+}

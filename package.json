@@ -1,0 +1,11 @@
+{
+  "name": "movie-recom",
+  "version": "1.0.0",
+  "description": "Movie Recommendation Platform Phase 1",
+  "type": "module",
+  "scripts": {
+    "check-syntax": "node --check js/*.js api/*.js data/*.js components/*.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
