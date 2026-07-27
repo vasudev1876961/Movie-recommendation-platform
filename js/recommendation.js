@@ -12,17 +12,25 @@ export class RecommendationEngine {
     };
   }
 
-  // AI-Ready Hook: In Phase 3, this method can be overridden to fetch recommendations 
-  // from a collaborative/content-based filtering endpoint in FastAPI or an LLM service.
   async getRecommendations(preferences) {
     console.log("[AI Hook] Processing recommendation request with preferences:", preferences);
     
     // Simulating processing delay for premium UI feel
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise(resolve => setTimeout(resolve, 1200));
 
-    // Get the full list of movies to score
-    // In TMDB mode, we score our local 100 movies database as the recommendation corpus
-    // to guarantee high-quality matches across our structured mood, era, and runtime tags.
+    // Try fetching from backend if active
+    if (this.dataProvider.isBackendOnline) {
+      try {
+        const backendResults = await this.dataProvider.getWizardRecommendations(preferences);
+        if (backendResults) {
+          return backendResults;
+        }
+      } catch (e) {
+        console.warn("[Recommendation Engine] Backend wizard failed. Falling back to local scorer:", e);
+      }
+    }
+
+    // Fallback: Local Scorer
     const corpus = this.dataProvider.getLocalMovies();
     const scoredList = corpus.map(movie => {
       const breakdown = this.calculateMatchScore(movie, preferences);

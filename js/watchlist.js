@@ -3,8 +3,25 @@ import { Storage } from './storage.js';
 import { MovieCard } from '../components/movieCard.js';
 
 export const WatchlistController = {
-  render(container, onCardBind) {
-    const watchlist = Storage.getWatchlist();
+  async render(container, dataProvider, onCardBind) {
+    let watchlist = [];
+    
+    // Fetch from database if online
+    if (dataProvider && dataProvider.isBackendOnline) {
+      try {
+        const dbList = await dataProvider.getWatchlist();
+        if (dbList) {
+          watchlist = dbList;
+        } else {
+          watchlist = Storage.getWatchlist();
+        }
+      } catch (e) {
+        console.warn("[Watchlist Controller] Failed to fetch DB watchlist, loading local:", e);
+        watchlist = Storage.getWatchlist();
+      }
+    } else {
+      watchlist = Storage.getWatchlist();
+    }
 
     if (watchlist.length === 0) {
       container.innerHTML = `

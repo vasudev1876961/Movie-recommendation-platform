@@ -17,6 +17,7 @@ class App {
     this.searchProvider = new SearchProvider(this.dataProvider);
     this.recEngine = new RecommendationEngine(this.dataProvider);
     this.router = new Router();
+    this.currentUser = Storage.getUserProfile();
 
     // Bind event handlers
     this.toggleWatchlist = this.toggleWatchlist.bind(this);
@@ -32,6 +33,7 @@ class App {
     this.setupViewRouter();
     this.setupSearchComponent();
     this.setupSettingsPanel();
+    this.setupAuthComponent();
     this.setupGlobalEventListeners();
 
     // Listen for custom events from nested structures (like wizard results)
@@ -40,7 +42,12 @@ class App {
       this.toggleWatchlist(movieId, element);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 1.");
+    // Handle token expiration notifications from data provider
+    document.addEventListener('session-expired', () => {
+      this.handleLogout(true);
+    });
+
+    console.log("MovieRec Platform initialized successfully in Phase 2.");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -88,10 +95,10 @@ class App {
     });
 
     // Watchlist Route
-    this.router.addRoute('#/watchlist', () => {
+    this.router.addRoute('#/watchlist', async () => {
       activateTab('#/watchlist');
       switchView('view-watchlist');
-      this.renderWatchlistPage();
+      await this.renderWatchlistPage();
     });
 
     // Search Route
@@ -137,7 +144,9 @@ class App {
     heroViewport.innerHTML = Hero.render(featuredMovie);
 
     // Render Shelves
-    const watchlist = Storage.getWatchlist();
+    const watchlist = this.currentUser && this.dataProvider.isBackendOnline 
+      ? (await this.dataProvider.getWatchlist() || [])
+      : Storage.getWatchlist();
     
     shelvesViewport.innerHTML = `
       ${Shelves.render('Trending Now', 'fas fa-fire', trending, 'trending-shelf')}
@@ -153,7 +162,10 @@ class App {
   }
 
   async getPersonalizedRecommendations(trending, popular) {
-    const watchlist = Storage.getWatchlist();
+    const watchlist = this.currentUser && this.dataProvider.isBackendOnline
+      ? (await this.dataProvider.getWatchlist() || [])
+      : Storage.getWatchlist();
+
     if (watchlist.length === 0) {
       // Fallback: mix high rated trending and popular
       return [...trending, ...popular].filter(m => m.rating >= 8.0).slice(0, 10);
@@ -190,19 +202,22 @@ class App {
     return scored.slice(0, 12);
   }
 
-  renderWatchlistPage() {
+  async renderWatchlistPage() {
     const container = document.getElementById('watchlist-viewport');
-    const watchlist = Storage.getWatchlist();
-
+    
     // Check parent element structures
     const header = container.parentElement.querySelector('.shelf-header');
     if (header) {
+      const watchlist = this.currentUser && this.dataProvider.isBackendOnline
+        ? (await this.dataProvider.getWatchlist() || [])
+        : Storage.getWatchlist();
+        
       header.innerHTML = `
         <h2 class="shelf-title"><i class="fas fa-bookmark"></i> My Watchlist ${watchlist.length > 0 ? `(${watchlist.length})` : ''}</h2>
       `;
     }
 
-    WatchlistController.render(container, (c) => this.bindCardClicks(c));
+    await WatchlistController.render(container, this.dataProvider, (c) => this.bindCardClicks(c));
   }
 
   async renderSearchResults(query) {
@@ -279,7 +294,14 @@ class App {
     const inWatchlist = Storage.isInWatchlist(movieId);
     
     if (inWatchlist) {
+      // Remove from client copy
       Storage.removeFromWatchlist(movieId);
+      
+      // Remove from backend MongoDB if online & authenticated
+      if (this.currentUser && this.dataProvider.isBackendOnline) {
+        await this.dataProvider.removeFromWatchlist(movieId);
+      }
+      
       UI.showToast("Removed from Watchlist", "info");
       
       // Update element states visually if present
@@ -292,7 +314,14 @@ class App {
       // Fetch details to save a robust record
       const movie = await this.dataProvider.getMovieDetails(movieId);
       if (movie) {
+        // Add to client copy
         Storage.addToWatchlist(movie);
+        
+        // Add to backend MongoDB if online & authenticated
+        if (this.currentUser && this.dataProvider.isBackendOnline) {
+          await this.dataProvider.addToWatchlist(movieId);
+        }
+        
         UI.showToast("Added to Watchlist", "success");
         if (element) {
           element.classList.add('active');
@@ -306,6 +335,199 @@ class App {
     if (window.location.hash === '#/watchlist') {
       this.renderWatchlistPage();
     }
+  }
+
+  // --- AUTHENTICATION INTERFACES ---
+  setupAuthComponent() {
+    const authModal = document.getElementById('auth-modal');
+    const headerBtnContainer = document.getElementById('auth-status-container');
+    const authCloseBtn = document.getElementById('auth-close-btn');
+    const tabLoginBtn = document.getElementById('auth-tab-login');
+    const tabSignupBtn = document.getElementById('auth-tab-signup');
+    const loginForm = document.getElementById('auth-login-form');
+    const signupForm = document.getElementById('auth-signup-form');
+    const loginError = document.getElementById('login-error-msg');
+    const signupError = document.getElementById('signup-error-msg');
+
+    const updateHeaderUI = () => {
+      if (this.currentUser) {
+        headerBtnContainer.innerHTML = `
+          <span style="font-size: 14px; font-weight: 600; display:flex; align-items:center; gap:6px; color:#e2e8f0;">
+            <i class="fas fa-user-circle" style="color:var(--accent-color); font-size:18px;"></i>
+            ${this.currentUser.username}
+          </span>
+          <button class="icon-btn glass-panel" id="header-logout-btn" title="Log Out" style="width:36px; height:36px; font-size: 14px;">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        `;
+
+        // Bind logout action
+        document.getElementById('header-logout-btn').addEventListener('click', () => {
+          this.handleLogout();
+        });
+      } else {
+        headerBtnContainer.innerHTML = `
+          <button class="nav-tab" id="header-signin-btn" style="border: 1px solid var(--glass-border); padding: 8px 16px;">
+            <i class="fas fa-user-lock"></i> Sign In
+          </button>
+        `;
+
+        // Bind login modal opening action
+        document.getElementById('header-signin-btn').addEventListener('click', () => {
+          authModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+    };
+
+    updateHeaderUI();
+
+    // Modal close controls
+    const closeAuth = () => {
+      authModal.classList.remove('active');
+      document.body.style.overflow = '';
+      loginError.style.display = 'none';
+      signupError.style.display = 'none';
+      loginForm.reset();
+      signupForm.reset();
+    };
+
+    authCloseBtn.addEventListener('click', closeAuth);
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) closeAuth();
+    });
+
+    // Tab switching controls
+    tabLoginBtn.addEventListener('click', () => {
+      tabLoginBtn.style.borderBottom = '2px solid var(--primary-color)';
+      tabLoginBtn.style.color = 'white';
+      tabSignupBtn.style.borderBottom = '2px solid transparent';
+      tabSignupBtn.style.color = 'var(--text-muted)';
+      loginForm.style.display = 'flex';
+      signupForm.style.display = 'none';
+    });
+
+    tabSignupBtn.addEventListener('click', () => {
+      tabSignupBtn.style.borderBottom = '2px solid var(--primary-color)';
+      tabSignupBtn.style.color = 'white';
+      tabLoginBtn.style.borderBottom = '2px solid transparent';
+      tabLoginBtn.style.color = 'var(--text-muted)';
+      signupForm.style.display = 'flex';
+      loginForm.style.display = 'none';
+    });
+
+    // Submit Sign In
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginError.style.display = 'none';
+
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const response = await fetch('http://localhost:8000/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          Storage.saveAuthToken(data.access_token);
+          Storage.saveUserProfile(data.user);
+          this.currentUser = data.user;
+          
+          UI.showToast(`Welcome back, ${data.user.username}!`, "success");
+          closeAuth();
+          updateHeaderUI();
+          this.dataProvider.checkBackendStatus(); // force online check refresh
+
+          // Reload homepage
+          if (window.location.hash === '#/' || window.location.hash === '#/watchlist') {
+            window.location.reload();
+          }
+        } else {
+          const err = await response.json();
+          loginError.innerText = err.detail || "Invalid login credentials.";
+          loginError.style.display = 'block';
+        }
+      } catch (err) {
+        loginError.innerText = "FastAPI Backend is offline. Cannot authenticate.";
+        loginError.style.display = 'block';
+      }
+    });
+
+    // Submit Sign Up
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      signupError.style.display = 'none';
+
+      const username = document.getElementById('signup-username').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value;
+
+      try {
+        const response = await fetch('http://localhost:8000/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          Storage.saveAuthToken(data.access_token);
+          Storage.saveUserProfile(data.user);
+          this.currentUser = data.user;
+
+          UI.showToast("Account created successfully!", "success");
+          closeAuth();
+          updateHeaderUI();
+          this.dataProvider.checkBackendStatus(); // force online check refresh
+
+          // Reload homepage
+          if (window.location.hash === '#/' || window.location.hash === '#/watchlist') {
+            window.location.reload();
+          }
+        } else {
+          const err = await response.json();
+          signupError.innerText = err.detail || "Account creation failed.";
+          signupError.style.display = 'block';
+        }
+      } catch (err) {
+        signupError.innerText = "FastAPI Backend is offline. Cannot register.";
+        signupError.style.display = 'block';
+      }
+    });
+  }
+
+  handleLogout(sessionExpired = false) {
+    Storage.clearAuth();
+    this.currentUser = null;
+    this.dataProvider.checkBackendStatus();
+
+    const authModal = document.getElementById('auth-status-container');
+    authModal.innerHTML = `
+      <button class="nav-tab" id="header-signin-btn" style="border: 1px solid var(--glass-border); padding: 8px 16px;">
+        <i class="fas fa-user-lock"></i> Sign In
+      </button>
+    `;
+    
+    // Rebind login modal triggers
+    document.getElementById('header-signin-btn').addEventListener('click', () => {
+      document.getElementById('auth-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    if (sessionExpired) {
+      UI.showToast("Session expired. Please sign in again.", "error");
+    } else {
+      UI.showToast("Logged out successfully.", "info");
+    }
+
+    setTimeout(() => {
+      window.location.hash = '#/';
+      window.location.reload();
+    }, 1000);
   }
 
   // --- SEARCH BAR IMPLEMENTATION ---

@@ -4,7 +4,9 @@ const STORAGE_KEYS = {
   WATCHLIST: 'movie_recom_watchlist',
   SETTINGS: 'movie_recom_settings',
   API_KEY: 'movie_recom_tmdb_key',
-  RECENT_SEARCHES: 'movie_recom_recent_searches'
+  RECENT_SEARCHES: 'movie_recom_recent_searches',
+  AUTH_TOKEN: 'movie_recom_auth_token',
+  USER_PROFILE: 'movie_recom_user_profile'
 };
 
 const DEFAULT_SETTINGS = {
@@ -117,11 +119,43 @@ export const Storage = {
     localStorage.removeItem(STORAGE_KEYS.RECENT_SEARCHES);
   },
 
+  // --- AUTH MANAGEMENT ---
+  getAuthToken() {
+    return localStorage.getItem(STORAGE_KEYS.AUTH_TOKEN) || '';
+  },
+
+  saveAuthToken(token) {
+    localStorage.setItem(STORAGE_KEYS.AUTH_TOKEN, token);
+  },
+
+  getUserProfile() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.USER_PROFILE);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  saveUserProfile(profile) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.USER_PROFILE, JSON.stringify(profile));
+    } catch (e) {
+      console.error("Error writing user profile to storage", e);
+    }
+  },
+
+  clearAuth() {
+    localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
+    localStorage.removeItem(STORAGE_KEYS.USER_PROFILE);
+  },
+
   // --- RESET ALL DATA ---
   resetAll() {
     localStorage.removeItem(STORAGE_KEYS.WATCHLIST);
     localStorage.removeItem(STORAGE_KEYS.SETTINGS);
     localStorage.removeItem(STORAGE_KEYS.API_KEY);
     localStorage.removeItem(STORAGE_KEYS.RECENT_SEARCHES);
+    this.clearAuth();
   }
 };
