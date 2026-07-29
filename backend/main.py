@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.database import check_db_connection
-from backend.routers import auth, users, movies, watchlist
+from backend.routers import auth, users, movies, watchlist, recommendations
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO)
@@ -37,6 +37,7 @@ app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(movies.router)
 app.include_router(watchlist.router)
+app.include_router(recommendations.router)
 
 @app.get("/")
 async def root():

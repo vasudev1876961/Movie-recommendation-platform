@@ -146,6 +146,11 @@ export class DataProvider {
     return res; // Can return null if backend offline, caller handles local engine fallback
   }
 
+  async getPersonalizedRecommendations() {
+    const res = await this.request('/recommendations/personalized');
+    return res; // returns array of movies, or null if backend offline
+  }
+
   // --- DATABASE WATCHLIST ENDPOINTS ---
   async getWatchlist() {
     const res = await this.request('/watchlist');

@@ -162,6 +162,19 @@ class App {
   }
 
   async getPersonalizedRecommendations(trending, popular) {
+    // If online and logged in, query hybrid recommendations engine from FastAPI
+    if (this.currentUser && this.dataProvider.isBackendOnline) {
+      try {
+        const backendPersonalized = await this.dataProvider.getPersonalizedRecommendations();
+        if (backendPersonalized && backendPersonalized.length > 0) {
+          return backendPersonalized;
+        }
+      } catch (e) {
+        console.warn("[App] Failed to fetch backend personalized recommendations, using local logic:", e);
+      }
+    }
+
+    // Fallback local logic
     const watchlist = this.currentUser && this.dataProvider.isBackendOnline
       ? (await this.dataProvider.getWatchlist() || [])
       : Storage.getWatchlist();

@@ -5,6 +5,7 @@ from typing import List, Optional
 from backend.config import settings
 from backend.data.movies import movies as local_movies
 from backend.models.user import UserPreferences
+from backend.services.recommendation import recommender
 
 logger = logging.getLogger("uvicorn.error")
 
@@ -197,20 +198,7 @@ async def get_details(movie_id: int):
 @router.get("/{movie_id}/recommendations")
 async def get_recommendations(movie_id: int):
     if not is_api_active() or movie_id < 1000:
-        # Fallback local recommendation overlap logic
-        source = next((m for m in local_movies if m["id"] == movie_id), None)
-        if not source:
-            return []
-        
-        scored = []
-        for m in local_movies:
-            if m["id"] == source["id"]:
-                continue
-            overlap = len(set(m["genres"]).intersection(set(source["genres"])))
-            scored.append((m, overlap))
-            
-        scored.sort(key=lambda item: item[1], reverse=True)
-        return [item[0] for item in scored[:10]]
+        return recommender.get_content_recommendations(movie_id, limit=10)
 
     data = await fetch_tmdb(f"/movie/{movie_id}/recommendations")
     if data and "results" in data:
