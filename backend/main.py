@@ -1,9 +1,11 @@
 import logging
+import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.database import check_db_connection
 from backend.routers import auth, users, movies, watchlist, recommendations
+from backend.services.semantic_search import semantic_search
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +14,10 @@ logger = logging.getLogger("uvicorn.error")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Perform database connectivity checks on startup
-    await check_db_connection()
+    db_connected = await check_db_connection()
+    if db_connected:
+        # Generate and cache movie vector embeddings in the background
+        asyncio.create_task(semantic_search.initialize_embeddings())
     yield
     # Cleanup database connection clients if needed on shutdown
 

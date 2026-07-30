@@ -6,6 +6,7 @@ from backend.config import settings
 from backend.data.movies import movies as local_movies
 from backend.models.user import UserPreferences
 from backend.services.recommendation import recommender
+from backend.services.semantic_search import semantic_search
 
 logger = logging.getLogger("uvicorn.error")
 
@@ -147,10 +148,17 @@ async def get_hidden_gems():
     return [m for m in local_movies if m["rating"] >= 7.5 and m["popularity"] < 85][:15]
 
 @router.get("/search")
-async def search_movies(q: str = Query("")):
+async def search_movies(q: str = Query(""), semantic: bool = False):
     if not q.strip():
         return []
         
+    if semantic:
+        # Query semantic vector search service
+        semantic_results = await semantic_search.search(q, limit=12)
+        if semantic_results is not None:
+            return semantic_results
+            
+    # Default to standard keyword search (fallback or if semantic is False)
     if not is_api_active():
         q_lower = q.lower()
         return [m for m in local_movies if q_lower in m["title"].lower() or q_lower in m["overview"].lower() or any(q_lower in g.lower() for g in m["genres"])]

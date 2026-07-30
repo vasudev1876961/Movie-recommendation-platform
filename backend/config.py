@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     jwt_secret: str = "supersecret_change_me_in_production_1234567890"
     access_token_expire_minutes: int = 1440
     tmdb_api_key: str = ""
+    huggingface_api_key: str = ""
 
     model_config = SettingsConfigDict(
         env_file=".env",

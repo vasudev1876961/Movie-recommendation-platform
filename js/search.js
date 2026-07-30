@@ -51,16 +51,23 @@ export class SearchProvider {
     this.semanticSearchMode = enabled;
   }
 
-  // AI-Ready Hook: In Phase 4, this method will query a vector embedding API
   async executeSearch(query) {
     if (!query || query.trim() === "") return [];
 
     Storage.addRecentSearch(query);
 
     if (this.semanticSearchMode) {
+      if (this.dataProvider.isBackendOnline) {
+        try {
+          const results = await this.dataProvider.searchMovies(query, true);
+          if (results) return results;
+        } catch (e) {
+          console.warn("[Search] Backend semantic search query failed. Falling back to local simulation:", e);
+        }
+      }
       return await this._executeSemanticSearchMock(query);
     } else {
-      return await this.dataProvider.searchMovies(query);
+      return await this.dataProvider.searchMovies(query, false);
     }
   }
 

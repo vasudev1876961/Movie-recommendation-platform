@@ -103,8 +103,8 @@ export class DataProvider {
     return localMovies.filter(m => m.rating >= 7.5 && m.popularity < 85).slice(0, 15);
   }
 
-  async searchMovies(query) {
-    const res = await this.request(`/movies/search?q=${encodeURIComponent(query)}`);
+  async searchMovies(query, semantic = false) {
+    const res = await this.request(`/movies/search?q=${encodeURIComponent(query)}${semantic ? '&semantic=true' : ''}`);
     if (res) return res;
 
     // Client-side fallback
