@@ -44,16 +44,31 @@ class SemanticSearchService:
     # Precompute and cache movie vectors inside MongoDB on startup
     async def initialize_embeddings(self):
         try:
-            # Check document count
+            import hashlib
+            import os
+            from backend.data.movies import json_path
+            
+            # Compute MD5 of movies.json
+            file_hash = ""
+            if os.path.exists(json_path):
+                with open(json_path, "rb") as f:
+                    file_hash = hashlib.md5(f.read()).hexdigest()
+            
+            metadata_coll = db["embeddings_metadata"]
+            meta_doc = await metadata_coll.find_one({"type": "movies_json_hash"})
+            
             count = await embeddings_collection.count_documents({})
-            if count >= len(local_movies):
-                logger.info(f"[Semantic Search] Movie embeddings are already cached ({count} movies).")
+            
+            # If count matches AND file hash matches, skip initialization
+            if count >= len(local_movies) and meta_doc and meta_doc.get("hash") == file_hash:
+                logger.info(f"[Semantic Search] Movie embeddings are already cached ({count} movies) and up to date.")
                 return
 
-            logger.info(f"[Semantic Search] Initializing movie embeddings cache in MongoDB...")
+            logger.info(f"[Semantic Search] Initializing movie embeddings cache in MongoDB (stale or missing cache)...")
             
-            # Wipe clean just in case of partial initialization
+            # Wipe clean just in case of stale/partial initialization
             await embeddings_collection.delete_many({})
+            await metadata_coll.delete_many({"type": "movies_json_hash"})
 
             for movie in local_movies:
                 # Build rich textual context representing the movie
@@ -69,6 +84,13 @@ class SemanticSearchService:
                     await asyncio.sleep(0.2)
                 else:
                     logger.warning(f"[Semantic Search] Failed to compute vector for movie: {movie['title']}. Skipping.")
+
+            # Save the new hash on successful completion
+            if file_hash:
+                await metadata_coll.insert_one({
+                    "type": "movies_json_hash",
+                    "hash": file_hash
+                })
 
             new_count = await embeddings_collection.count_documents({})
             logger.info(f"[Semantic Search] Successfully initialized {new_count} movie embeddings in MongoDB.")
