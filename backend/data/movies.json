@@ -1,22 +1,24 @@
 [
   {
     "id": 1,
+    "tmdb_id": 27205,
     "title": "Inception",
     "year": 2010,
     "rating": 8.8,
     "genres": [
-      "Sci-Fi",
       "Action",
+      "Science Fiction",
       "Adventure"
     ],
     "runtime": 148,
-    "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the sub-conscious of his targets, is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+    "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets, is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
     "cast": [
       "Leonardo DiCaprio",
       "Joseph Gordon-Levitt",
       "Elliot Page",
       "Tom Hardy",
-      "Ken Watanabe"
+      "Ken Watanabe",
+      "Cillian Murphy"
     ],
     "director": "Christopher Nolan",
     "language": "English",
@@ -35,14 +37,15 @@
       "subconscious",
       "heist",
       "reality",
-      "architecture"
+      "mind-bending"
     ]
   },
   {
     "id": 2,
+    "tmdb_id": 155,
     "title": "The Dark Knight",
     "year": 2008,
-    "rating": 9,
+    "rating": 9.0,
     "genres": [
       "Action",
       "Crime",
@@ -55,7 +58,8 @@
       "Heath Ledger",
       "Aaron Eckhart",
       "Maggie Gyllenhaal",
-      "Gary Oldman"
+      "Gary Oldman",
+      "Michael Caine"
     ],
     "director": "Christopher Nolan",
     "language": "English",
@@ -80,11 +84,12 @@
   },
   {
     "id": 3,
+    "tmdb_id": 157336,
     "title": "Interstellar",
     "year": 2014,
     "rating": 8.7,
     "genres": [
-      "Sci-Fi",
+      "Science Fiction",
       "Drama",
       "Adventure"
     ],
@@ -95,7 +100,8 @@
       "Anne Hathaway",
       "Jessica Chastain",
       "Michael Caine",
-      "Casey Affleck"
+      "Casey Affleck",
+      "Matt Damon"
     ],
     "director": "Christopher Nolan",
     "language": "English",
@@ -108,7 +114,7 @@
       "Epic"
     ],
     "trailer": "zSWdZVtXT7E",
-    "popularity": 92.4,
+    "popularity": 95.4,
     "keywords": [
       "space travel",
       "black hole",
@@ -119,199 +125,86 @@
   },
   {
     "id": 4,
-    "title": "Parasite",
-    "year": 2019,
-    "rating": 8.6,
+    "tmdb_id": 278,
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "rating": 9.3,
     "genres": [
       "Drama",
-      "Thriller",
-      "Comedy"
+      "Crime"
     ],
-    "runtime": 132,
-    "overview": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+    "runtime": 142,
+    "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unshakeable sense of hope.",
     "cast": [
-      "Song Kang-ho",
-      "Lee Sun-kyun",
-      "Cho Yeo-jeong",
-      "Choi Woo-shik",
-      "Park So-dam"
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton",
+      "William Sadler",
+      "Clancy Brown"
     ],
-    "director": "Bong Joon Ho",
-    "language": "Korean",
-    "country": "South Korea",
-    "poster": "/7IiTTvv3PcN2axCO8HNSvBMjO5r.jpg",
-    "backdrop": "/hiKShYSX651dmdjT5wz36C4rC95.jpg",
+    "director": "Frank Darabont",
+    "language": "English",
+    "country": "USA",
+    "poster": "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+    "backdrop": "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
     "mood": [
-      "Dark",
-      "Mind-bending",
-      "Thriller"
+      "Emotional",
+      "Inspiring",
+      "Feel Good"
     ],
-    "trailer": "5xH0HfJHsaY",
-    "popularity": 88.7,
+    "trailer": "PLl99DlL6b4",
+    "popularity": 92.1,
     "keywords": [
-      "social class",
-      "scam",
-      "house",
-      "infiltration",
-      "family conflict"
+      "prison",
+      "hope",
+      "friendship",
+      "wrongful imprisonment",
+      "escape"
     ]
   },
   {
     "id": 5,
-    "title": "The Matrix",
-    "year": 1999,
-    "rating": 8.7,
-    "genres": [
-      "Sci-Fi",
-      "Action"
-    ],
-    "runtime": 136,
-    "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents who are fighting the vast and powerful computers who now rule the earth.",
-    "cast": [
-      "Keanu Reeves",
-      "Laurence Fishburne",
-      "Carrie-Anne Moss",
-      "Hugo Weaving",
-      "Joe Pantoliano"
-    ],
-    "director": "Lana Wachowski, Lilly Wachowski",
-    "language": "English",
-    "country": "USA",
-    "poster": "/f89U3wL3mF79o2e3rD4nvi0JlhH.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Mind-bending",
-      "Epic",
-      "Feel Good"
-    ],
-    "trailer": "vKQi3bBA1y8",
-    "popularity": 80.1,
-    "keywords": [
-      "simulation",
-      "hacker",
-      "kung fu",
-      "dystopia",
-      "rebellion"
-    ]
-  },
-  {
-    "id": 6,
+    "tmdb_id": 680,
     "title": "Pulp Fiction",
     "year": 1994,
     "rating": 8.9,
     "genres": [
-      "Crime",
       "Thriller",
-      "Drama"
+      "Crime"
     ],
     "runtime": 154,
-    "overview": "A burger-loving hitman, his philosophical partner, a drug-addled gangster's moll, and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfold in three stories that weave in and out of each other.",
+    "overview": "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
     "cast": [
       "John Travolta",
       "Samuel L. Jackson",
       "Uma Thurman",
       "Bruce Willis",
+      "Ving Rhames",
       "Harvey Keitel"
     ],
     "director": "Quentin Tarantino",
     "language": "English",
     "country": "USA",
-    "poster": "/d5iIlvfjPyIwbYthHUiSuZ7j25B.jpg",
-    "backdrop": "/sua6o1H616Os260Ug3S20lLZvhg.jpg",
+    "poster": "/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+    "backdrop": "/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
     "mood": [
       "Dark",
       "Funny",
-      "Epic"
+      "Iconic"
     ],
     "trailer": "s7EdQ4FqbhY",
-    "popularity": 85.3,
+    "popularity": 88.3,
     "keywords": [
       "hitman",
-      "non-linear narrative",
-      "drugs",
-      "boxing",
-      "gangster"
+      "nonlinear",
+      "dance",
+      "crime",
+      "boxing"
     ]
   },
   {
-    "id": 7,
-    "title": "Spirited Away",
-    "year": 2001,
-    "rating": 8.6,
-    "genres": [
-      "Animation",
-      "Fantasy",
-      "Family"
-    ],
-    "runtime": 125,
-    "overview": "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",
-    "cast": [
-      "Rumi Hiiragi",
-      "Miyu Irino",
-      "Mari Natsuki",
-      "Takeshi Naito",
-      "Yasuko Sawaguchi"
-    ],
-    "director": "Hayao Miyazaki",
-    "language": "Japanese",
-    "country": "Japan",
-    "poster": "/39wmItIWsg5JmZ72PrZ42pfquuu.jpg",
-    "backdrop": "/b9Y2wzwq57S7fB7G20vF8uD972g.jpg",
-    "mood": [
-      "Feel Good",
-      "Epic",
-      "Emotional"
-    ],
-    "trailer": "ByXuk9QqQkk",
-    "popularity": 78.4,
-    "keywords": [
-      "spirits",
-      "bathhouse",
-      "curse",
-      "adventure",
-      "dragon"
-    ]
-  },
-  {
-    "id": 8,
-    "title": "Whiplash",
-    "year": 2014,
-    "rating": 8.5,
-    "genres": [
-      "Drama",
-      "Music"
-    ],
-    "runtime": 107,
-    "overview": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his humanity.",
-    "cast": [
-      "Miles Teller",
-      "J.K. Simmons",
-      "Paul Reiser",
-      "Melissa Benoist",
-      "Austin Stowell"
-    ],
-    "director": "Damien Chazelle",
-    "language": "English",
-    "country": "USA",
-    "poster": "/7Fsnj6v1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/6bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
-    "mood": [
-      "Dark",
-      "Emotional",
-      "Thriller"
-    ],
-    "trailer": "7d_jQyGLDVc",
-    "popularity": 75.9,
-    "keywords": [
-      "drummer",
-      "obsession",
-      "jazz",
-      "abuse of power",
-      "conservatory"
-    ]
-  },
-  {
-    "id": 9,
+    "id": 6,
+    "tmdb_id": 550,
     "title": "Fight Club",
     "year": 1999,
     "rating": 8.8,
@@ -331,8 +224,8 @@
     "director": "David Fincher",
     "language": "English",
     "country": "USA",
-    "poster": "/bptfVGE2v493n3zPPkyK75ZfMKt.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
+    "poster": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    "backdrop": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
     "mood": [
       "Mind-bending",
       "Dark",
@@ -349,283 +242,206 @@
     ]
   },
   {
-    "id": 10,
-    "title": "La La Land",
-    "year": 2016,
-    "rating": 8.3,
-    "genres": [
-      "Romance",
-      "Drama",
-      "Music",
-      "Comedy"
-    ],
-    "runtime": 128,
-    "overview": "Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair, and the dreams they worked so hard to maintain in each other threaten to rip them apart.",
-    "cast": [
-      "Ryan Gosling",
-      "Emma Stone",
-      "John Legend",
-      "Rosemarie DeWitt",
-      "J.K. Simmons"
-    ],
-    "director": "Damien Chazelle",
-    "language": "English",
-    "country": "USA",
-    "poster": "/uC6TTNkxj2sEPMsqa2n0V4IcIY2.jpg",
-    "backdrop": "/jrz4sS9p9i3K17C9y4eF8uQv5uX.jpg",
-    "mood": [
-      "Emotional",
-      "Romantic",
-      "Feel Good"
-    ],
-    "trailer": "0pdqf4P9MB8",
-    "popularity": 70.8,
-    "keywords": [
-      "jazz",
-      "hollywood",
-      "actress",
-      "musician",
-      "love story"
-    ]
-  },
-  {
-    "id": 11,
-    "title": "Knives Out",
-    "year": 2019,
-    "rating": 7.9,
-    "genres": [
-      "Mystery",
-      "Comedy",
-      "Crime"
-    ],
-    "runtime": 130,
-    "overview": "When renowned crime novelist Harlan Thrombey is found dead at his estate just after his 85th birthday, the inquisitive and debonair Detective Benoit Blanc is mysteriously enlisted to investigate. From Harlan's dysfunctional family to his devoted staff, Blanc sifts through a web of red herrings and self-serving lies to uncover the truth behind the writer's untimely death.",
-    "cast": [
-      "Daniel Craig",
-      "Ana de Armas",
-      "Chris Evans",
-      "Jamie Lee Curtis",
-      "Michael Shannon"
-    ],
-    "director": "Rian Johnson",
-    "language": "English",
-    "country": "USA",
-    "poster": "/pThyQvS44jH1j4x4ti044H3w6VP.jpg",
-    "backdrop": "/m9QiAzo7Zk4t41g6b6hR7Gv42v9.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Thriller"
-    ],
-    "trailer": "qGqiHJTsRkQ",
-    "popularity": 76.5,
-    "keywords": [
-      "detective",
-      "inheritance",
-      "family secrets",
-      "whodunit",
-      "mansion"
-    ]
-  },
-  {
-    "id": 12,
-    "title": "Mad Max: Fury Road",
-    "year": 2015,
-    "rating": 8.1,
-    "genres": [
-      "Action",
-      "Sci-Fi",
-      "Adventure"
-    ],
-    "runtime": 120,
-    "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and almost everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
-    "cast": [
-      "Tom Hardy",
-      "Charlize Theron",
-      "Nicholas Hoult",
-      "Hugh Keays-Byrne",
-      "Josh Helman"
-    ],
-    "director": "George Miller",
-    "language": "English",
-    "country": "Australia",
-    "poster": "/8tZYrjXIUsTT8AW2LI365VyaWfg.jpg",
-    "backdrop": "/nlPCj2hR4bZgY8n89YV0e9c8k10.jpg",
-    "mood": [
-      "Epic",
-      "Adrenaline Rush",
-      "Thriller"
-    ],
-    "trailer": "hEJnMQG9lh8",
-    "popularity": 91.2,
-    "keywords": [
-      "post-apocalyptic",
-      "car chase",
-      "desert",
-      "survival",
-      "warlord"
-    ]
-  },
-  {
-    "id": 13,
-    "title": "Get Out",
-    "year": 2017,
-    "rating": 7.7,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Thriller"
-    ],
-    "runtime": 104,
-    "overview": "Chris and his girlfriend Rose go upstate to visit her parents for the weekend. At first, Chris reads the family's overly accommodating behavior as nervous attempts to deal with their daughter's interracial relationship, but as the weekend progresses, a series of increasingly disturbing discoveries lead him to a truth that he could never have imagined.",
-    "cast": [
-      "Daniel Kaluuya",
-      "Allison Williams",
-      "Catherine Keener",
-      "Bradley Whitford",
-      "Caleb Landry Jones"
-    ],
-    "director": "Jordan Peele",
-    "language": "English",
-    "country": "USA",
-    "poster": "/1sw51fT4Qy64o2kI1jJ9t069rBM.jpg",
-    "backdrop": "/3T8jSgWv268J4l3W2041g6R1h3S.jpg",
-    "mood": [
-      "Mind-bending",
-      "Dark",
-      "Thriller"
-    ],
-    "trailer": "sRfnevzM9k8",
-    "popularity": 81.3,
-    "keywords": [
-      "racism",
-      "hypnosis",
-      "conspiracy",
-      "escape",
-      "suburbia"
-    ]
-  },
-  {
-    "id": 14,
-    "title": "The Shawshank Redemption",
+    "id": 7,
+    "tmdb_id": 13,
+    "title": "Forrest Gump",
     "year": 1994,
-    "rating": 9.3,
+    "rating": 8.8,
     "genres": [
+      "Comedy",
       "Drama",
-      "Crime"
+      "Romance"
     ],
     "runtime": 142,
-    "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable hope.",
+    "overview": "A man with a low IQ has accomplished great things in his life and been present during significant historic events\u2014in each case, far exceeding what anyone imagined he could do. Yet, despite all the things he has attained, his one true love eludes him.",
     "cast": [
-      "Tim Robbins",
-      "Morgan Freeman",
-      "Bob Gunton",
-      "William Sadler",
-      "Clancy Brown"
+      "Tom Hanks",
+      "Robin Wright",
+      "Gary Sinise",
+      "Sally Field",
+      "Mykelti Williamson"
     ],
-    "director": "Frank Darabont",
+    "director": "Robert Zemeckis",
     "language": "English",
     "country": "USA",
-    "poster": "/9cqN0eXOUx4P04SIhLSWf1wI59q.jpg",
-    "backdrop": "/kG62g6gW4378H4k5zR1GgC9h3S1.jpg",
+    "poster": "/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+    "backdrop": "/qdIMIHhoNXxL2qvm64evHGQpQpq.jpg",
     "mood": [
       "Emotional",
       "Feel Good",
-      "Epic"
+      "Inspiring"
     ],
-    "trailer": "PLl99DlL6b4",
-    "popularity": 105.8,
+    "trailer": "bLvqoHBptjg",
+    "popularity": 86.2,
     "keywords": [
-      "prison escape",
-      "hope",
-      "friendship",
-      "wrongful conviction",
-      "corruption"
+      "vietnam war",
+      "running",
+      "shrimp",
+      "love",
+      "destiny"
     ]
   },
   {
-    "id": 15,
-    "title": "Everything Everywhere All at Once",
-    "year": 2022,
-    "rating": 8,
+    "id": 8,
+    "tmdb_id": 603,
+    "title": "The Matrix",
+    "year": 1999,
+    "rating": 8.7,
     "genres": [
-      "Sci-Fi",
-      "Comedy",
       "Action",
-      "Adventure",
-      "Drama"
+      "Science Fiction"
     ],
-    "runtime": 139,
-    "overview": "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save the world by exploring other universes connecting with the lives she could have led.",
+    "runtime": 136,
+    "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
     "cast": [
-      "Michelle Yeoh",
-      "Ke Huy Quan",
-      "Stephanie Hsu",
-      "Jamie Lee Curtis",
-      "James Hong"
+      "Keanu Reeves",
+      "Laurence Fishburne",
+      "Carrie-Anne Moss",
+      "Hugo Weaving",
+      "Joe Pantoliano"
     ],
-    "director": "Daniel Kwan, Daniel Scheinert",
+    "director": "Lilly Wachowski, Lana Wachowski",
     "language": "English",
     "country": "USA",
-    "poster": "/w3Zbg8c1t0S650eE8B7S1X8G4yv.jpg",
-    "backdrop": "/4H79901S3w5L2966o86f8C93S10.jpg",
+    "poster": "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    "backdrop": "/7u3DoneMwz0q7vRsvC37lqVqUoY.jpg",
     "mood": [
       "Mind-bending",
-      "Funny",
-      "Emotional",
-      "Feel Good"
+      "Epic",
+      "Action-packed"
     ],
-    "trailer": "wxN1T1uxQ2g",
-    "popularity": 94.3,
+    "trailer": "vKQi3bBA1y8",
+    "popularity": 90.5,
     "keywords": [
-      "multiverse",
-      "taxes",
-      "laundromat",
-      "family relationships",
-      "existentialism"
+      "simulation",
+      "hacker",
+      "cyberpunk",
+      "kung fu",
+      "chosen one"
     ]
   },
   {
-    "id": 16,
-    "title": "Shutter Island",
-    "year": 2010,
-    "rating": 8.2,
+    "id": 9,
+    "tmdb_id": 769,
+    "title": "GoodFellas",
+    "year": 1990,
+    "rating": 8.7,
     "genres": [
-      "Mystery",
-      "Thriller",
-      "Drama"
+      "Drama",
+      "Crime"
     ],
-    "runtime": 138,
-    "overview": "World War II soldier turned U.S. Marshal Teddy Daniels investigates the disappearance of a patient from Boston's Shutter Island Ashecliffe Hospital. He's been pushing for an assignment on the island for personal reasons, but before long he wonders if he's been brought there as part of a twisted plot by hospital doctors whose radical treatments range from unethical to illegal.",
+    "runtime": 145,
+    "overview": "The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway and Tommy DeSimone.",
     "cast": [
-      "Leonardo DiCaprio",
-      "Mark Ruffalo",
-      "Ben Kingsley",
-      "Michelle Williams",
-      "Emily Mortimer"
+      "Robert De Niro",
+      "Ray Liotta",
+      "Joe Pesci",
+      "Lorraine Bracco",
+      "Paul Sorvino"
     ],
     "director": "Martin Scorsese",
     "language": "English",
     "country": "USA",
-    "poster": "/4Bt5gM6d34e9o9i3xG3z47j7nEI.jpg",
-    "backdrop": "/bS89d4sC96o85vySR3z47j7nEI.jpg",
+    "poster": "/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+    "backdrop": "/sw7mordbZxgITU877hTpJ9ubqq4.jpg",
     "mood": [
-      "Mind-bending",
       "Dark",
-      "Thriller"
+      "Intense",
+      "Gritty"
     ],
-    "trailer": "5iaYLCip5QA",
-    "popularity": 79.4,
+    "trailer": "qo5jJpHtI1Y",
+    "popularity": 78.4,
     "keywords": [
-      "mental institution",
-      "marshal",
-      "hallucination",
-      "conspiracy",
-      "island"
+      "mafia",
+      "gangster",
+      "new york",
+      "crime",
+      "fbi"
     ]
   },
   {
-    "id": 17,
+    "id": 10,
+    "tmdb_id": 129,
+    "title": "Spirited Away",
+    "year": 2001,
+    "rating": 8.6,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "runtime": 125,
+    "overview": "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",
+    "cast": [
+      "Rumi Hiiragi",
+      "Miyu Irino",
+      "Mari Natsuki",
+      "Takashi Naito",
+      "Yasuko Sawaguchi"
+    ],
+    "director": "Hayao Miyazaki",
+    "language": "Japanese",
+    "country": "Japan",
+    "poster": "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    "backdrop": "/Ab8mkHmkYADjU7wQiOkia9BzGvS.jpg",
+    "mood": [
+      "Feel Good",
+      "Magical",
+      "Emotional"
+    ],
+    "trailer": "ByXuk9QqQkk",
+    "popularity": 82.1,
+    "keywords": [
+      "bathhouse",
+      "spirits",
+      "dragon",
+      "magic",
+      "coming of age"
+    ]
+  },
+  {
+    "id": 11,
+    "tmdb_id": 496243,
+    "title": "Parasite",
+    "year": 2019,
+    "rating": 8.5,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "runtime": 132,
+    "overview": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+    "cast": [
+      "Song Kang-ho",
+      "Lee Sun-kyun",
+      "Cho Yeo-jeong",
+      "Choi Woo-shik",
+      "Park So-dam"
+    ],
+    "director": "Bong Joon-ho",
+    "language": "Korean",
+    "country": "South Korea",
+    "poster": "/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "backdrop": "/hiKmpZMGZsrkA3cdce8a7Dpos1j.jpg",
+    "mood": [
+      "Dark",
+      "Mind-bending",
+      "Suspenseful"
+    ],
+    "trailer": "5xH0R_uxnM8",
+    "popularity": 85.7,
+    "keywords": [
+      "class struggle",
+      "deception",
+      "social inequality",
+      "tutor",
+      "family"
+    ]
+  },
+  {
+    "id": 12,
+    "tmdb_id": 98,
     "title": "Gladiator",
     "year": 2000,
     "rating": 8.5,
@@ -635,7 +451,7 @@
       "Adventure"
     ],
     "runtime": 155,
-    "overview": "In the year 180, the death of emperor Marcus Aurelius throws the Roman Empire into chaos. Maximus is one of the Roman army's most capable and trusted generals and a key advisor to the emperor. As Marcus' devious son Commodus ascends to the throne, Maximus is set to be executed. He escapes, but is captured by slave traders and forced to fight as a gladiator.",
+    "overview": "In the year 180, the death of emperor Marcus Aurelius throws the Roman Empire into chaos. Maximus is one of the Roman army's most capable and trusted generals. When Commodus seizes power, Maximus is stripped of his rank and forced into gladiatorial arenas.",
     "cast": [
       "Russell Crowe",
       "Joaquin Phoenix",
@@ -646,8 +462,8 @@
     "director": "Ridley Scott",
     "language": "English",
     "country": "UK",
-    "poster": "/ty8ikj61B5E2n7nO537PkyK75Zf.jpg",
-    "backdrop": "/g89d4sC96o85vySR3z47j7nEI.jpg",
+    "poster": "/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+    "backdrop": "/8qPq4P671gH75jBw0d6L1QeFhYI.jpg",
     "mood": [
       "Epic",
       "Emotional",
@@ -664,83 +480,8 @@
     ]
   },
   {
-    "id": 18,
-    "title": "Before Sunrise",
-    "year": 1995,
-    "rating": 8.1,
-    "genres": [
-      "Romance",
-      "Drama"
-    ],
-    "runtime": 101,
-    "overview": "A young man and woman meet on a train in Europe, and wind up spending one evening together in Vienna. Unfortunately, both know that this will probably be their only night together.",
-    "cast": [
-      "Ethan Hawke",
-      "Julie Delpy",
-      "Andrea Eckert",
-      "Hanno Pöschl",
-      "Karl Bruckschwaiger"
-    ],
-    "director": "Richard Linklater",
-    "language": "English",
-    "country": "USA",
-    "poster": "/954w1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/c89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Romantic",
-      "Feel Good",
-      "Emotional"
-    ],
-    "trailer": "954w1c6Y4FWJ",
-    "popularity": 64.3,
-    "keywords": [
-      "vienna",
-      "conversation",
-      "one night stand",
-      "connection",
-      "train meet"
-    ]
-  },
-  {
-    "id": 19,
-    "title": "The Shining",
-    "year": 1980,
-    "rating": 8.4,
-    "genres": [
-      "Horror",
-      "Drama"
-    ],
-    "runtime": 146,
-    "overview": "Jack Torrance accepts a caretaker job at the historic Overlook Hotel in the Colorado Rockies. His family accompanies him, but the hotel's dark history and isolation begin to affect Jack's sanity, putting his wife and son in grave danger.",
-    "cast": [
-      "Jack Nicholson",
-      "Shelley Duvall",
-      "Danny Lloyd",
-      "Scatman Crothers",
-      "Barry Nelson"
-    ],
-    "director": "Stanley Kubrick",
-    "language": "English",
-    "country": "UK",
-    "poster": "/x9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "backdrop": "/d89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Dark",
-      "Mind-bending",
-      "Spooky"
-    ],
-    "trailer": "S014oGZiSdI",
-    "popularity": 77.2,
-    "keywords": [
-      "hotel",
-      "winter",
-      "cabin fever",
-      "ghosts",
-      "madness"
-    ]
-  },
-  {
-    "id": 20,
+    "id": 13,
+    "tmdb_id": 324857,
     "title": "Spider-Man: Into the Spider-Verse",
     "year": 2018,
     "rating": 8.4,
@@ -748,11 +489,10 @@
       "Animation",
       "Action",
       "Adventure",
-      "Sci-Fi",
-      "Family"
+      "Science Fiction"
     ],
     "runtime": 117,
-    "overview": "Miles Morales is juggling his life between being a high school student and being Spider-Man. However, when Wilson \"Kingpin\" Fisk uses a super collider, another Spider-Man from another dimension, Peter Parker, accidentally winds up in Miles' dimension.",
+    "overview": "Miles Morales is juggling his life between being a high school student and being Spider-Man. However, when Wilson \"Kingpin\" Fisk uses a super collider, another Spider-Man from another dimension accidentally winds up in Miles' dimension.",
     "cast": [
       "Shameik Moore",
       "Jake Johnson",
@@ -763,8 +503,8 @@
     "director": "Bob Persichetti, Peter Ramsey, Rodney Rothman",
     "language": "English",
     "country": "USA",
-    "poster": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
-    "backdrop": "/7d_jQyGLDVc85vySR3z47j7nEI.jpg",
+    "poster": "/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+    "backdrop": "/7d6ST5tcG5uDYgzeJ19htC6lnf6.jpg",
     "mood": [
       "Feel Good",
       "Epic",
@@ -778,1055 +518,380 @@
       "multiverse",
       "spider-man",
       "coming of age",
-      "graffiti"
+      "brooklyn"
     ]
   },
   {
-    "id": 21,
-    "title": "Free Solo",
-    "year": 2018,
-    "rating": 8.1,
-    "genres": [
-      "Documentary",
-      "Adventure"
-    ],
-    "runtime": 100,
-    "overview": "Alex Honnold attempts to conquer the first free solo climb of the famed 3,000-foot El Capitan's wall in Yosemite National Park, without ropes or safety equipment.",
-    "cast": [
-      "Alex Honnold",
-      "Tommy Caldwell",
-      "Jimmy Chin",
-      "Sanni McCandless"
-    ],
-    "director": "Elizabeth Chai Vasarhelyi, Jimmy Chin",
-    "language": "English",
-    "country": "USA",
-    "poster": "/7Fsnj6v1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/8bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
-    "mood": [
-      "Epic",
-      "Adrenaline Rush",
-      "Feel Good"
-    ],
-    "trailer": "urRVZ4SW7WU",
-    "popularity": 58.4,
-    "keywords": [
-      "climbing",
-      "yosemite",
-      "extreme sports",
-      "courage",
-      "obsession"
-    ]
-  },
-  {
-    "id": 22,
-    "title": "The Silence of the Lambs",
-    "year": 1991,
+    "id": 14,
+    "tmdb_id": 569094,
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": 2023,
     "rating": 8.6,
     "genres": [
-      "Crime",
-      "Drama",
-      "Thriller",
-      "Horror"
+      "Animation",
+      "Action",
+      "Adventure",
+      "Science Fiction"
     ],
-    "runtime": 118,
-    "overview": "Clarice Starling, a young FBI trainee, is assigned to help find a missing woman and save her from a psychopathic serial killer, Buffalo Bill. She must seek help from the incarcerated cannibalistic serial killer Dr. Hannibal Lecter.",
+    "runtime": 140,
+    "overview": "After reuniting with Gwen Stacy, Brooklyn's full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse's very existence.",
     "cast": [
-      "Jodie Foster",
-      "Anthony Hopkins",
-      "Scott Glenn",
-      "Ted Levine",
-      "Diane Baker"
+      "Shameik Moore",
+      "Hailee Steinfeld",
+      "Oscar Isaac",
+      "Jake Johnson",
+      "Daniel Kaluuya"
     ],
-    "director": "Jonathan Demme",
+    "director": "Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",
     "language": "English",
     "country": "USA",
-    "poster": "/rpl9e43C40n12aCO8HNSvBMjO5r.jpg",
-    "backdrop": "/e89d4sC96o85vySR3z47j7nEI.jpg",
+    "poster": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+    "backdrop": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
     "mood": [
-      "Dark",
-      "Thriller",
-      "Mind-bending"
-    ],
-    "trailer": "W6Mm8Sbe__o",
-    "popularity": 81.6,
-    "keywords": [
-      "fbi",
-      "serial killer",
-      "hannibal lecter",
-      "cannibal",
-      "investigation"
-    ]
-  },
-  {
-    "id": 23,
-    "title": "Zodiac",
-    "year": 2007,
-    "rating": 7.7,
-    "genres": [
-      "Mystery",
-      "Thriller",
-      "Drama",
-      "Crime"
-    ],
-    "runtime": 157,
-    "overview": "A cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified serial killer who terrorizes the San Francisco Bay Area in the late 1960s and early 1970s.",
-    "cast": [
-      "Jake Gyllenhaal",
-      "Mark Ruffalo",
-      "Robert Downey Jr.",
-      "Anthony Edwards",
-      "Brian Cox"
-    ],
-    "director": "David Fincher",
-    "language": "English",
-    "country": "USA",
-    "poster": "/pThyQvS44jH1j4x4ti044H3w6VP.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Dark",
+      "Epic",
       "Mind-bending",
-      "Thriller"
+      "Thrilling"
     ],
-    "trailer": "yNncHPl1nSI",
-    "popularity": 72.3,
+    "trailer": "cqGjhVJWtEg",
+    "popularity": 92.4,
     "keywords": [
-      "serial killer",
-      "journalism",
-      "obsession",
-      "unsolved mystery",
-      "cryptography"
+      "multiverse",
+      "canon event",
+      "spider-society",
+      "destiny"
     ]
   },
   {
-    "id": 24,
-    "title": "About Time",
-    "year": 2013,
-    "rating": 7.8,
+    "id": 15,
+    "tmdb_id": 872585,
+    "title": "Oppenheimer",
+    "year": 2023,
+    "rating": 8.3,
     "genres": [
-      "Romance",
       "Drama",
-      "Fantasy",
-      "Comedy"
+      "History"
     ],
-    "runtime": 123,
-    "overview": "At the age of 21, Tim discovers he can travel in time and change what happens and has happened in his own life. His decision to make his world a better place by getting a girlfriend turns out not to be as easy as you might think.",
+    "runtime": 180,
+    "overview": "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
     "cast": [
-      "Domhnall Gleeson",
-      "Rachel McAdams",
-      "Bill Nighy",
-      "Tom Hollander",
-      "Margot Robbie"
+      "Cillian Murphy",
+      "Emily Blunt",
+      "Matt Damon",
+      "Robert Downey Jr.",
+      "Florence Pugh"
     ],
-    "director": "Richard Curtis",
-    "language": "English",
-    "country": "UK",
-    "poster": "/iwwz294P7a3AE3XG3z47j7nEI.jpg",
-    "backdrop": "/g89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Romantic",
-      "Emotional"
-    ],
-    "trailer": "T7A810duHvw",
-    "popularity": 74.9,
-    "keywords": [
-      "time travel",
-      "family bond",
-      "love",
-      "london",
-      "father-son"
-    ]
-  },
-  {
-    "id": 25,
-    "title": "Hereditary",
-    "year": 2018,
-    "rating": 7.3,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Drama"
-    ],
-    "runtime": 127,
-    "overview": "When Ellen, the matriarch of the Graham family, passes away, her daughter's family begins to unravel cryptic and increasingly terrifying secrets about their ancestry. The harder they try to escape the dark fate they have inherited, the more they find themselves ensnared.",
-    "cast": [
-      "Toni Collette",
-      "Alex Wolff",
-      "Milly Shapiro",
-      "Ann Dowd",
-      "Gabriel Byrne"
-    ],
-    "director": "Ari Aster",
+    "director": "Christopher Nolan",
     "language": "English",
     "country": "USA",
-    "poster": "/4tE7E3s2t365VyaWfg.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
+    "poster": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "backdrop": "/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg",
     "mood": [
-      "Dark",
-      "Spooky",
-      "Emotional"
+      "Epic",
+      "Intense",
+      "Historical"
     ],
-    "trailer": "V6wWKNjleM4",
-    "popularity": 79.8,
+    "trailer": "uYPbbksJxIg",
+    "popularity": 94.8,
     "keywords": [
-      "grief",
-      "cult",
-      "demon",
-      "miniatures",
-      "family tragedy"
+      "atomic bomb",
+      "manhattan project",
+      "physicist",
+      "cold war",
+      "trinity test"
     ]
   },
   {
-    "id": 26,
-    "title": "The Grand Budapest Hotel",
-    "year": 2014,
-    "rating": 8.1,
+    "id": 16,
+    "tmdb_id": 346698,
+    "title": "Barbie",
+    "year": 2023,
+    "rating": 7.4,
     "genres": [
       "Comedy",
-      "Drama",
-      "Adventure"
+      "Adventure",
+      "Fantasy"
     ],
-    "runtime": 100,
-    "overview": "The writer recounts his stay at the Grand Budapest Hotel, where he meets the owner, Zero Moustafa, who tells him about how he acquired the hotel and his adventures with the legendary concierge, Monsieur Gustave H.",
+    "runtime": 114,
+    "overview": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
     "cast": [
-      "Ralph Fiennes",
-      "Tony Revolori",
-      "Saoirse Ronan",
-      "Adrien Brody",
-      "Willem Dafoe"
+      "Margot Robbie",
+      "Ryan Gosling",
+      "America Ferrera",
+      "Kate McKinnon",
+      "Will Ferrell"
     ],
-    "director": "Wes Anderson",
+    "director": "Greta Gerwig",
     "language": "English",
-    "country": "Germany",
-    "poster": "/9cqN0eXOUx4P04SIhLSWf1wI59q.jpg",
-    "backdrop": "/i89d4sC96o85vySR3z47j7nEI.jpg",
+    "country": "USA",
+    "poster": "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+    "backdrop": "/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg",
     "mood": [
       "Funny",
       "Feel Good",
-      "Epic"
+      "Colorful"
     ],
-    "trailer": "1Fg5iWmQjwk",
-    "popularity": 75.1,
+    "trailer": "pBk4NYhWNMM",
+    "popularity": 87.3,
     "keywords": [
-      "concierge",
-      "inheritance",
-      "hotel staff",
-      "painting theft",
-      "quirky"
+      "barbie",
+      "feminism",
+      "patriarchy",
+      "doll",
+      "real world"
     ]
   },
   {
-    "id": 27,
-    "title": "Knives Out: Glass Onion",
-    "year": 2022,
-    "rating": 7.1,
-    "genres": [
-      "Mystery",
-      "Comedy",
-      "Crime"
-    ],
-    "runtime": 139,
-    "overview": "Tech billionaire Miles Bron invites his friends for a getaway on his private Greek island. When someone turns up dead, Detective Benoit Blanc is put on the case.",
-    "cast": [
-      "Daniel Craig",
-      "Edward Norton",
-      "Janelle Monáe",
-      "Kathryn Hahn",
-      "Leslie Odom Jr."
-    ],
-    "director": "Rian Johnson",
-    "language": "English",
-    "country": "USA",
-    "poster": "/vDGrvZnXzTa71qZZnAFw546lljF.jpg",
-    "backdrop": "/28y5sTaTaTa71qZZnAFw546lljF.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Thriller"
-    ],
-    "trailer": "gj5ibYSz8C0",
-    "popularity": 80.2,
-    "keywords": [
-      "island",
-      "billionaire",
-      "murder mystery",
-      "glass structure",
-      "greece"
-    ]
-  },
-  {
-    "id": 28,
+    "id": 17,
+    "tmdb_id": 438631,
     "title": "Dune",
     "year": 2021,
-    "rating": 8,
+    "rating": 8.0,
     "genres": [
-      "Sci-Fi",
-      "Adventure",
-      "Action"
+      "Science Fiction",
+      "Adventure"
     ],
     "runtime": 155,
     "overview": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people.",
     "cast": [
-      "Timothée Chalamet",
+      "Timoth\u00e9e Chalamet",
       "Rebecca Ferguson",
       "Oscar Isaac",
       "Josh Brolin",
+      "Stellan Skarsg\u00e5rd",
       "Zendaya"
     ],
     "director": "Denis Villeneuve",
     "language": "English",
     "country": "USA",
-    "poster": "/d5NXSklXj0iIhNMPm79G21R1t36.jpg",
-    "backdrop": "/lz271qZZnAFw546lljFw3Zbg8c1.jpg",
+    "poster": "/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    "backdrop": "/lzWHmYdfeFiMIY4JaMmtR7GEli3.jpg",
     "mood": [
       "Epic",
       "Mind-bending",
-      "Dark"
+      "Sci-Fi"
     ],
-    "trailer": "n9DwoQ7HWvI",
-    "popularity": 97.4,
+    "trailer": "8g18jFHCLXk",
+    "popularity": 91.2,
     "keywords": [
       "desert planet",
       "spice",
+      "sandworm",
       "prophecy",
-      "giant worms",
-      "dynasty"
+      "house atreides"
     ]
   },
   {
-    "id": 29,
-    "title": "Blade Runner 2049",
-    "year": 2017,
-    "rating": 8,
+    "id": 18,
+    "tmdb_id": 693134,
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "rating": 8.6,
     "genres": [
-      "Sci-Fi",
-      "Drama",
-      "Mystery"
+      "Science Fiction",
+      "Adventure"
     ],
-    "runtime": 164,
-    "overview": "Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos.",
+    "runtime": 166,
+    "overview": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe.",
     "cast": [
-      "Ryan Gosling",
-      "Harrison Ford",
-      "Ana de Armas",
-      "Robin Wright",
-      "Jared Leto"
+      "Timoth\u00e9e Chalamet",
+      "Zendaya",
+      "Rebecca Ferguson",
+      "Javier Bardem",
+      "Austin Butler",
+      "Florence Pugh"
     ],
     "director": "Denis Villeneuve",
     "language": "English",
     "country": "USA",
-    "poster": "/gajva2jLxLk85vySR3z47j7nEI.jpg",
-    "backdrop": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
+    "poster": "/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+    "backdrop": "/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
     "mood": [
-      "Mind-bending",
-      "Dark",
-      "Epic"
+      "Epic",
+      "Intense",
+      "Masterpiece"
     ],
-    "trailer": "gCcx85zY3dB",
-    "popularity": 84.8,
+    "trailer": "Way9Dexny3w",
+    "popularity": 98.9,
     "keywords": [
-      "replicant",
-      "dystopia",
-      "hologram",
-      "artificial intelligence",
-      "search for parent"
+      "holy war",
+      "fremen",
+      "desert",
+      "emperor",
+      "prophet"
     ]
   },
   {
-    "id": 30,
-    "title": "A Quiet Place",
-    "year": 2018,
-    "rating": 7.5,
-    "genres": [
-      "Horror",
-      "Sci-Fi",
-      "Drama"
-    ],
-    "runtime": 90,
-    "overview": "A family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
-    "cast": [
-      "Emily Blunt",
-      "John Krasinski",
-      "Millicent Simmonds",
-      "Noah Jupe"
-    ],
-    "director": "John Krasinski",
-    "language": "English",
-    "country": "USA",
-    "poster": "/nAU74G2jLxLk85vySR3z47j7nEI.jpg",
-    "backdrop": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
-    "mood": [
-      "Dark",
-      "Spooky",
-      "Thriller"
-    ],
-    "trailer": "WR7cc5t7pmA",
-    "popularity": 76.8,
-    "keywords": [
-      "silence",
-      "monsters",
-      "blind creatures",
-      "survival",
-      "family bond"
-    ]
-  },
-  {
-    "id": 31,
-    "title": "Zootopia",
-    "year": 2016,
-    "rating": 8,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Family",
-      "Adventure"
-    ],
-    "runtime": 108,
-    "overview": "In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.",
-    "cast": [
-      "Ginnifer Goodwin",
-      "Jason Bateman",
-      "Idris Elba",
-      "Jenny Slate",
-      "Nate Torrence"
-    ],
-    "director": "Byron Howard, Rich Moore",
-    "language": "English",
-    "country": "USA",
-    "poster": "/hlr9e43C40n12aCO8HNSvBMjO5r.jpg",
-    "backdrop": "/e89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Funny",
-      "Light & Fun"
-    ],
-    "trailer": "jWM0ct-OLsM",
-    "popularity": 79.3,
-    "keywords": [
-      "animals",
-      "detective",
-      "prejudice",
-      "metropolis",
-      "fox and bunny"
-    ]
-  },
-  {
-    "id": 32,
-    "title": "Superbad",
-    "year": 2007,
-    "rating": 7.6,
-    "genres": [
-      "Comedy"
-    ],
-    "runtime": 113,
-    "overview": "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
-    "cast": [
-      "Jonah Hill",
-      "Michael Cera",
-      "Christopher Mintz-Plasse",
-      "Bill Hader",
-      "Seth Rogen"
-    ],
-    "director": "Greg Mottola",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Light & Fun"
-    ],
-    "trailer": "4eaZ_5R1jgI",
-    "popularity": 72.8,
-    "keywords": [
-      "high school",
-      "fake id",
-      "cop friends",
-      "party",
-      "friendship"
-    ]
-  },
-  {
-    "id": 33,
-    "title": "Eternal Sunshine of the Spotless Mind",
-    "year": 2004,
-    "rating": 8.3,
-    "genres": [
-      "Romance",
-      "Sci-Fi",
-      "Drama"
-    ],
-    "runtime": 108,
-    "overview": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.",
-    "cast": [
-      "Jim Carrey",
-      "Kate Winslet",
-      "Kirsten Dunst",
-      "Mark Ruffalo",
-      "Elijah Wood"
-    ],
-    "director": "Michel Gondry",
-    "language": "English",
-    "country": "USA",
-    "poster": "/551A064mUeNqJ2tWGBiWSDnCXa5.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Mind-bending",
-      "Emotional",
-      "Romantic"
-    ],
-    "trailer": "yE-f1alkq9I",
-    "popularity": 74.2,
-    "keywords": [
-      "memory erasure",
-      "heartbreak",
-      "subconscious",
-      "surreal",
-      "love cycle"
-    ]
-  },
-  {
-    "id": 34,
-    "title": "The Departed",
-    "year": 2006,
-    "rating": 8.5,
+    "id": 19,
+    "tmdb_id": 244786,
+    "title": "Whiplash",
+    "year": 2014,
+    "rating": 8.4,
     "genres": [
       "Drama",
-      "Thriller",
-      "Crime"
+      "Music"
     ],
-    "runtime": 151,
-    "overview": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    "runtime": 107,
+    "overview": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his own sanity.",
     "cast": [
-      "Leonardo DiCaprio",
-      "Matt Damon",
-      "Jack Nicholson",
-      "Mark Wahlberg",
-      "Martin Sheen"
+      "Miles Teller",
+      "J.K. Simmons",
+      "Paul Reiser",
+      "Melissa Benoist",
+      "Austin Stowell"
     ],
-    "director": "Martin Scorsese",
+    "director": "Damien Chazelle",
     "language": "English",
     "country": "USA",
-    "poster": "/3Bt5gM6d34e9o9i3xG3z47j7nEI.jpg",
-    "backdrop": "/bS89d4sC96o85vySR3z47j7nEI.jpg",
+    "poster": "/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+    "backdrop": "/6bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
     "mood": [
-      "Dark",
-      "Thriller",
-      "Epic"
+      "Intense",
+      "Obsessive",
+      "Masterpiece"
     ],
-    "trailer": "iojhdkfhsda",
-    "popularity": 81.9,
+    "trailer": "7d_jQyGLDVc",
+    "popularity": 81.3,
     "keywords": [
-      "undercover",
-      "mole",
-      "irish mafia",
-      "police",
-      "boston"
-    ]
-  },
-  {
-    "id": 35,
-    "title": "Jiro Dreams of Sushi",
-    "year": 2011,
-    "rating": 7.9,
-    "genres": [
-      "Documentary"
-    ],
-    "runtime": 81,
-    "overview": "A documentary on 85-year-old sushi master Jiro Ono, his renowned Tokyo restaurant, and his relationship with his son and eventual heir, Yoshikazu.",
-    "cast": [
-      "Jiro Ono",
-      "Yoshikazu Ono",
-      "Masuhiro Yamamoto"
-    ],
-    "director": "David Gelb",
-    "language": "Japanese",
-    "country": "Japan",
-    "poster": "/9cqN0eXOUx4P04SIhLSWf1wI59q.jpg",
-    "backdrop": "/i89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Emotional"
-    ],
-    "trailer": "M-aGPniFvS0",
-    "popularity": 52.4,
-    "keywords": [
-      "sushi",
-      "cooking",
-      "father-son",
+      "drummer",
+      "jazz",
       "perfectionism",
-      "tokyo"
+      "mentor",
+      "conservatory"
     ]
   },
   {
-    "id": 36,
-    "title": "The Conjuring",
-    "year": 2013,
-    "rating": 7.5,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Thriller"
-    ],
-    "runtime": 112,
-    "overview": "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.",
-    "cast": [
-      "Vera Farmiga",
-      "Patrick Wilson",
-      "Lili Taylor",
-      "Ron Livingston",
-      "Shanley Caswell"
-    ],
-    "director": "James Wan",
-    "language": "English",
-    "country": "USA",
-    "poster": "/3T8jSgWv268J4l3W2041g6R1h3S.jpg",
-    "backdrop": "/1sw51fT4Qy64o2kI1jJ9t069rBM.jpg",
-    "mood": [
-      "Spooky",
-      "Dark",
-      "Thriller"
-    ],
-    "trailer": "k10ETZ42q5o",
-    "popularity": 78.4,
-    "keywords": [
-      "haunted house",
-      "exorcism",
-      "paranormal investigators",
-      "ghost",
-      "demon"
-    ]
-  },
-  {
-    "id": 37,
-    "title": "The Truman Show",
-    "year": 1998,
+    "id": 20,
+    "tmdb_id": 1124,
+    "title": "The Prestige",
+    "year": 2006,
     "rating": 8.2,
     "genres": [
       "Drama",
-      "Comedy"
-    ],
-    "runtime": 103,
-    "overview": "An insurance salesman discovers his whole life is actually a reality TV show.",
-    "cast": [
-      "Jim Carrey",
-      "Laura Linney",
-      "Noah Emmerich",
-      "Natascha McElhone",
-      "Ed Harris"
-    ],
-    "director": "Peter Weir",
-    "language": "English",
-    "country": "USA",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A0.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Mind-bending",
-      "Funny",
-      "Feel Good"
-    ],
-    "trailer": "dlnmQbPGuls",
-    "popularity": 76.9,
-    "keywords": [
-      "reality show",
-      "paranoia",
-      "fake reality",
-      "existential crisis",
-      "escape"
-    ]
-  },
-  {
-    "id": 38,
-    "title": "Prisoners",
-    "year": 2013,
-    "rating": 8.1,
-    "genres": [
-      "Drama",
-      "Crime",
       "Mystery",
-      "Thriller"
+      "Science Fiction"
     ],
-    "runtime": 153,
-    "overview": "When Keller Dover's daughter and her friend go missing, he takes matters into his own hands as the police pursue multiple leads and the pressure mounts.",
+    "runtime": 130,
+    "overview": "A mysterious story of two magicians whose intense rivalry leads them on a life-long battle for supremacy -- full of obsession, deceit and jealousy with dangerous and deadly consequences.",
     "cast": [
       "Hugh Jackman",
-      "Jake Gyllenhaal",
-      "Viola Davis",
-      "Maria Bello",
-      "Terrence Howard"
+      "Christian Bale",
+      "Michael Caine",
+      "Scarlett Johansson",
+      "David Bowie"
     ],
-    "director": "Denis Villeneuve",
+    "director": "Christopher Nolan",
     "language": "English",
     "country": "USA",
-    "poster": "/1sw51fT4Qy64o2kI1jJ9t069rBM.jpg",
-    "backdrop": "/3T8jSgWv268J4l3W2041g6R1h3S.jpg",
+    "poster": "/tRNsqBGIK6ttMgRJLAo9y1PR4v7.jpg",
+    "backdrop": "/3X2A10zWk0qK1pUu7M9n1lKjO9Q.jpg",
     "mood": [
+      "Mind-bending",
       "Dark",
-      "Thriller",
-      "Emotional"
+      "Mystery"
     ],
-    "trailer": "bpXfcT7Kyf8",
-    "popularity": 80.5,
+    "trailer": "o4gHCmTQDVI",
+    "popularity": 79.5,
     "keywords": [
-      "abduction",
-      "vigilante justice",
-      "investigation",
-      "suburbia",
-      "moral dilemma"
+      "magician",
+      "illusion",
+      "rivalry",
+      "teleportation",
+      "obsession"
     ]
   },
   {
-    "id": 39,
-    "title": "Gladiator II",
-    "year": 2024,
-    "rating": 7.2,
-    "genres": [
-      "Action",
-      "Drama",
-      "Adventure"
-    ],
-    "runtime": 148,
-    "overview": "Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius is forced to enter the Colosseum after his home is conquered by the tyrannical Emperors who now lead Rome with an iron fist.",
-    "cast": [
-      "Paul Mescal",
-      "Pedro Pascal",
-      "Denzel Washington",
-      "Connie Nielsen",
-      "Joseph Quinn"
-    ],
-    "director": "Ridley Scott",
-    "language": "English",
-    "country": "USA",
-    "poster": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "backdrop": "/x9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed"
-    ],
-    "trailer": "EP31EaP3WkU",
-    "popularity": 120.4,
-    "keywords": [
-      "rome",
-      "gladiator",
-      "emperor",
-      "battle",
-      "colosseum"
-    ]
-  },
-  {
-    "id": 40,
-    "title": "Fyre",
-    "year": 2019,
-    "rating": 7.2,
-    "genres": [
-      "Documentary"
-    ],
-    "runtime": 97,
-    "overview": "An exclusive look into the luxury music festival Fyre Festival, which became a disaster when its promoter failed to build the infrastructure.",
-    "cast": [
-      "Billy McFarland",
-      "Ja Rule",
-      "Andy King"
-    ],
-    "director": "Chris Smith",
-    "language": "English",
-    "country": "USA",
-    "poster": "/d5iIlvfjPyIwbYthHUiSuZ7j25B.jpg",
-    "backdrop": "/sua6o1H616Os260Ug3S20lLZvhg.jpg",
-    "mood": [
-      "Funny",
-      "Dark"
-    ],
-    "trailer": "uZ0KNVU29vY",
-    "popularity": 50.1,
-    "keywords": [
-      "music festival",
-      "scam",
-      "influencer",
-      "bahamas",
-      "disaster"
-    ]
-  },
-  {
-    "id": 41,
-    "title": "Ponyo",
-    "year": 2008,
-    "rating": 7.7,
+    "id": 21,
+    "tmdb_id": 8587,
+    "title": "The Lion King",
+    "year": 1994,
+    "rating": 8.3,
     "genres": [
       "Animation",
       "Family",
-      "Fantasy"
-    ],
-    "runtime": 101,
-    "overview": "A 5-year-old boy, Sosuke, develops a relationship with Ponyo, a goldfish princess who wants to become a human girl.",
-    "cast": [
-      "Yuria Nara",
-      "Hiroki Doi",
-      "Tomoko山口",
-      "George Tokoro"
-    ],
-    "director": "Hayao Miyazaki",
-    "language": "Japanese",
-    "country": "Japan",
-    "poster": "/39wmItIWsg5JmZ72PrZ42pfquuu.jpg",
-    "backdrop": "/b9Y2wzwq57S7fB7G20vF8uD972g.jpg",
-    "mood": [
-      "Feel Good",
-      "Light & Fun",
-      "Romantic"
-    ],
-    "trailer": "CsR3KiZy5Y8",
-    "popularity": 70.2,
-    "keywords": [
-      "ocean",
-      "friendship",
-      "magic",
-      "goldfish",
-      "tsunami"
-    ]
-  },
-  {
-    "id": 42,
-    "title": "The Lord of the Rings: The Fellowship of the Ring",
-    "year": 2001,
-    "rating": 8.9,
-    "genres": [
-      "Adventure",
-      "Fantasy",
-      "Action"
-    ],
-    "runtime": 178,
-    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home and journey to the fires of Mount Doom to destroy it.",
-    "cast": [
-      "Elijah Wood",
-      "Ian McKellen",
-      "Viggo Mortensen",
-      "Sean Astin",
-      "Orlando Bloom"
-    ],
-    "director": "Peter Jackson",
-    "language": "English",
-    "country": "New Zealand",
-    "poster": "/6oom5QDN218111wIhQ91Cc5wRND.jpg",
-    "backdrop": "/lX753QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Feel Good",
-      "Action-packed"
-    ],
-    "trailer": "V75tKlUsC40",
-    "popularity": 95.8,
-    "keywords": [
-      "magic ring",
-      "hobbit",
-      "elves",
-      "wizards",
-      "fellowship"
-    ]
-  },
-  {
-    "id": 43,
-    "title": "The Lord of the Rings: The Two Towers",
-    "year": 2002,
-    "rating": 8.8,
-    "genres": [
-      "Adventure",
-      "Fantasy",
-      "Action"
-    ],
-    "runtime": 179,
-    "overview": "Frodo and Sam continue their journey to Mount Doom to destroy the One Ring, guided by the treacherous Gollum, while Aragorn, Legolas, and Gimli join forces with Rohan to defend Helm's Deep.",
-    "cast": [
-      "Elijah Wood",
-      "Ian McKellen",
-      "Viggo Mortensen",
-      "Sean Astin",
-      "Andy Serkis"
-    ],
-    "director": "Peter Jackson",
-    "language": "English",
-    "country": "New Zealand",
-    "poster": "/5VT87Kq4s62g2kI1jJ9t069rBM.jpg",
-    "backdrop": "/6oom5QDN218111wIhQ91Cc5wRND.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed"
-    ],
-    "trailer": "LbfMDwp4yJc",
-    "popularity": 92.1,
-    "keywords": [
-      "siege",
-      "battle",
-      "gollum",
-      "middle-earth",
-      "friendship"
-    ]
-  },
-  {
-    "id": 44,
-    "title": "The Lord of the Rings: The Return of the King",
-    "year": 2003,
-    "rating": 9,
-    "genres": [
-      "Adventure",
-      "Fantasy",
-      "Action"
-    ],
-    "runtime": 201,
-    "overview": "Aragorn is revealed as the heir to the ancient kings of Men, and he and the remaining members of the Fellowship lead a massive battle to distract Sauron so Frodo and Sam can destroy the One Ring.",
-    "cast": [
-      "Elijah Wood",
-      "Ian McKellen",
-      "Viggo Mortensen",
-      "Sean Astin",
-      "Billy Boyd"
-    ],
-    "director": "Peter Jackson",
-    "language": "English",
-    "country": "New Zealand",
-    "poster": "/rCee2HN17as2j2tH6rP2.jpg",
-    "backdrop": "/5VT87Kq4s62g2kI1jJ9t069rBM.jpg",
-    "mood": [
-      "Epic",
-      "Emotional",
-      "Action-packed"
-    ],
-    "trailer": "r5X-hFf6Bwo",
-    "popularity": 99.1,
-    "keywords": [
-      "final battle",
-      "coronation",
-      "volcano",
-      "loyalty",
-      "middle-earth"
-    ]
-  },
-  {
-    "id": 45,
-    "title": "Before Sunset",
-    "year": 2004,
-    "rating": 8.1,
-    "genres": [
-      "Romance",
       "Drama"
     ],
-    "runtime": 80,
-    "overview": "Nine years after Jesse and Celine first met in Vienna, they cross paths again in Paris, having only an hour to catch up before Jesse must catch his flight.",
+    "runtime": 89,
+    "overview": "A young lion prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days. But when his past comes to haunt him, the young prince must decide his destiny.",
     "cast": [
-      "Ethan Hawke",
-      "Julie Delpy",
-      "Vernon Dobtcheff",
-      "Louise Lemoine Torrès"
+      "Matthew Broderick",
+      "James Earl Jones",
+      "Jeremy Irons",
+      "Nathan Lane",
+      "Ernie Sabella"
     ],
-    "director": "Richard Linklater",
+    "director": "Roger Allers, Rob Minkoff",
     "language": "English",
     "country": "USA",
-    "poster": "/c89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/954w1c6Y4FWJzH6znST7a27P.jpg",
+    "poster": "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
+    "backdrop": "/wXsQvli6tgWqwy5IM5d29V46A3n.jpg",
     "mood": [
-      "Romantic",
-      "Emotional"
-    ],
-    "trailer": "oI3Uuje15y4",
-    "popularity": 63.8,
-    "keywords": [
-      "paris",
-      "reunion",
-      "conversation",
-      "missed connection",
-      "love"
-    ]
-  },
-  {
-    "id": 46,
-    "title": "Before Midnight",
-    "year": 2013,
-    "rating": 7.9,
-    "genres": [
-      "Romance",
-      "Drama"
-    ],
-    "runtime": 109,
-    "overview": "We meet Jesse and Celine nine years after their reunion in Paris. Now parents to twin girls, they reflect on their relationship during a summer vacation in Greece.",
-    "cast": [
-      "Ethan Hawke",
-      "Julie Delpy",
-      "Seamus Davey-Fitzpatrick",
-      "Charlotte Gainsbourg"
-    ],
-    "director": "Richard Linklater",
-    "language": "English",
-    "country": "USA",
-    "poster": "/954w1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/c89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Romantic",
       "Emotional",
-      "Dark"
+      "Feel Good",
+      "Classic"
     ],
-    "trailer": "t3W8dRL2sN8",
-    "popularity": 60.1,
+    "trailer": "4sj1MT05MQI",
+    "popularity": 80.2,
     "keywords": [
-      "greece",
-      "marriage",
-      "argument",
-      "midlife",
-      "romance evolution"
+      "africa",
+      "lion",
+      "uncle",
+      "king",
+      "circle of life"
     ]
   },
   {
-    "id": 47,
-    "title": "Arrival",
-    "year": 2016,
-    "rating": 7.9,
+    "id": 22,
+    "tmdb_id": 274,
+    "title": "The Silence of the Lambs",
+    "year": 1991,
+    "rating": 8.3,
     "genres": [
-      "Sci-Fi",
+      "Crime",
       "Drama",
-      "Mystery"
-    ],
-    "runtime": 116,
-    "overview": "Linguistics professor Louise Banks leads an elite team of investigators when gigantic spaceships touch down in 12 locations around the world. As nations teeter on the verge of global war, Banks must find a way to communicate with the extraterrestrial visitors.",
-    "cast": [
-      "Amy Adams",
-      "Jeremy Renner",
-      "Forest Whitaker",
-      "Michael Stuhlbarg",
-      "Tzi Ma"
-    ],
-    "director": "Denis Villeneuve",
-    "language": "English",
-    "country": "USA",
-    "poster": "/d5NXSklXj0iIhNMPm79G21R1t36.jpg",
-    "backdrop": "/lz271qZZnAFw546lljFw3Zbg8c1.jpg",
-    "mood": [
-      "Mind-bending",
-      "Emotional",
       "Thriller"
     ],
-    "trailer": "tFMo3wj4rrg",
-    "popularity": 78.4,
+    "runtime": 118,
+    "overview": "Clarice Starling is a top student at the FBI's training academy. Jack Crawford wants Clarice to interview Dr. Hannibal Lecter, a brilliant psychiatrist who is also a violent psychopath, serving life behind bars for various acts of murder and cannibalism.",
+    "cast": [
+      "Jodie Foster",
+      "Anthony Hopkins",
+      "Scott Glenn",
+      "Ted Levine",
+      "Anthony Heald"
+    ],
+    "director": "Jonathan Demme",
+    "language": "English",
+    "country": "USA",
+    "poster": "/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+    "backdrop": "/mfwq2nMBzArzQ7Y9RKE8SKeeTkg.jpg",
+    "mood": [
+      "Dark",
+      "Intense",
+      "Psychological"
+    ],
+    "trailer": "W6Mm8Sbe__o",
+    "popularity": 78.9,
     "keywords": [
-      "aliens",
-      "linguistics",
-      "time loop",
-      "spaceships",
-      "global crisis"
+      "serial killer",
+      "cannibal",
+      "fbi",
+      "psychiatrist",
+      "investigation"
     ]
   },
   {
-    "id": 48,
+    "id": 23,
+    "tmdb_id": 807,
     "title": "Se7en",
     "year": 1995,
-    "rating": 8.6,
+    "rating": 8.4,
     "genres": [
       "Crime",
       "Mystery",
       "Thriller"
     ],
     "runtime": 127,
-    "overview": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
+    "overview": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins.\" The seasoned Det. Sommerset researches each sin in an effort to get inside the killer's mind.",
     "cast": [
       "Brad Pitt",
       "Morgan Freeman",
@@ -1837,702 +902,156 @@
     "director": "David Fincher",
     "language": "English",
     "country": "USA",
-    "poster": "/bptfVGE2v493n3zPPkyK75ZfMKt.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
+    "poster": "/6yoghtyTBoPquCO0Qv9N3LQUavH.jpg",
+    "backdrop": "/ba4HackbH9vUMvmyVniqwk4dB37.jpg",
     "mood": [
       "Dark",
-      "Thriller",
+      "Grim",
       "Mind-bending"
     ],
-    "trailer": "znmZoKe5LtI",
-    "popularity": 86.4,
+    "trailer": "znmZoVkCjpI",
+    "popularity": 81.6,
     "keywords": [
-      "serial killer",
-      "sins",
-      "rainy city",
+      "seven deadly sins",
       "detective",
-      "grim"
+      "serial killer",
+      "rain",
+      "box"
     ]
   },
   {
-    "id": 49,
-    "title": "Psycho",
-    "year": 1960,
-    "rating": 8.5,
-    "genres": [
-      "Horror",
-      "Thriller",
-      "Mystery"
-    ],
-    "runtime": 109,
-    "overview": "A secretary steals money and flees, stopping at a remote motel run by a polite but highly unusual young man under the thumb of his domineering mother.",
-    "cast": [
-      "Anthony Perkins",
-      "Janet Leigh",
-      "Vera Miles",
-      "John Gavin",
-      "Martin Balsam"
-    ],
-    "director": "Alfred Hitchcock",
-    "language": "English",
-    "country": "USA",
-    "poster": "/8pl9e43C40n12aCO8HNSvBMjO5r.jpg",
-    "backdrop": "/e89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Dark",
-      "Spooky",
-      "Thriller"
-    ],
-    "trailer": "DTJOOP__M6I",
-    "popularity": 70.8,
-    "keywords": [
-      "motel",
-      "shower scene",
-      "split personality",
-      "theft",
-      "classic"
-    ]
-  },
-  {
-    "id": 50,
-    "title": "Free Solo II: Beyond El Cap",
-    "year": 2020,
-    "rating": 7.5,
-    "genres": [
-      "Documentary",
-      "Adventure"
-    ],
-    "runtime": 92,
-    "overview": "A follow-up exploring the psychological aftermath of Alex Honnold's historic climb and his new mountain climbing expeditions in the French Alps.",
-    "cast": [
-      "Alex Honnold",
-      "Tommy Caldwell",
-      "Jimmy Chin"
-    ],
-    "director": "Jimmy Chin",
-    "language": "English",
-    "country": "USA",
-    "poster": "/7Fsnj6v1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/8bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
-    "mood": [
-      "Epic",
-      "Adrenaline Rush"
-    ],
-    "trailer": "urRVZ4SW7WU",
-    "popularity": 42.1,
-    "keywords": [
-      "alps",
-      "mountain climbing",
-      "psychological",
-      "adventure"
-    ]
-  },
-  {
-    "id": 51,
-    "title": "The Truman Show 2",
-    "year": 2025,
-    "rating": 6.9,
-    "genres": [
-      "Drama",
-      "Comedy",
-      "Sci-Fi"
-    ],
-    "runtime": 110,
-    "overview": "Years after escaping the dome, Truman struggles to navigate a real world where social media turns everyone's life into a mini reality broadcast.",
-    "cast": [
-      "Jim Carrey",
-      "Laura Linney",
-      "Timothy Chalamet"
-    ],
-    "director": "Peter Weir",
-    "language": "English",
-    "country": "USA",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Mind-bending",
-      "Funny"
-    ],
-    "trailer": "dlnmQbPGuls",
-    "popularity": 75.3,
-    "keywords": [
-      "social media",
-      "paranoia",
-      "dystopia",
-      "privacy",
-      "freedom"
-    ]
-  },
-  {
-    "id": 52,
-    "title": "Alien",
-    "year": 1979,
-    "rating": 8.5,
-    "genres": [
-      "Horror",
-      "Sci-Fi",
-      "Action"
-    ],
-    "runtime": 117,
-    "overview": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission on a remote planet.",
-    "cast": [
-      "Sigourney Weaver",
-      "Tom Skerritt",
-      "Ian Holm",
-      "John Hurt",
-      "Harry Dean Stanton"
-    ],
-    "director": "Ridley Scott",
-    "language": "English",
-    "country": "UK",
-    "poster": "/vKQi3bBA1y885vySR3z47j7nEI.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Dark",
-      "Spooky",
-      "Thriller"
-    ],
-    "trailer": "jQ5lJy9fNtA",
-    "popularity": 82.3,
-    "keywords": [
-      "spaceship",
-      "alien creature",
-      "isolation",
-      "survival",
-      "cat"
-    ]
-  },
-  {
-    "id": 53,
-    "title": "Midsommar",
+    "id": 24,
+    "tmdb_id": 299534,
+    "title": "Avengers: Endgame",
     "year": 2019,
-    "rating": 7.1,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Drama"
-    ],
-    "runtime": 148,
-    "overview": "A young couple travels to a remote Swedish village for a legendary midsummer festival, which quickly devolves into an increasingly bizarre and violent pagan cult ritual.",
-    "cast": [
-      "Florence Pugh",
-      "Jack Reynor",
-      "William Jackson Harper",
-      "Vilhelm Blomgren",
-      "Will Poulter"
-    ],
-    "director": "Ari Aster",
-    "language": "English",
-    "country": "Sweden",
-    "poster": "/4tE7E3s2t365VyaWfg.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Dark",
-      "Emotional",
-      "Mind-bending"
-    ],
-    "trailer": "1VnghhyUXaY",
-    "popularity": 79.9,
-    "keywords": [
-      "cult",
-      "sweden",
-      "paganism",
-      "breakup",
-      "daylight horror"
-    ]
-  },
-  {
-    "id": 54,
-    "title": "Knives Out: Glass Onion 3",
-    "year": 2026,
-    "rating": 7.5,
-    "genres": [
-      "Mystery",
-      "Comedy",
-      "Crime"
-    ],
-    "runtime": 135,
-    "overview": "Benoit Blanc travels to a historic London manor house to investigate the murder of an eccentric collector of cursed board games.",
-    "cast": [
-      "Daniel Craig",
-      "Hugh Grant",
-      "Florence Pugh"
-    ],
-    "director": "Rian Johnson",
-    "language": "English",
-    "country": "UK",
-    "poster": "/vDGrvZnXzTa71qZZnAFw546lljF.jpg",
-    "backdrop": "/28y5sTaTaTa71qZZnAFw546lljF.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Thriller"
-    ],
-    "trailer": "gj5ibYSz8C0",
-    "popularity": 99.9,
-    "keywords": [
-      "london",
-      "board games",
-      "manor house",
-      "murder mystery"
-    ]
-  },
-  {
-    "id": 55,
-    "title": "John Wick",
-    "year": 2014,
-    "rating": 7.4,
+    "rating": 8.3,
     "genres": [
       "Action",
-      "Thriller",
-      "Crime"
+      "Adventure",
+      "Science Fiction"
     ],
-    "runtime": 101,
-    "overview": "An ex-hitman comes out of retirement to track down the gangsters that took everything from him, starting with his car and the puppy left to him by his late wife.",
+    "runtime": 181,
+    "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions.",
     "cast": [
-      "Keanu Reeves",
-      "Michael Nyqvist",
-      "Alfie Allen",
-      "Adrianne Palicki",
-      "Willem Dafoe"
+      "Robert Downey Jr.",
+      "Chris Evans",
+      "Mark Ruffalo",
+      "Chris Hemsworth",
+      "Scarlett Johansson",
+      "Jeremy Renner"
     ],
-    "director": "Chad Stahelski",
+    "director": "Anthony Russo, Joe Russo",
     "language": "English",
     "country": "USA",
-    "poster": "/f89U3wL3mF79o2e3rD4nvi0JlhH.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Action-packed",
-      "Adrenaline Rush",
-      "Dark"
-    ],
-    "trailer": "C0BMx-qxsP4",
-    "popularity": 88.9,
-    "keywords": [
-      "revenge",
-      "assassin",
-      "dog",
-      "hotel",
-      "gun fu"
-    ]
-  },
-  {
-    "id": 56,
-    "title": "Princess Mononoke",
-    "year": 1997,
-    "rating": 8.4,
-    "genres": [
-      "Animation",
-      "Fantasy",
-      "Adventure",
-      "Action"
-    ],
-    "runtime": 134,
-    "overview": "On a journey to find the cure for a Tatarigami's curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.",
-    "cast": [
-      "Yōji Matsuda",
-      "Yuriko Ishida",
-      "Yūko Tanaka",
-      "Kaoru Kobayashi"
-    ],
-    "director": "Hayao Miyazaki",
-    "language": "Japanese",
-    "country": "Japan",
-    "poster": "/39wmItIWsg5JmZ72PrZ42pfquuu.jpg",
-    "backdrop": "/b9Y2wzwq57S7fB7G20vF8uD972g.jpg",
+    "poster": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "backdrop": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
     "mood": [
       "Epic",
-      "Emotional"
+      "Emotional",
+      "Superhero"
     ],
-    "trailer": "4OiM_AFiWkQ",
-    "popularity": 76.5,
+    "trailer": "TcMBFSGVi1c",
+    "popularity": 94.2,
     "keywords": [
-      "forest gods",
-      "environmentalism",
-      "curse",
-      "wolves",
-      "iron town"
+      "time travel",
+      "infinity stones",
+      "avengers",
+      "thanos",
+      "superhero"
     ]
   },
   {
-    "id": 57,
-    "title": "Groundhog Day",
+    "id": 25,
+    "tmdb_id": 299536,
+    "title": "Avengers: Infinity War",
+    "year": 2018,
+    "rating": 8.2,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "runtime": 149,
+    "overview": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones.",
+    "cast": [
+      "Robert Downey Jr.",
+      "Chris Hemsworth",
+      "Mark Ruffalo",
+      "Chris Evans",
+      "Scarlett Johansson",
+      "Josh Brolin"
+    ],
+    "director": "Anthony Russo, Joe Russo",
+    "language": "English",
+    "country": "USA",
+    "poster": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+    "backdrop": "/lmZFxXgJE3vgrTMvdOvxbuwmMWh.jpg",
+    "mood": [
+      "Epic",
+      "Intense",
+      "Action-packed"
+    ],
+    "trailer": "6ZfuNTqbHE8",
+    "popularity": 91.8,
+    "keywords": [
+      "thanos",
+      "infinity gauntlet",
+      "space battle",
+      "superhero",
+      "snap"
+    ]
+  },
+  {
+    "id": 26,
+    "tmdb_id": 329,
+    "title": "Jurassic Park",
     "year": 1993,
-    "rating": 8,
-    "genres": [
-      "Comedy",
-      "Romance",
-      "Fantasy"
-    ],
-    "runtime": 101,
-    "overview": "An egotistical weather reporter finds himself inexplicably living the same day over and over again in a small Pennsylvania town.",
-    "cast": [
-      "Bill Murray",
-      "Andie MacDowell",
-      "Chris Elliott",
-      "Stephen Tobolowsky"
-    ],
-    "director": "Harold Ramis",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Light & Fun"
-    ],
-    "trailer": "tSVeDx9fk60",
-    "popularity": 74.3,
-    "keywords": [
-      "time loop",
-      "pennsylvania",
-      "winter festival",
-      "redemption",
-      "romance"
-    ]
-  },
-  {
-    "id": 58,
-    "title": "Zootopia 2",
-    "year": 2025,
     "rating": 8.2,
     "genres": [
-      "Animation",
-      "Comedy",
-      "Family",
-      "Adventure"
-    ],
-    "runtime": 110,
-    "overview": "Judy Hopps and Nick Wilde return to solve a new case involving a mysterious reptile that turns the city's underwater district upside down.",
-    "cast": [
-      "Ginnifer Goodwin",
-      "Jason Bateman",
-      "Ke Huy Quan"
-    ],
-    "director": "Byron Howard",
-    "language": "English",
-    "country": "USA",
-    "poster": "/hlr9e43C40n12aCO8HNSvBMjO5r.jpg",
-    "backdrop": "/e89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Funny",
-      "Light & Fun"
-    ],
-    "trailer": "jWM0ct-OLsM",
-    "popularity": 98.4,
-    "keywords": [
-      "aquatic district",
-      "reptile",
-      "police case",
-      "animals",
-      "sequel"
-    ]
-  },
-  {
-    "id": 59,
-    "title": "March of the Penguins",
-    "year": 2005,
-    "rating": 7.5,
-    "genres": [
-      "Documentary",
-      "Family"
-    ],
-    "runtime": 80,
-    "overview": "In the Antarctic, every autumn, the emperor penguins journey to their traditional breeding grounds, braving freezing temperatures and predators to raise their chicks.",
-    "cast": [
-      "Morgan Freeman",
-      "Amitabh Bachchan",
-      "Charles Berling"
-    ],
-    "director": "Luc Jacquet",
-    "language": "French",
-    "country": "France",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Feel Good",
-      "Emotional"
-    ],
-    "trailer": "L7tWNwhscFM",
-    "popularity": 54.2,
-    "keywords": [
-      "penguins",
-      "antarctica",
-      "breeding cycle",
-      "animal survival",
-      "nature"
-    ]
-  },
-  {
-    "id": 60,
-    "title": "13th",
-    "year": 2016,
-    "rating": 8.2,
-    "genres": [
-      "Documentary"
-    ],
-    "runtime": 100,
-    "overview": "An in-depth look at the prison system in the United States and how it reveals the nation's history of racial inequality.",
-    "cast": [
-      "Michelle Alexander",
-      "Bryan Stevenson",
-      "Angela Davis"
-    ],
-    "director": "Ava DuVernay",
-    "language": "English",
-    "country": "USA",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Dark",
-      "Emotional"
-    ],
-    "trailer": "K6tVi7x52tU",
-    "popularity": 62.4,
-    "keywords": [
-      "prison system",
-      "racism",
-      "amendment",
-      "civil rights",
-      "documentary"
-    ]
-  },
-  {
-    "id": 61,
-    "title": "Superbad Reunion",
-    "year": 2026,
-    "rating": 6.8,
-    "genres": [
-      "Comedy"
-    ],
-    "runtime": 115,
-    "overview": "Twenty years after high school, Seth and Evan re-unite for a wild weekend trip to Las Vegas where their attempts to act young lead to disaster.",
-    "cast": [
-      "Jonah Hill",
-      "Michael Cera",
-      "Christopher Mintz-Plasse"
-    ],
-    "director": "Greg Mottola",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Light & Fun"
-    ],
-    "trailer": "4eaZ_5R1jgI",
-    "popularity": 79.5,
-    "keywords": [
-      "reunion",
-      "las vegas",
-      "middle age",
-      "party",
-      "friendship"
-    ]
-  },
-  {
-    "id": 62,
-    "title": "The Social Dilemma",
-    "year": 2020,
-    "rating": 7.6,
-    "genres": [
-      "Documentary",
-      "Drama"
-    ],
-    "runtime": 94,
-    "overview": "This documentary-drama hybrid explores the dangerous human impact of social networking, with tech experts sounding the alarm on their own creations.",
-    "cast": [
-      "Tristan Harris",
-      "Jeff Seibert",
-      "Bailey Chase"
-    ],
-    "director": "Jeff Orlowski",
-    "language": "English",
-    "country": "USA",
-    "poster": "/7Fsnj6v1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/8bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
-    "mood": [
-      "Dark",
-      "Mind-bending"
-    ],
-    "trailer": "uaaC57tcci0",
-    "popularity": 68.3,
-    "keywords": [
-      "social media",
-      "algorithm",
-      "addiction",
-      "mental health",
-      "silicon valley"
-    ]
-  },
-  {
-    "id": 63,
-    "title": "Senna",
-    "year": 2010,
-    "rating": 8.5,
-    "genres": [
-      "Documentary",
-      "Sports"
-    ],
-    "runtime": 106,
-    "overview": "A documentary on Brazilian Formula One racing driver Ayrton Senna, who won the F1 world championship three times before his death at age 34.",
-    "cast": [
-      "Ayrton Senna",
-      "Alain Prost",
-      "Frank Williams"
-    ],
-    "director": "Asif Kapadia",
-    "language": "English",
-    "country": "UK",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Epic",
-      "Emotional",
-      "Adrenaline Rush"
-    ],
-    "trailer": "SF3s1h1n7gE",
-    "popularity": 58.7,
-    "keywords": [
-      "formula 1",
-      "racing",
-      "driver",
-      "tragedy",
-      "sports hero"
-    ]
-  },
-  {
-    "id": 64,
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "year": 2001,
-    "rating": 7.6,
-    "genres": [
-      "Fantasy",
       "Adventure",
-      "Family"
+      "Science Fiction"
     ],
-    "runtime": 152,
-    "overview": "Harry Potter, an eleven-year-old orphan, discovers that he is a wizard and is invited to attend Hogwarts School of Witchcraft and Wizardry.",
+    "runtime": 127,
+    "overview": "A wealthy entrepreneur secretly creates a theme park featuring living dinosaurs drawn from prehistoric DNA. Before opening the attraction to the public, he invites a group of experts to visit the park and validate its safety.",
     "cast": [
-      "Daniel Radcliffe",
-      "Rupert Grint",
-      "Emma Watson",
-      "Richard Harris",
-      "Maggie Smith"
+      "Sam Neill",
+      "Laura Dern",
+      "Jeff Goldblum",
+      "Richard Attenborough",
+      "Bob Peck"
     ],
-    "director": "Chris Columbus",
-    "language": "English",
-    "country": "UK",
-    "poster": "/wuMc08IPKPTSRQxtj44H3w6VP.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Feel Good",
-      "Epic",
-      "Light & Fun"
-    ],
-    "trailer": "VyHV0BRZmks",
-    "popularity": 90.5,
-    "keywords": [
-      "wizards",
-      "magic school",
-      "orphan",
-      "owl",
-      "friendship"
-    ]
-  },
-  {
-    "id": 65,
-    "title": "Dune: Part Two",
-    "year": 2024,
-    "rating": 8.6,
-    "genres": [
-      "Sci-Fi",
-      "Adventure",
-      "Action"
-    ],
-    "runtime": 166,
-    "overview": "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he endeavors to prevent a terrible future only he can foresee.",
-    "cast": [
-      "Timothée Chalamet",
-      "Zendaya",
-      "Rebecca Ferguson",
-      "Austin Butler",
-      "Florence Pugh"
-    ],
-    "director": "Denis Villeneuve",
+    "director": "Steven Spielberg",
     "language": "English",
     "country": "USA",
-    "poster": "/lz271qZZnAFw546lljFw3Zbg8c1.jpg",
-    "backdrop": "/d5NXSklXj0iIhNMPm79G21R1t36.jpg",
+    "poster": "/b1x09r9EABTFs7DxYZ9HJioVI7z.jpg",
+    "backdrop": "/njFixYzIxX8jsn6KMSEtA04264b.jpg",
     "mood": [
-      "Epic",
-      "Dark",
-      "Mind-bending"
-    ],
-    "trailer": "Way9Dexny3o",
-    "popularity": 135.2,
-    "keywords": [
-      "messiah",
-      "desert war",
-      "revenge",
-      "emperor",
-      "fremen"
-    ]
-  },
-  {
-    "id": 66,
-    "title": "Avatar",
-    "year": 2009,
-    "rating": 7.9,
-    "genres": [
-      "Sci-Fi",
-      "Action",
       "Adventure",
-      "Fantasy"
+      "Iconic",
+      "Suspenseful"
     ],
-    "runtime": 162,
-    "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following his orders and protecting the world he feels is his home.",
-    "cast": [
-      "Sam Worthington",
-      "Zoe Saldana",
-      "Sigourney Weaver",
-      "Stephen Lang",
-      "Michelle Rodriguez"
-    ],
-    "director": "James Cameron",
-    "language": "English",
-    "country": "USA",
-    "poster": "/kyeE3s2t365VyaWfg.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed",
-      "Feel Good"
-    ],
-    "trailer": "5PSNL1q36VY",
-    "popularity": 88.4,
+    "trailer": "QWBKEmWWL38",
+    "popularity": 82.5,
     "keywords": [
-      "pandora",
-      "aliens",
-      "avatar body",
-      "rainforest",
-      "colonization"
+      "dinosaurs",
+      "t-rex",
+      "theme park",
+      "genetics",
+      "island"
     ]
   },
   {
-    "id": 67,
+    "id": 27,
+    "tmdb_id": 597,
     "title": "Titanic",
     "year": 1997,
     "rating": 7.9,
     "genres": [
-      "Romance",
-      "Drama"
+      "Drama",
+      "Romance"
     ],
     "runtime": 194,
-    "overview": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+    "overview": "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. A young Rose boards the ship with her mother and fianc\u00e9. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship.",
     "cast": [
       "Leonardo DiCaprio",
       "Kate Winslet",
@@ -2543,768 +1062,710 @@
     "director": "James Cameron",
     "language": "English",
     "country": "USA",
-    "poster": "/9cqN0eXOUx4P04SIhLSWf1wI59q.jpg",
-    "backdrop": "/kG62g6gW4378H4k5zR1GgC9h3S1.jpg",
+    "poster": "/9xjZS2rlVxm8SFx8kFPC3aIGCOg.jpg",
+    "backdrop": "/6VmFqZwQz9o3o3zWj0Mv7e5k8H1.jpg",
     "mood": [
       "Romantic",
       "Emotional",
-      "Epic"
+      "Tragic"
     ],
-    "trailer": "CHekzSiZ4Ac",
-    "popularity": 89.6,
+    "trailer": "2e-eXJ6HgkQ",
+    "popularity": 89.4,
     "keywords": [
       "shipwreck",
-      "social class",
       "iceberg",
-      "tragic love",
-      "ocean liner"
+      "forbidden love",
+      "ocean liner",
+      "atlantic"
     ]
   },
   {
-    "id": 68,
-    "title": "The Hangover",
-    "year": 2009,
-    "rating": 7.7,
+    "id": 28,
+    "tmdb_id": 238,
+    "title": "The Godfather",
+    "year": 1972,
+    "rating": 8.7,
     "genres": [
-      "Comedy"
-    ],
-    "runtime": 100,
-    "overview": "Three buddies wake up from a bachelor party in Las Vegas with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.",
-    "cast": [
-      "Bradley Cooper",
-      "Ed Helms",
-      "Zach Galifianakis",
-      "Justin Bartha",
-      "Heather Graham"
-    ],
-    "director": "Todd Phillips",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Light & Fun"
-    ],
-    "trailer": "tcdUj-xp40A",
-    "popularity": 78.4,
-    "keywords": [
-      "las vegas",
-      "bachelor party",
-      "blackout",
-      "tiger",
-      "missing person"
-    ]
-  },
-  {
-    "id": 69,
-    "title": "Mean Girls",
-    "year": 2004,
-    "rating": 7.1,
-    "genres": [
-      "Comedy"
-    ],
-    "runtime": 97,
-    "overview": "Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.",
-    "cast": [
-      "Lindsay Lohan",
-      "Rachel McAdams",
-      "Lacey Chabert",
-      "Amanda Seyfried",
-      "Tina Fey"
-    ],
-    "director": "Mark Waters",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Light & Fun"
-    ],
-    "trailer": "oDU84nmSDZY",
-    "popularity": 73.5,
-    "keywords": [
-      "high school",
-      "clique",
-      "bullying",
-      "burn book",
-      "teen comedy"
-    ]
-  },
-  {
-    "id": 70,
-    "title": "John Wick: Chapter 4",
-    "year": 2023,
-    "rating": 7.8,
-    "genres": [
-      "Action",
-      "Thriller",
-      "Crime"
-    ],
-    "runtime": 169,
-    "overview": "John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
-    "cast": [
-      "Keanu Reeves",
-      "Donnie Yen",
-      "Bill Skarsgård",
-      "Laurence Fishburne",
-      "Hiroyuki Sanada"
-    ],
-    "director": "Chad Stahelski",
-    "language": "English",
-    "country": "USA",
-    "poster": "/f89U3wL3mF79o2e3rD4nvi0JlhH.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Action-packed",
-      "Adrenaline Rush",
-      "Epic"
-    ],
-    "trailer": "qEVUtrk8_B4",
-    "popularity": 115.4,
-    "keywords": [
-      "paris duel",
-      "high table",
-      "assassins",
-      "bounty hunt",
-      "gun fu"
-    ]
-  },
-  {
-    "id": 71,
-    "title": "Gladiator II: Retribution",
-    "year": 2026,
-    "rating": 7.4,
-    "genres": [
-      "Action",
       "Drama",
-      "Adventure"
-    ],
-    "runtime": 145,
-    "overview": "Following the collapse of the Roman senate, Lucius is forced to travel into the northern provinces to gather an army of gladiators to reclaim Rome from barbarian hordes.",
-    "cast": [
-      "Paul Mescal",
-      "Pedro Pascal",
-      "Barry Keoghan"
-    ],
-    "director": "Ridley Scott",
-    "language": "English",
-    "country": "USA",
-    "poster": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "backdrop": "/x9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed"
-    ],
-    "trailer": "EP31EaP3WkU",
-    "popularity": 110.1,
-    "keywords": [
-      "provinces",
-      "barbarians",
-      "gladiator rebellion",
-      "rome"
-    ]
-  },
-  {
-    "id": 72,
-    "title": "Get Out: Run",
-    "year": 2026,
-    "rating": 7,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Thriller"
-    ],
-    "runtime": 110,
-    "overview": "A detective investigating a series of missing persons reports in a quiet New England town discovers the remnants of the Armitage family's hypnotic experiments.",
-    "cast": [
-      "Daniel Kaluuya",
-      "LaKeith Stanfield",
-      "Keke Palmer"
-    ],
-    "director": "Jordan Peele",
-    "language": "English",
-    "country": "USA",
-    "poster": "/1sw51fT4Qy64o2kI1jJ9t069rBM.jpg",
-    "backdrop": "/3T8jSgWv268J4l3W2041g6R1h3S.jpg",
-    "mood": [
-      "Mind-bending",
-      "Dark",
-      "Thriller"
-    ],
-    "trailer": "sRfnevzM9k8",
-    "popularity": 92.4,
-    "keywords": [
-      "conspiracy",
-      "hypnosis",
-      "escape",
-      "investigation"
-    ]
-  },
-  {
-    "id": 73,
-    "title": "Inception: Dream State",
-    "year": 2026,
-    "rating": 8.5,
-    "genres": [
-      "Sci-Fi",
-      "Action",
-      "Adventure"
-    ],
-    "runtime": 155,
-    "overview": "A team of young dream-thieves discovers a way to share a collective dream state over the internet, leading to unregulated digital espionage.",
-    "cast": [
-      "Leonardo DiCaprio",
-      "Timothy Chalamet",
-      "Zendaya"
-    ],
-    "director": "Christopher Nolan",
-    "language": "English",
-    "country": "USA",
-    "poster": "/o0OFlw7MP5tZ7oZgRY56hWK5zQI.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Mind-bending",
-      "Epic",
-      "Thriller"
-    ],
-    "trailer": "YoHD9XEInc0",
-    "popularity": 130.5,
-    "keywords": [
-      "dream espionage",
-      "internet dream",
-      "corporate heist",
-      "shared reality"
-    ]
-  },
-  {
-    "id": 74,
-    "title": "The Babadook",
-    "year": 2014,
-    "rating": 6.9,
-    "genres": [
-      "Horror",
-      "Drama"
-    ],
-    "runtime": 94,
-    "overview": "A widowed mother, plagued by the violent death of her husband, battles with her son's fear of a monster lurking in the house, but soon discovers a sinister presence all around her.",
-    "cast": [
-      "Essie Davis",
-      "Noah Wiseman",
-      "Daniel Henshall",
-      "Hayley McElhinney"
-    ],
-    "director": "Jennifer Kent",
-    "language": "English",
-    "country": "Australia",
-    "poster": "/4tE7E3s2t365VyaWfg.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Dark",
-      "Spooky",
-      "Emotional"
-    ],
-    "trailer": "k5WQZzDRCXg",
-    "popularity": 66.8,
-    "keywords": [
-      "pop-up book",
-      "grief",
-      "haunted house",
-      "mother-son",
-      "boogeyman"
-    ]
-  },
-  {
-    "id": 75,
-    "title": "A Quiet Place: Day One",
-    "year": 2024,
-    "rating": 6.9,
-    "genres": [
-      "Sci-Fi",
-      "Horror",
-      "Thriller"
-    ],
-    "runtime": 99,
-    "overview": "Experience the day the world went silent in this prequel exploring the arrival of the sound-hunting alien creatures in New York City.",
-    "cast": [
-      "Lupita Nyong'o",
-      "Joseph Quinn",
-      "Alex Wolff",
-      "Djimon Hounsou"
-    ],
-    "director": "Michael Sarnoski",
-    "language": "English",
-    "country": "USA",
-    "poster": "/nAU74G2jLxLk85vySR3z47j7nEI.jpg",
-    "backdrop": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
-    "mood": [
-      "Dark",
-      "Spooky",
-      "Thriller"
-    ],
-    "trailer": "YPY7J-flzE8",
-    "popularity": 112.5,
-    "keywords": [
-      "new york city",
-      "alien invasion",
-      "sound survival",
-      "cat companion"
-    ]
-  },
-  {
-    "id": 76,
-    "title": "Spider-Man: Across the Spider-Verse",
-    "year": 2023,
-    "rating": 8.4,
-    "genres": [
-      "Animation",
-      "Action",
-      "Adventure",
-      "Sci-Fi",
-      "Family"
-    ],
-    "runtime": 140,
-    "overview": "After reuniting with Gwen Stacy, Brooklyn's full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.",
-    "cast": [
-      "Shameik Moore",
-      "Hailee Steinfeld",
-      "Oscar Isaac",
-      "Jake Johnson",
-      "Issa Rae"
-    ],
-    "director": "Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",
-    "language": "English",
-    "country": "USA",
-    "poster": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
-    "backdrop": "/7d_jQyGLDVc85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Epic",
-      "Emotional"
-    ],
-    "trailer": "cqGjhVJWtEg",
-    "popularity": 118.4,
-    "keywords": [
-      "multiverse",
-      "spider-man",
-      "canon event",
-      "spider-society",
-      "family clash"
-    ]
-  },
-  {
-    "id": 77,
-    "title": "Past Lives",
-    "year": 2023,
-    "rating": 7.9,
-    "genres": [
-      "Romance",
-      "Drama"
-    ],
-    "runtime": 105,
-    "overview": "Nora and Hae Sung, two deeply connected childhood friends, are wrest apart after Nora's family emigrates from South Korea. Twenty years later, they are reunited for one fateful week as they confront notions of love and destiny.",
-    "cast": [
-      "Greta Lee",
-      "Teo Yoo",
-      "John Magaro",
-      "Moon Seung-ah",
-      "Ji Hye Yoon"
-    ],
-    "director": "Celine Song",
-    "language": "English",
-    "country": "USA",
-    "poster": "/954w1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/c89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Romantic",
-      "Emotional"
-    ],
-    "trailer": "kA244xewkSE",
-    "popularity": 76.2,
-    "keywords": [
-      "reunion",
-      "childhood sweetheart",
-      "south korea",
-      "new york",
-      "destiny"
-    ]
-  },
-  {
-    "id": 78,
-    "title": "Call Me By Your Name",
-    "year": 2017,
-    "rating": 8.2,
-    "genres": [
-      "Romance",
-      "Drama"
-    ],
-    "runtime": 132,
-    "overview": "In 1980s Italy, a romance blossoms between seventeen-year-old student Elio and his father's charismatic research assistant Oliver.",
-    "cast": [
-      "Timothée Chalamet",
-      "Armie Hammer",
-      "Michael Stuhlbarg",
-      "Amira Casar",
-      "Esther Garrel"
-    ],
-    "director": "Luca Guadagnino",
-    "language": "English",
-    "country": "Italy",
-    "poster": "/954w1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/c89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Romantic",
-      "Emotional"
-    ],
-    "trailer": "Z9AYPxH5NTM",
-    "popularity": 72.4,
-    "keywords": [
-      "italy",
-      "summer romance",
-      "coming of age",
-      "lgbtq",
-      "academic family"
-    ]
-  },
-  {
-    "id": 79,
-    "title": "My Octopus Teacher",
-    "year": 2020,
-    "rating": 8,
-    "genres": [
-      "Documentary",
-      "Family"
-    ],
-    "runtime": 85,
-    "overview": "A filmmaker forges an unusual friendship with an octopus living in a South African kelp forest, learning as the animal shares the mysteries of her world.",
-    "cast": [
-      "Craig Foster",
-      "Tom Foster"
-    ],
-    "director": "Pippa Ehrlich, James Reed",
-    "language": "English",
-    "country": "South Africa",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Feel Good",
-      "Emotional"
-    ],
-    "trailer": "3s0LTDhqe5A",
-    "popularity": 58.4,
-    "keywords": [
-      "octopus",
-      "ocean",
-      "marine life",
-      "friendship",
-      "kelp forest"
-    ]
-  },
-  {
-    "id": 80,
-    "title": "Knives Out: Glass Onion 4",
-    "year": 2027,
-    "rating": 7.3,
-    "genres": [
-      "Mystery",
-      "Comedy",
       "Crime"
     ],
-    "runtime": 132,
-    "overview": "During a snowstorm in a remote mountain chalet, Detective Benoit Blanc must solve the murder of a high-alpine skiing champion.",
+    "runtime": 175,
+    "overview": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps up to take care of the would-be killers.",
     "cast": [
-      "Daniel Craig",
-      "Anya Taylor-Joy",
-      "Pedro Pascal"
+      "Marlon Brando",
+      "Al Pacino",
+      "James Caan",
+      "Robert Duvall",
+      "Diane Keaton"
     ],
-    "director": "Rian Johnson",
-    "language": "English",
-    "country": "Switzerland",
-    "poster": "/vDGrvZnXzTa71qZZnAFw546lljF.jpg",
-    "backdrop": "/28y5sTaTaTa71qZZnAFw546lljF.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Thriller"
-    ],
-    "trailer": "gj5ibYSz8C0",
-    "popularity": 105.1,
-    "keywords": [
-      "ski resort",
-      "snowstorm",
-      "chalet",
-      "murder mystery"
-    ]
-  },
-  {
-    "id": 81,
-    "title": "Won't You Be My Neighbor?",
-    "year": 2018,
-    "rating": 8.3,
-    "genres": [
-      "Documentary",
-      "Family"
-    ],
-    "runtime": 94,
-    "overview": "An exploration of the life, lessons, and legacy of iconic children's television host Fred Rogers.",
-    "cast": [
-      "Fred Rogers",
-      "Joanne Rogers",
-      "Francois Scarborough Clemmons"
-    ],
-    "director": "Morgan Neville",
+    "director": "Francis Ford Coppola",
     "language": "English",
     "country": "USA",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
+    "poster": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+    "backdrop": "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
     "mood": [
-      "Feel Good",
-      "Emotional"
+      "Classic",
+      "Gritty",
+      "Masterpiece"
     ],
-    "trailer": "FhwktRDG_aQ",
-    "popularity": 53.4,
+    "trailer": "sY1S34973zA",
+    "popularity": 93.1,
     "keywords": [
-      "children television",
-      "kindness",
-      "biography",
-      "neighborhood"
+      "mafia",
+      "family",
+      "don",
+      "sicily",
+      "loyalty"
     ]
   },
   {
-    "id": 82,
-    "title": "Knives Out 5",
-    "year": 2028,
-    "rating": 7.5,
-    "genres": [
-      "Mystery",
-      "Comedy",
-      "Crime"
-    ],
-    "runtime": 130,
-    "overview": "Detective Benoit Blanc goes on a cruise ship where a murder occurs among high-society elite during a treasure hunt.",
-    "cast": [
-      "Daniel Craig",
-      "Austin Butler",
-      "Zendaya"
-    ],
-    "director": "Rian Johnson",
-    "language": "English",
-    "country": "USA",
-    "poster": "/vDGrvZnXzTa7 Ta71qZZnAFw546lljF.jpg",
-    "backdrop": "/28y5sTaTaTa71qZZnAFw546lljF.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Thriller"
-    ],
-    "trailer": "gj5ibYSz8C0",
-    "popularity": 120.4,
-    "keywords": [
-      "cruise ship",
-      "treasure hunt",
-      "high society",
-      "murder mystery"
-    ]
-  },
-  {
-    "id": 83,
-    "title": "Star Wars: A New Hope",
-    "year": 1977,
+    "id": 29,
+    "tmdb_id": 240,
+    "title": "The Godfather Part II",
+    "year": 1974,
     "rating": 8.6,
     "genres": [
-      "Sci-Fi",
-      "Adventure",
-      "Action",
-      "Fantasy"
+      "Drama",
+      "Crime"
     ],
-    "runtime": 121,
-    "overview": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
+    "runtime": 202,
+    "overview": "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.",
     "cast": [
-      "Mark Hamill",
-      "Harrison Ford",
-      "Carrie Fisher",
-      "Alec Guinness",
-      "Peter Cushing"
+      "Al Pacino",
+      "Robert Duvall",
+      "Diane Keaton",
+      "Robert De Niro",
+      "John Cazale"
     ],
-    "director": "George Lucas",
+    "director": "Francis Ford Coppola",
     "language": "English",
     "country": "USA",
-    "poster": "/6oom5QDN218111wIhQ91Cc5wRND.jpg",
-    "backdrop": "/lX753QoJjUe6HN17as2j2tH6rP2.jpg",
+    "poster": "/hek3koDUyMrk7uOB5iD1RBYQAhw.jpg",
+    "backdrop": "/kGzFbGhp99zva6oZODq5atUfwQI.jpg",
     "mood": [
-      "Epic",
-      "Feel Good",
-      "Action-packed"
+      "Classic",
+      "Tragic",
+      "Masterpiece"
     ],
-    "trailer": "1g3_CFmnY7k",
-    "popularity": 88.5,
+    "trailer": "9O1Iy9od7-A",
+    "popularity": 87.4,
     "keywords": [
-      "space battle",
-      "jedi",
-      "empire",
-      "lightsaber",
-      "princess rescue"
+      "mafia",
+      "betrayal",
+      "cuba",
+      "immigration",
+      "revenge"
     ]
   },
   {
-    "id": 84,
-    "title": "Raiders of the Lost Ark",
-    "year": 1981,
-    "rating": 8.4,
+    "id": 30,
+    "tmdb_id": 19995,
+    "title": "Avatar",
+    "year": 2009,
+    "rating": 7.6,
     "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Science Fiction"
+    ],
+    "runtime": 162,
+    "overview": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+    "cast": [
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver",
+      "Stephen Lang",
+      "Michelle Rodriguez"
+    ],
+    "director": "James Cameron",
+    "language": "English",
+    "country": "USA",
+    "poster": "/kyeqWdyUXW608qlYkRqosgbbJyK.jpg",
+    "backdrop": "/vL5LR6WdxWPjCmvF4r2nQyL0jL1.jpg",
+    "mood": [
+      "Epic",
+      "Visual Spectacle",
+      "Adventure"
+    ],
+    "trailer": "5PSNL1qE6VY",
+    "popularity": 91.5,
+    "keywords": [
+      "pandora",
+      "alien",
+      "navi",
+      "avatar",
+      "colonialism"
+    ]
+  },
+  {
+    "id": 31,
+    "tmdb_id": 76600,
+    "title": "Avatar: The Way of Water",
+    "year": 2022,
+    "rating": 7.7,
+    "genres": [
+      "Science Fiction",
       "Adventure",
       "Action"
     ],
-    "runtime": 115,
-    "overview": "When Dr. Indiana Jones – a renowned archaeologist and expert in the occult – is hired by the U.S. Government to find the legendary Ark of the Covenant, he finds himself up against the entire Nazi regime.",
+    "runtime": 192,
+    "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family, the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
     "cast": [
-      "Harrison Ford",
-      "Karen Allen",
-      "Paul Freeman",
-      "Ronald Lacey",
-      "John Rhys-Davies"
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver",
+      "Stephen Lang",
+      "Kate Winslet"
     ],
-    "director": "Steven Spielberg",
+    "director": "James Cameron",
     "language": "English",
     "country": "USA",
-    "poster": "/6oom5QDN218111wIhQ91Cc5wRND.jpg",
-    "backdrop": "/lX753QoJjUe6HN17as2j2tH6rP2.jpg",
+    "poster": "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "backdrop": "/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg",
     "mood": [
       "Epic",
-      "Feel Good",
-      "Action-packed"
+      "Emotional",
+      "Visual Spectacle"
     ],
-    "trailer": "XkkzKRxhyNM",
-    "popularity": 80.6,
+    "trailer": "d9MyW72ELq0",
+    "popularity": 93.7,
     "keywords": [
-      "archaeology",
-      "nazi",
-      "ark of covenant",
-      "whip",
-      "temple trap"
+      "ocean",
+      "family",
+      "whale",
+      "pandora",
+      "metkayina"
     ]
   },
   {
-    "id": 85,
-    "title": "John Wick: Chapter 5",
-    "year": 2026,
-    "rating": 7.9,
+    "id": 32,
+    "tmdb_id": 348,
+    "title": "Alien",
+    "year": 1979,
+    "rating": 8.1,
     "genres": [
-      "Action",
-      "Thriller",
-      "Crime"
+      "Horror",
+      "Science Fiction"
     ],
-    "runtime": 158,
-    "overview": "John Wick emerges from hiding to dismantle the head of the High Table in a high-octane battle across the neon-lit streets of Tokyo.",
+    "runtime": 117,
+    "overview": "During its return march to Earth, the commercial spaceship Nostromo intercepts a distress signal from a distant planet. When three crew members explore the derelict craft, they discover a nest of alien eggs.",
     "cast": [
-      "Keanu Reeves",
-      "Hiroyuki Sanada",
-      "Donnie Yen"
-    ],
-    "director": "Chad Stahelski",
-    "language": "English",
-    "country": "Japan",
-    "poster": "/f89U3wL3mF79o2e3rD4nvi0JlhH.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Action-packed",
-      "Adrenaline Rush",
-      "Epic"
-    ],
-    "trailer": "qEVUtrk8_B4",
-    "popularity": 140.2,
-    "keywords": [
-      "tokyo neon",
-      "assassin guild",
-      "high table",
-      "swordfight"
-    ]
-  },
-  {
-    "id": 86,
-    "title": "Gladiator III: Rise of the Empire",
-    "year": 2028,
-    "rating": 7.5,
-    "genres": [
-      "Action",
-      "Drama",
-      "Adventure"
-    ],
-    "runtime": 150,
-    "overview": "Lucius seeks to establish a democratic Roman republic, defending his new throne against corrupt generals seeking to reinstate total tyranny.",
-    "cast": [
-      "Paul Mescal",
-      "Barry Keoghan",
-      "Denzel Washington"
+      "Sigourney Weaver",
+      "Tom Skerritt",
+      "Veronica Cartwright",
+      "Harry Dean Stanton",
+      "John Hurt"
     ],
     "director": "Ridley Scott",
     "language": "English",
-    "country": "USA",
-    "poster": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "backdrop": "/x9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed"
-    ],
-    "trailer": "EP31EaP3WkU",
-    "popularity": 125.4,
-    "keywords": [
-      "roman republic",
-      "civil war",
-      "politics",
-      "colosseum"
-    ]
-  },
-  {
-    "id": 87,
-    "title": "Ex Machina",
-    "year": 2014,
-    "rating": 7.7,
-    "genres": [
-      "Sci-Fi",
-      "Drama",
-      "Thriller",
-      "Mystery"
-    ],
-    "runtime": 108,
-    "overview": "A young programmer is selected to participate in a ground-breaking experiment in synthetic intelligence by evaluating the human qualities of a highly advanced humanoid A.I.",
-    "cast": [
-      "Domhnall Gleeson",
-      "Alicia Vikander",
-      "Oscar Isaac",
-      "Sonoya Mizuno"
-    ],
-    "director": "Alex Garland",
-    "language": "English",
     "country": "UK",
-    "poster": "/gajva2jLxLk85vySR3z47j7nEI.jpg",
-    "backdrop": "/iiZZN6m37wLj4C24BrITmd2eR2c.jpg",
+    "poster": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+    "backdrop": "/AmR3JG1DYz5kbXmEBi8bmvWRVHG.jpg",
     "mood": [
-      "Mind-bending",
       "Dark",
-      "Thriller"
+      "Spooky",
+      "Sci-Fi Horror"
     ],
-    "trailer": "bggUmgeMCdc",
-    "popularity": 76.4,
+    "trailer": "LjLamj-b0I8",
+    "popularity": 79.8,
     "keywords": [
-      "turing test",
-      "android",
-      "artificial intelligence",
-      "manipulation",
+      "xenomorph",
+      "spaceship",
+      "facehugger",
+      "chestburster",
       "isolation"
     ]
   },
   {
-    "id": 88,
+    "id": 33,
+    "tmdb_id": 354912,
+    "title": "Coco",
+    "year": 2017,
+    "rating": 8.2,
+    "genres": [
+      "Animation",
+      "Family",
+      "Music",
+      "Adventure"
+    ],
+    "runtime": 105,
+    "overview": "Despite his family\u2019s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead.",
+    "cast": [
+      "Anthony Gonzalez",
+      "Gael Garc\u00eda Bernal",
+      "Benjamin Bratt",
+      "Alanna Ubach",
+      "Renee Victor"
+    ],
+    "director": "Lee Unkrich, Adrian Molina",
+    "language": "English",
+    "country": "USA",
+    "poster": "/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg",
+    "backdrop": "/askg3SMvhqEl4OL52YuvdtY40Yb.jpg",
+    "mood": [
+      "Emotional",
+      "Feel Good",
+      "Colorful"
+    ],
+    "trailer": "Rvr68u6k5sI",
+    "popularity": 81.9,
+    "keywords": [
+      "day of the dead",
+      "mexico",
+      "guitar",
+      "ancestors",
+      "skeleton"
+    ]
+  },
+  {
+    "id": 34,
+    "tmdb_id": 862,
+    "title": "Toy Story",
+    "year": 1995,
+    "rating": 8.0,
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Family",
+      "Comedy"
+    ],
+    "runtime": 81,
+    "overview": "Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate them from their owner, the duo must learn to work together.",
+    "cast": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Don Rickles",
+      "Jim Varney",
+      "Wallace Shawn"
+    ],
+    "director": "John Lasseter",
+    "language": "English",
+    "country": "USA",
+    "poster": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+    "backdrop": "/lxD5ak7BOAoBh08fAnbR0194ADk.jpg",
+    "mood": [
+      "Feel Good",
+      "Funny",
+      "Iconic"
+    ],
+    "trailer": "v-PjgYDrg70",
+    "popularity": 79.1,
+    "keywords": [
+      "toys",
+      "friendship",
+      "jealousy",
+      "astronaut",
+      "cowboy"
+    ]
+  },
+  {
+    "id": 35,
+    "tmdb_id": 120467,
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "rating": 8.1,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 100,
+    "overview": "The Grand Budapest Hotel recounts the adventures of legendary concierge Gustave H. and Zero Moustafa, the lobby boy who becomes his most trusted friend.",
+    "cast": [
+      "Ralph Fiennes",
+      "Tony Revolori",
+      "Adrien Brody",
+      "Willem Dafoe",
+      "Saoirse Ronan"
+    ],
+    "director": "Wes Anderson",
+    "language": "English",
+    "country": "USA",
+    "poster": "/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+    "backdrop": "/vI6v6t6H4O5g8S2I6l4P5w8U6tI.jpg",
+    "mood": [
+      "Funny",
+      "Stylized",
+      "Quirky"
+    ],
+    "trailer": "1Fg5iWmQjwk",
+    "popularity": 77.8,
+    "keywords": [
+      "hotel",
+      "lobby boy",
+      "inheritance",
+      "art theft",
+      "europe"
+    ]
+  },
+  {
+    "id": 36,
+    "tmdb_id": 68718,
+    "title": "Django Unchained",
+    "year": 2012,
+    "rating": 8.2,
+    "genres": [
+      "Drama",
+      "Western"
+    ],
+    "runtime": 165,
+    "overview": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+    "cast": [
+      "Jamie Foxx",
+      "Christoph Waltz",
+      "Leonardo DiCaprio",
+      "Kerry Washington",
+      "Samuel L. Jackson"
+    ],
+    "director": "Quentin Tarantino",
+    "language": "English",
+    "country": "USA",
+    "poster": "/7oWY8vdWW7thTzWh3OKYRkWUlD5.jpg",
+    "backdrop": "/2o05iT1G0k9L3XvP2m5w0K9h2jP.jpg",
+    "mood": [
+      "Action-packed",
+      "Intense",
+      "Violent"
+    ],
+    "trailer": "_iH0UBYDI4g",
+    "popularity": 84.1,
+    "keywords": [
+      "bounty hunter",
+      "slavery",
+      "plantation",
+      "revenge",
+      "mississippi"
+    ]
+  },
+  {
+    "id": 37,
+    "tmdb_id": 16869,
+    "title": "Inglourious Basterds",
+    "year": 2009,
+    "rating": 8.2,
+    "genres": [
+      "Drama",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 153,
+    "overview": "In Nazi-occupied France during World War II, a group of Jewish-American soldiers known as \"The Basterds\" are chosen specifically to spread fear throughout the Third Reich by scalping and brutally killing Nazis.",
+    "cast": [
+      "Brad Pitt",
+      "M\u00e9lanie Laurent",
+      "Christoph Waltz",
+      "Eli Roth",
+      "Michael Fassbender"
+    ],
+    "director": "Quentin Tarantino",
+    "language": "English",
+    "country": "USA",
+    "poster": "/7sfbEnaARXDDhKm0CZ7D7uc2sbo.jpg",
+    "backdrop": "/8lB1p3yB4W6v0M4bQk6m3f0hXk9.jpg",
+    "mood": [
+      "Intense",
+      "Thriller",
+      "Action-packed"
+    ],
+    "trailer": "KnrRy6kSFF0",
+    "popularity": 82.7,
+    "keywords": [
+      "wwii",
+      "nazi",
+      "france",
+      "cinema",
+      "assassination"
+    ]
+  },
+  {
+    "id": 38,
+    "tmdb_id": 313369,
+    "title": "La La Land",
+    "year": 2016,
+    "rating": 7.9,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "runtime": 128,
+    "overview": "Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair.",
+    "cast": [
+      "Ryan Gosling",
+      "Emma Stone",
+      "John Legend",
+      "Rosemarie DeWitt",
+      "J.K. Simmons"
+    ],
+    "director": "Damien Chazelle",
+    "language": "English",
+    "country": "USA",
+    "poster": "/uC6TTNkxj2sEPMsqa2n0V4IcIY2.jpg",
+    "backdrop": "/jrz4sS9p9i3K17C9y4eF8uQv5uX.jpg",
+    "mood": [
+      "Romantic",
+      "Emotional",
+      "Musical"
+    ],
+    "trailer": "0pdqf4P9MB8",
+    "popularity": 80.6,
+    "keywords": [
+      "hollywood",
+      "jazz",
+      "actress",
+      "audition",
+      "love story"
+    ]
+  },
+  {
+    "id": 39,
+    "tmdb_id": 76341,
+    "title": "Mad Max: Fury Road",
+    "year": 2015,
+    "rating": 7.6,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "runtime": 120,
+    "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    "cast": [
+      "Tom Hardy",
+      "Charlize Theron",
+      "Nicholas Hoult",
+      "Hugh Keays-Byrne",
+      "Josh Helman"
+    ],
+    "director": "George Miller",
+    "language": "English",
+    "country": "Australia",
+    "poster": "/hA2ple9q4qnwxp3hKVNhroipsir.jpg",
+    "backdrop": "/nlCHUWjY9XWbuEUQauCBgnY8ymH.jpg",
+    "mood": [
+      "Action-packed",
+      "Adrenaline Rush",
+      "Epic"
+    ],
+    "trailer": "hEJnMQG9ev8",
+    "popularity": 83.9,
+    "keywords": [
+      "wasteland",
+      "car chase",
+      "war boys",
+      "furiosa",
+      "post-apocalyptic"
+    ]
+  },
+  {
+    "id": 40,
+    "tmdb_id": 335984,
+    "title": "Blade Runner 2049",
+    "year": 2017,
+    "rating": 8.0,
+    "genres": [
+      "Science Fiction",
+      "Drama"
+    ],
+    "runtime": 164,
+    "overview": "Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos.",
+    "cast": [
+      "Ryan Gosling",
+      "Harrison Ford",
+      "Ana de Armas",
+      "Sylvia Hoeks",
+      "Robin Wright"
+    ],
+    "director": "Denis Villeneuve",
+    "language": "English",
+    "country": "USA",
+    "poster": "/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+    "backdrop": "/sAtoMqDVhNDQBc3QJL3RF6hlxGq.jpg",
+    "mood": [
+      "Mind-bending",
+      "Atmospheric",
+      "Masterpiece"
+    ],
+    "trailer": "gCcx85zbxz4",
+    "popularity": 85.2,
+    "keywords": [
+      "cyberpunk",
+      "replicant",
+      "ai",
+      "dystopia",
+      "blade runner"
+    ]
+  },
+  {
+    "id": 41,
+    "tmdb_id": 1422,
+    "title": "The Departed",
+    "year": 2006,
+    "rating": 8.2,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Crime"
+    ],
+    "runtime": 151,
+    "overview": "To take down South Boston's Irish Mafia, the police send in one of their own to infiltrate the underworld, not realizing the syndicate has also placed a mole within the police force.",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Matt Damon",
+      "Jack Nicholson",
+      "Mark Wahlberg",
+      "Martin Sheen"
+    ],
+    "director": "Martin Scorsese",
+    "language": "English",
+    "country": "USA",
+    "poster": "/nT97ifL2A48avEZj3vxapRAqaom.jpg",
+    "backdrop": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+    "mood": [
+      "Intense",
+      "Gritty",
+      "Suspenseful"
+    ],
+    "trailer": "iojhqm0JTW4",
+    "popularity": 81.1,
+    "keywords": [
+      "undercover",
+      "mole",
+      "boston",
+      "irish mob",
+      "police"
+    ]
+  },
+  {
+    "id": 42,
+    "tmdb_id": 37165,
+    "title": "The Truman Show",
+    "year": 1998,
+    "rating": 8.1,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "runtime": 103,
+    "overview": "Truman Burbank is the star of The Truman Show, a 24-hour-a-day reality TV show that broadcasts every aspect of his life without his knowledge.",
+    "cast": [
+      "Jim Carrey",
+      "Laura Linney",
+      "Noah Emmerich",
+      "Natascha McElhone",
+      "Ed Harris"
+    ],
+    "director": "Peter Weir",
+    "language": "English",
+    "country": "USA",
+    "poster": "/vuza0W5Y239hqlo2OIxwCl9fV6V.jpg",
+    "backdrop": "/pP1o8bZ7V2J2y3z8s7W0o9L5k4.jpg",
+    "mood": [
+      "Mind-bending",
+      "Emotional",
+      "Thought-provoking"
+    ],
+    "trailer": "dlnmQbPGuls",
+    "popularity": 78.3,
+    "keywords": [
+      "reality show",
+      "surveillance",
+      "fake world",
+      "escape",
+      "existential"
+    ]
+  },
+  {
+    "id": 43,
+    "tmdb_id": 11324,
+    "title": "Shutter Island",
+    "year": 2010,
+    "rating": 8.2,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 138,
+    "overview": "World War II soldier-turned-U.S. Marshal Teddy Daniels investigates the disappearance of a patient from a hospital for the criminally insane, but his efforts are compromised by his troubling dreams and a hurricane.",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Mark Ruffalo",
+      "Ben Kingsley",
+      "Max von Sydow",
+      "Michelle Williams"
+    ],
+    "director": "Martin Scorsese",
+    "language": "English",
+    "country": "USA",
+    "poster": "/4GDy0PHYX3VRXUtwK5ysqlbg3kS.jpg",
+    "backdrop": "/vA5570dO1b7m4v9m6P3x5v7y6k.jpg",
+    "mood": [
+      "Mind-bending",
+      "Dark",
+      "Psychological"
+    ],
+    "trailer": "5iaYLCip5QA",
+    "popularity": 84.7,
+    "keywords": [
+      "asylum",
+      "island",
+      "hallucination",
+      "investigation",
+      "twist"
+    ]
+  },
+  {
+    "id": 44,
+    "tmdb_id": 329865,
+    "title": "Arrival",
+    "year": 2016,
+    "rating": 8.0,
+    "genres": [
+      "Science Fiction",
+      "Mystery",
+      "Drama"
+    ],
+    "runtime": 116,
+    "overview": "Taking place after alien crafts land around the world, an expert linguist is recruited by the military to determine whether they come in peace or are a threat.",
+    "cast": [
+      "Amy Adams",
+      "Jeremy Renner",
+      "Forest Whitaker",
+      "Michael Stuhlbarg",
+      "Mark O'Brien"
+    ],
+    "director": "Denis Villeneuve",
+    "language": "English",
+    "country": "USA",
+    "poster": "/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
+    "backdrop": "/yIZ1xendyQcxY37Jy87mD8ZzHQZ.jpg",
+    "mood": [
+      "Emotional",
+      "Mind-bending",
+      "Intellectual"
+    ],
+    "trailer": "tFMo3UJ4B4g",
+    "popularity": 82.9,
+    "keywords": [
+      "linguist",
+      "alien contact",
+      "time loop",
+      "heptapod",
+      "communication"
+    ]
+  },
+  {
+    "id": 45,
+    "tmdb_id": 286217,
     "title": "The Martian",
     "year": 2015,
-    "rating": 8,
+    "rating": 8.0,
     "genres": [
-      "Sci-Fi",
+      "Drama",
       "Adventure",
-      "Drama"
+      "Science Fiction"
     ],
     "runtime": 144,
     "overview": "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet.",
@@ -3313,459 +1774,225 @@
       "Jessica Chastain",
       "Kristen Wiig",
       "Jeff Daniels",
-      "Michael Peña"
+      "Michael Pe\u00f1a"
     ],
     "director": "Ridley Scott",
     "language": "English",
     "country": "USA",
-    "poster": "/gEU2QvEw6fg7vuyN2v0fQ24Ac2c.jpg",
-    "backdrop": "/xJHokZbljvjC4nQeGPHPuw84nco.jpg",
+    "poster": "/5BHuvQ6p9kL09NM3335Q8zS5DkO.jpg",
+    "backdrop": "/syPW07D1sN7kL1X5g0J1v5zQ9k.jpg",
     "mood": [
+      "Inspiring",
       "Feel Good",
-      "Epic",
-      "Funny"
+      "Sci-Fi"
     ],
-    "trailer": "ej3ioOneTFU",
-    "popularity": 81.3,
+    "trailer": "ej3ioOneTy8",
+    "popularity": 83.4,
     "keywords": [
       "mars",
-      "space survival",
+      "survival",
+      "botany",
       "nasa",
-      "botanist",
-      "potatoes"
+      "space rescue"
     ]
   },
   {
-    "id": 89,
-    "title": "Her",
-    "year": 2013,
-    "rating": 8,
+    "id": 46,
+    "tmdb_id": 475557,
+    "title": "Joker",
+    "year": 2019,
+    "rating": 8.2,
     "genres": [
-      "Romance",
-      "Sci-Fi",
-      "Drama"
-    ],
-    "runtime": 126,
-    "overview": "In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.",
-    "cast": [
-      "Joaquin Phoenix",
-      "Scarlett Johansson",
-      "Amy Adams",
-      "Rooney Mara",
-      "Chris Pratt"
-    ],
-    "director": "Spike Jonze",
-    "language": "English",
-    "country": "USA",
-    "poster": "/551A064mUeNqJ2tWGBiWSDnCXa5.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Emotional",
-      "Romantic",
-      "Mind-bending"
-    ],
-    "trailer": "6WRXXrM6-H0",
-    "popularity": 72.8,
-    "keywords": [
-      "operating system",
-      "loneliness",
-      "artificial intelligence",
-      "near future",
-      "voice romance"
-    ]
-  },
-  {
-    "id": 90,
-    "title": "Gravity",
-    "year": 2013,
-    "rating": 7.7,
-    "genres": [
-      "Sci-Fi",
+      "Crime",
       "Thriller",
       "Drama"
     ],
-    "runtime": 91,
-    "overview": "Dr. Ryan Stone is a brilliant medical engineer on her first shuttle mission, with veteran astronaut Matt Kowalsky. But on a seemingly routine spacewalk, disaster strikes. The shuttle is destroyed, leaving Stone and Kowalsky completely alone.",
+    "runtime": 122,
+    "overview": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
     "cast": [
-      "Sandra Bullock",
-      "George Clooney",
-      "Ed Harris",
-      "Orto Ignatiussen"
+      "Joaquin Phoenix",
+      "Robert De Niro",
+      "Zazie Beetz",
+      "Frances Conroy",
+      "Brett Cullen"
     ],
-    "director": "Alfonso Cuarón",
+    "director": "Todd Phillips",
     "language": "English",
     "country": "USA",
-    "poster": "/gEU2QvEw6fg7vuyN2v0fQ24Ac2c.jpg",
-    "backdrop": "/xJHokZbljvjC4nQeGPHPuw84nco.jpg",
+    "poster": "/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+    "backdrop": "/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg",
     "mood": [
-      "Epic",
-      "Adrenaline Rush",
-      "Thriller"
+      "Dark",
+      "Psychological",
+      "Gritty"
     ],
-    "trailer": "OiTiKOy59oA",
-    "popularity": 74.3,
+    "trailer": "zAGVQLHvwOY",
+    "popularity": 86.8,
     "keywords": [
-      "space station",
-      "debris orbit",
-      "spacewalk",
-      "survival",
-      "isolation"
+      "gotham",
+      "clown",
+      "mental illness",
+      "riot",
+      "stand-up comedy"
     ]
   },
   {
-    "id": 91,
-    "title": "John Wick: Chapter 6",
-    "year": 2028,
+    "id": 47,
+    "tmdb_id": 106646,
+    "title": "The Wolf of Wall Street",
+    "year": 2013,
+    "rating": 8.0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 180,
+    "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Jonah Hill",
+      "Margot Robbie",
+      "Matthew McConaughey",
+      "Kyle Chandler"
+    ],
+    "director": "Martin Scorsese",
+    "language": "English",
+    "country": "USA",
+    "poster": "/34m2tygAYBGqA9MXKhRDtzYd4MR.jpg",
+    "backdrop": "/cWUOv3H7YVwvPp3L5z6y3X6k7N9.jpg",
+    "mood": [
+      "Funny",
+      "Energetic",
+      "Wild"
+    ],
+    "trailer": "iszwuX1AK6A",
+    "popularity": 85.9,
+    "keywords": [
+      "wall street",
+      "stockbroker",
+      "money",
+      "drugs",
+      "fbi"
+    ]
+  },
+  {
+    "id": 48,
+    "tmdb_id": 245891,
+    "title": "John Wick",
+    "year": 2014,
+    "rating": 7.4,
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 101,
+    "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
+    "cast": [
+      "Keanu Reeves",
+      "Michael Nyqvist",
+      "Alfie Allen",
+      "Willem Dafoe",
+      "Dean Winters"
+    ],
+    "director": "Chad Stahelski",
+    "language": "English",
+    "country": "USA",
+    "poster": "/fZPSMVcKrrZOSGRTi59BP3j9mUf.jpg",
+    "backdrop": "/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg",
+    "mood": [
+      "Action-packed",
+      "Adrenaline Rush",
+      "Stylish"
+    ],
+    "trailer": "2AUmvWm5ZDQ",
+    "popularity": 82.4,
+    "keywords": [
+      "assassin",
+      "dog",
+      "revenge",
+      "gun fu",
+      "continental hotel"
+    ]
+  },
+  {
+    "id": 49,
+    "tmdb_id": 603692,
+    "title": "John Wick: Chapter 4",
+    "year": 2023,
     "rating": 7.8,
     "genres": [
       "Action",
       "Thriller",
       "Crime"
     ],
-    "runtime": 150,
-    "overview": "John Wick forms a coalition of global underground assassins to wage open warfare against the supreme leaders of the High Table.",
+    "runtime": 170,
+    "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe.",
     "cast": [
       "Keanu Reeves",
-      "Halle Berry",
-      "Laurence Fishburne"
+      "Donnie Yen",
+      "Bill Skarsg\u00e5rd",
+      "Laurence Fishburne",
+      "Hiroyuki Sanada"
     ],
     "director": "Chad Stahelski",
     "language": "English",
     "country": "USA",
-    "poster": "/f89U3wL3mF79o2e3rD4nvi0JlhH.jpg",
-    "backdrop": "/oP22Cj25v9Zz85vySR3z47j7nEI.jpg",
+    "poster": "/vZloFAK7NDTCl7QzrApG3wJ1b8t.jpg",
+    "backdrop": "/7I6VUdPj6tQECNHdviJkUHD2f89.jpg",
     "mood": [
       "Action-packed",
-      "Adrenaline Rush"
+      "Epic",
+      "Martial Arts"
     ],
-    "trailer": "C0BMx-qxsP4",
-    "popularity": 145.4,
+    "trailer": "qEVUtrk8_B4",
+    "popularity": 89.2,
     "keywords": [
-      "open war",
-      "assassin guild",
       "high table",
-      "coalition"
+      "paris",
+      "duel",
+      "assassin",
+      "martial arts"
     ]
   },
   {
-    "id": 92,
-    "title": "Avatar: The Way of Water",
+    "id": 50,
+    "tmdb_id": 545611,
+    "title": "Everything Everywhere All at Once",
     "year": 2022,
-    "rating": 7.6,
+    "rating": 8.0,
     "genres": [
-      "Sci-Fi",
       "Action",
       "Adventure",
-      "Fantasy"
+      "Science Fiction"
     ],
-    "runtime": 192,
-    "overview": "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",
+    "runtime": 139,
+    "overview": "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save what's important to her by connecting with the lives she could have led across parallel universes.",
     "cast": [
-      "Sam Worthington",
-      "Zoe Saldana",
-      "Sigourney Weaver",
-      "Kate Winslet",
-      "Cliff Curtis"
+      "Michelle Yeoh",
+      "Stephanie Hsu",
+      "Ke Huy Quan",
+      "James Hong",
+      "Jamie Lee Curtis"
     ],
-    "director": "James Cameron",
+    "director": "Daniel Kwan, Daniel Scheinert",
     "language": "English",
     "country": "USA",
-    "poster": "/kyeE3s2t365VyaWfg.jpg",
-    "backdrop": "/h9Y83QoJjUe6HN17as2j2tH6rP2.jpg",
-    "mood": [
-      "Epic",
-      "Action-packed",
-      "Feel Good"
-    ],
-    "trailer": "d9MyW72ELq0",
-    "popularity": 112.4,
-    "keywords": [
-      "ocean clan",
-      "whales",
-      "family protection",
-      " Pandora",
-      "metkayina"
-    ]
-  },
-  {
-    "id": 93,
-    "title": "Booksmart",
-    "year": 2019,
-    "rating": 7.2,
-    "genres": [
-      "Comedy"
-    ],
-    "runtime": 102,
-    "overview": "On the eve of their high school graduation, two academic superstars realize they should have worked less and played more. Determined not to fall short of their peers, the girls try to cram four years of fun into one night.",
-    "cast": [
-      "Beanie Feldstein",
-      "Kaitlyn Dever",
-      "Billie Lourd",
-      "Diana Silvers",
-      "Molly Gordon"
-    ],
-    "director": "Olivia Wilde",
-    "language": "English",
-    "country": "USA",
-    "poster": "/ek89d4sC96o85vySR3z47j7nEI.jpg",
-    "backdrop": "/f89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Funny",
-      "Feel Good",
-      "Light & Fun"
-    ],
-    "trailer": "w8VN9LJYFsM",
-    "popularity": 70.1,
-    "keywords": [
-      "high school",
-      "graduation",
-      "best friends",
-      "party",
-      "nerds"
-    ]
-  },
-  {
-    "id": 94,
-    "title": "Inception: Paradigm",
-    "year": 2028,
-    "rating": 8.6,
-    "genres": [
-      "Sci-Fi",
-      "Action",
-      "Adventure"
-    ],
-    "runtime": 160,
-    "overview": "Cobb's former associates investigate an underground market that deals in artificial memories traded among political elites.",
-    "cast": [
-      "Leonardo DiCaprio",
-      "Joseph Gordon-Levitt",
-      "Florence Pugh"
-    ],
-    "director": "Christopher Nolan",
-    "language": "English",
-    "country": "USA",
-    "poster": "/o0OFlw7MP5tZ7oZgRY56hWK5zQI.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
+    "poster": "/w3LxiVYPq6ZiAqLqK0qNWqqa97r.jpg",
+    "backdrop": "/eDnH8p3Xk2zY1y0j2L6v8N7y5k.jpg",
     "mood": [
       "Mind-bending",
-      "Epic",
-      "Thriller"
+      "Emotional",
+      "Funny"
     ],
-    "trailer": "YoHD9XEInc0",
-    "popularity": 135.8,
+    "trailer": "wxN1T1uxQ2g",
+    "popularity": 88.0,
     "keywords": [
-      "artificial memories",
-      "dream state",
-      "political conspiracy",
-      "heist"
-    ]
-  },
-  {
-    "id": 95,
-    "title": "Zootopia 3",
-    "year": 2028,
-    "rating": 8,
-    "genres": [
-      "Animation",
-      "Comedy",
-      "Family",
-      "Adventure"
-    ],
-    "runtime": 112,
-    "overview": "Judy and Nick travel to a wild avian forest district to broker peace between predatory eagles and ground-dwelling creatures.",
-    "cast": [
-      "Ginnifer Goodwin",
-      "Jason Bateman",
-      "Florence Pugh"
-    ],
-    "director": "Byron Howard",
-    "language": "English",
-    "country": "USA",
-    "poster": "/hlr9e43C40n12aCO8HNSvBMjO5r.jpg",
-    "backdrop": "/e89d4sC96o85vySR3z47j7nEI.jpg",
-    "mood": [
-      "Feel Good",
-      "Funny",
-      "Light & Fun"
-    ],
-    "trailer": "jWM0ct-OLsM",
-    "popularity": 102.4,
-    "keywords": [
-      "birds",
-      "eagles",
-      "diplomacy",
-      "forest",
-      "sequel"
-    ]
-  },
-  {
-    "id": 96,
-    "title": "Get Out: Reborn",
-    "year": 2028,
-    "rating": 7.2,
-    "genres": [
-      "Horror",
-      "Mystery",
-      "Thriller"
-    ],
-    "runtime": 115,
-    "overview": "A tech startup attempts to commercialize the consciousness-transfer system under the guise of an life-extension medical therapy.",
-    "cast": [
-      "Daniel Kaluuya",
-      "Anya Taylor-Joy",
-      "Lakeith Stanfield"
-    ],
-    "director": "Jordan Peele",
-    "language": "English",
-    "country": "USA",
-    "poster": "/1sw51fT4Qy64o2kI1jJ9t069rBM.jpg",
-    "backdrop": "/3T8jSgWv268J4l3W2041g6R1h3S.jpg",
-    "mood": [
-      "Mind-bending",
-      "Dark",
-      "Thriller"
-    ],
-    "trailer": "sRfnevzM9k8",
-    "popularity": 98.6,
-    "keywords": [
-      "immortality",
-      "conconsciousness transfer",
-      "startup",
-      "horror"
-    ]
-  },
-  {
-    "id": 97,
-    "title": "Free Solo: Alpine Quest",
-    "year": 2025,
-    "rating": 8,
-    "genres": [
-      "Documentary",
-      "Adventure"
-    ],
-    "runtime": 95,
-    "overview": "Alex Honnold journeys to the Swiss Alps to attempt a series of dangerous climbs during the harsh winter seasons.",
-    "cast": [
-      "Alex Honnold",
-      "Jimmy Chin"
-    ],
-    "director": "Jimmy Chin",
-    "language": "English",
-    "country": "Switzerland",
-    "poster": "/7Fsnj6v1c6Y4FWJzH6znST7a27P.jpg",
-    "backdrop": "/8bbZ6Xgvxv56x9hh10t5Z7nO537.jpg",
-    "mood": [
-      "Epic",
-      "Adrenaline Rush"
-    ],
-    "trailer": "urRVZ4SW7WU",
-    "popularity": 56.4,
-    "keywords": [
-      "swiss alps",
-      "winter climb",
-      "solo climb",
-      "mountaineering"
-    ]
-  },
-  {
-    "id": 98,
-    "title": "Dune: Part Three",
-    "year": 2027,
-    "rating": 8.7,
-    "genres": [
-      "Sci-Fi",
-      "Adventure",
-      "Action"
-    ],
-    "runtime": 170,
-    "overview": "Paul Atreides confronts a cosmic rebellion against his empire, leading to a massive conflict that will decide the fate of all humanity.",
-    "cast": [
-      "Timothée Chalamet",
-      "Zendaya",
-      "Rebecca Ferguson"
-    ],
-    "director": "Denis Villeneuve",
-    "language": "English",
-    "country": "USA",
-    "poster": "/lz271qZZnAFw546lljFw3Zbg8c1.jpg",
-    "backdrop": "/d5NXSklXj0iIhNMPm79G21R1t36.jpg",
-    "mood": [
-      "Epic",
-      "Dark",
-      "Mind-bending"
-    ],
-    "trailer": "Way9Dexny3o",
-    "popularity": 145.2,
-    "keywords": [
-      "emperor Paul",
-      "jihad",
-      "prophecy",
-      "sandworms",
-      "destiny"
-    ]
-  },
-  {
-    "id": 99,
-    "title": "Fyre: The Comeback",
-    "year": 2026,
-    "rating": 7,
-    "genres": [
-      "Documentary"
-    ],
-    "runtime": 90,
-    "overview": "Follow Billy McFarland after his release from prison as he attempts to launch Fyre Festival II in the Caribbean.",
-    "cast": [
-      "Billy McFarland",
-      "Andy King"
-    ],
-    "director": "Chris Smith",
-    "language": "English",
-    "country": "USA",
-    "poster": "/d5iIlvfjPyIwbYthHUiSuZ7j25B.jpg",
-    "backdrop": "/sua6o1H616Os260Ug3S20lLZvhg.jpg",
-    "mood": [
-      "Funny",
-      "Dark"
-    ],
-    "trailer": "uZ0KNVU29vY",
-    "popularity": 62.1,
-    "keywords": [
-      "scam part 2",
-      "caribbean",
-      "music festival",
-      "parole"
-    ]
-  },
-  {
-    "id": 100,
-    "title": "March of the Penguins: Ocean Voyage",
-    "year": 2026,
-    "rating": 7.6,
-    "genres": [
-      "Documentary",
-      "Family"
-    ],
-    "runtime": 85,
-    "overview": "Track the emperor penguins as they navigate their annual migration across the dangerous, predator-filled waters of the Southern Ocean.",
-    "cast": [
-      "Morgan Freeman"
-    ],
-    "director": "Luc Jacquet",
-    "language": "English",
-    "country": "Antarctica",
-    "poster": "/dB64mUeNqJ2tWGBiWSDnCXa551A.jpg",
-    "backdrop": "/s3TBrRGB1K7jYj7IT7qZAlBo9QQ.jpg",
-    "mood": [
-      "Feel Good",
-      "Emotional"
-    ],
-    "trailer": "L7tWNwhscFM",
-    "popularity": 60.1,
-    "keywords": [
-      "antarctic sea",
-      "leopard seals",
-      "migration",
-      "nature documentary"
+      "multiverse",
+      "family",
+      "taxes",
+      "existential",
+      "everything bagel"
     ]
   }
 ]

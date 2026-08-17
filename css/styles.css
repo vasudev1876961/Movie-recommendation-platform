@@ -491,7 +491,8 @@ main {
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 10px 0;
+  scroll-snap-type: x mandatory;
+  padding: 15px 5px;
   scrollbar-width: none; /* Firefox */
 }
 
@@ -501,9 +502,6 @@ main {
 
 /* Movie Card Styles */
 .movie-card {
-  flex: 0 0 calc(100% / 6 - 17px);
-  min-width: 170px;
-  max-width: 220px;
   aspect-ratio: 2/3;
   position: relative;
   border-radius: var(--radius-md);
@@ -516,16 +514,12 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 1200px) {
-  .movie-card {
-    flex: 0 0 calc(100% / 4 - 15px);
-  }
-}
-
-@media (max-width: 768px) {
-  .movie-card {
-    flex: 0 0 calc(100% / 2 - 10px);
-  }
+.shelf-container .movie-card {
+  flex: 0 0 185px;
+  width: 185px;
+  min-width: 185px;
+  max-width: 185px;
+  scroll-snap-align: start;
 }
 
 .movie-card:hover {
