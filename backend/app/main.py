@@ -5,6 +5,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.database.database import engine, Base
 from backend.app.api.movies import router as movies_router
+from backend.app.api.auth import router as auth_router
+from backend.app.api.watchlist import router as watchlist_router
+from backend.app.api.ratings import router as ratings_router
+from backend.app.api.ai import router as ai_router
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -36,6 +40,10 @@ app.add_middleware(
 
 # Register API Routers
 app.include_router(movies_router)
+app.include_router(auth_router)
+app.include_router(watchlist_router)
+app.include_router(ratings_router)
+app.include_router(ai_router)
 
 @app.get("/", tags=["Health"])
 def health_check():

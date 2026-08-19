@@ -14,8 +14,20 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     ratings = relationship("Rating", back_populates="user", cascade="all, delete-orphan")
+    watchlist = relationship("WatchlistItem", back_populates="user", cascade="all, delete-orphan")
     watch_history = relationship("WatchHistory", back_populates="user", cascade="all, delete-orphan")
     preferences = relationship("UserPreference", back_populates="user", uselist=False, cascade="all, delete-orphan")
+
+class WatchlistItem(Base):
+    __tablename__ = "watchlist"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    movie_id = Column(Integer, ForeignKey("movies.id", ondelete="CASCADE"), nullable=False)
+    added_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User", back_populates="watchlist")
+    movie = relationship("Movie")
 
 class WatchHistory(Base):
     __tablename__ = "watch_history"
