@@ -8,6 +8,8 @@ import { UI } from './ui.js';
 import { Hero } from '../components/hero.js';
 import { Shelves } from '../components/shelves.js';
 import { Wizard } from '../components/wizard.js';
+import { Explore } from '../components/explore.js';
+import { AIAssistant } from '../components/aiAssistant.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -55,6 +57,8 @@ class App {
     // Tab switching highlighting
     const tabs = {
       '#/': document.getElementById('tab-home'),
+      '#/explore': document.getElementById('tab-explore'),
+      '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
     };
@@ -84,6 +88,28 @@ class App {
       activateTab('#/');
       switchView('view-dashboard');
       await this.renderDashboard();
+    });
+
+    // Explore Route
+    this.router.addRoute('#/explore', () => {
+      activateTab('#/explore');
+      switchView('view-explore');
+      const exploreViewport = document.getElementById('explore-viewport');
+      if (exploreViewport) {
+        exploreViewport.innerHTML = Explore.render();
+        Explore.setupListeners();
+      }
+    });
+
+    // AI Assistant Route
+    this.router.addRoute('#/ai-assistant', () => {
+      activateTab('#/ai-assistant');
+      switchView('view-ai-assistant');
+      const aiViewport = document.getElementById('ai-assistant-viewport');
+      if (aiViewport) {
+        aiViewport.innerHTML = AIAssistant.render();
+        AIAssistant.setupListeners();
+      }
     });
 
     // Recommendation Wizard Route
@@ -751,12 +777,27 @@ class App {
       this.router.navigate('#/');
     });
 
-    // Watch for click events on Hero banner actions specifically
-    document.getElementById('hero-viewport').addEventListener('click', (e) => {
+    // Global delegated click handler for movie cards across all views
+    document.querySelector('main').addEventListener('click', (e) => {
+      // 1. Check if Hero play button was clicked
       const playBtn = e.target.closest('[data-action="play-hero"]');
       if (playBtn) {
         const id = playBtn.getAttribute('data-id');
-        this.openMovieDetails(parseInt(id));
+        if (id) this.openMovieDetails(parseInt(id));
+        return;
+      }
+
+      // 2. Check if a movie card was clicked
+      const card = e.target.closest('.movie-card');
+      if (card) {
+        const movieId = card.getAttribute('data-id');
+        const bookmarkBtn = e.target.closest('[data-action="bookmark"]');
+        if (bookmarkBtn) {
+          e.stopPropagation();
+          this.toggleWatchlist(parseInt(movieId), bookmarkBtn);
+        } else if (movieId) {
+          this.openMovieDetails(parseInt(movieId));
+        }
       }
     });
   }

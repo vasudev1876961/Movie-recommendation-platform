@@ -55,6 +55,12 @@
           <a href="#/" class="nav-tab active" id="tab-home">
             <i class="fas fa-th-large"></i> Home
           </a>
+          <a href="#/explore" class="nav-tab" id="tab-explore">
+            <i class="fas fa-compass"></i> Explore
+          </a>
+          <a href="#/ai-assistant" class="nav-tab" id="tab-ai-assistant">
+            <i class="fas fa-robot"></i> AI Assistant
+          </a>
           <a href="#/wizard" class="nav-tab" id="tab-wizard">
             <i class="fas fa-magic"></i> Wizard
           </a>
@@ -64,7 +70,7 @@
         </nav>
 
         <!-- User Authentication Status Interface -->
-        <div id="auth-status-container" style="display: flex; align-items: center; gap: 15px;">
+        <div id="auth-status-container" style="display: flex; align-items: center; gap: 12px;">
           <button class="nav-tab" id="header-signin-btn" style="border: 1px solid var(--glass-border); padding: 8px 16px;">
             <i class="fas fa-user-lock"></i> Sign In
           </button>
@@ -83,6 +89,16 @@
       <section class="view-section active" id="view-dashboard">
         <div id="hero-viewport"></div>
         <div id="shelves-viewport"></div>
+      </section>
+
+      <!-- EXPLORE CATALOG VIEW -->
+      <section class="view-section" id="view-explore">
+        <div id="explore-viewport"></div>
+      </section>
+
+      <!-- AI ASSISTANT VIEW -->
+      <section class="view-section" id="view-ai-assistant">
+        <div id="ai-assistant-viewport"></div>
       </section>
 
       <!-- RECOMMENDATION WIZARD VIEW -->
