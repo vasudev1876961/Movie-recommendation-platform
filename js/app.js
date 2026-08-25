@@ -142,7 +142,7 @@ class App {
     const heroViewport = document.getElementById('hero-viewport');
     const shelvesViewport = document.getElementById('shelves-viewport');
 
-    heroViewport.innerHTML = `<div class="hero-container anim-shimmer" style="height: 350px;"></div>`;
+    heroViewport.innerHTML = `<div class="hero-container anim-shimmer" style="height: 380px;"></div>`;
     shelvesViewport.innerHTML = `
       <div style="padding: 20px 0;">
         <div style="height: 30px; width: 200px; margin-bottom: 20px;" class="anim-shimmer"></div>
@@ -152,93 +152,140 @@ class App {
       </div>
     `;
 
-    // Fetch lists in parallel
-    const [trending, popular, topRated, hiddenGems] = await Promise.all([
-      this.dataProvider.getTrending(),
-      this.dataProvider.getPopular(),
-      this.dataProvider.getTopRated(),
-      this.dataProvider.getHiddenGems()
-    ]);
+    // 1. Fetch pre-deduplicated categorized shelves
+    let shelvesData = null;
+    try {
+      const res = await fetch('http://localhost:8000/api/movies/shelves/deduplicated');
+      if (res.ok) {
+        shelvesData = await res.json();
+      }
+    } catch (e) {
+      console.warn("[App] FastAPI backend shelves offline. Running client-side deduplication engine.", e);
+    }
 
-    // Choose random popular/trending movie for Hero banner
-    const featuredMovie = trending.length > 0 ? trending[0] : popular[0];
-    
-    // Calculate "For You" personalized list based on genres in watchlist
-    const forYou = await this.getPersonalizedRecommendations(trending, popular);
+    // Client-side fallback if backend was unreachable
+    if (!shelvesData) {
+      shelvesData = this.buildClientDeduplicatedShelves();
+    }
 
-    // Render Hero
-    heroViewport.innerHTML = Hero.render(featuredMovie);
+    // 2. Initialize Hero Multi-Movie Carousel
+    if (shelvesData.hero_movies && shelvesData.hero_movies.length > 0) {
+      Hero.init(shelvesData.hero_movies, heroViewport);
+    }
 
-    // Render Shelves
+    // 3. Render Mood Filter Bar & Dynamic Shelves
     const watchlist = this.currentUser && this.dataProvider.isBackendOnline 
       ? (await this.dataProvider.getWatchlist() || [])
       : Storage.getWatchlist();
-    
+
+    const moodBarHtml = `
+      <div class="dashboard-mood-bar glass-panel anim-slide-up">
+        <div class="mood-bar-title"><i class="fas fa-magic"></i> Mood Explorer:</div>
+        <div class="mood-chips-scroll">
+          <button class="mood-pill active" data-mood="all"><i class="fas fa-sparkles"></i> All Picks</button>
+          <button class="mood-pill" data-mood="Mind-bending"><i class="fas fa-brain"></i> Mind-Bending</button>
+          <button class="mood-pill" data-mood="Action-packed"><i class="fas fa-bolt"></i> Adrenaline Rush</button>
+          <button class="mood-pill" data-mood="Emotional"><i class="fas fa-heart"></i> Heartwarming</button>
+          <button class="mood-pill" data-mood="Dark"><i class="fas fa-moon"></i> Dark & Gritty</button>
+          <button class="mood-pill" data-mood="Sci-Fi"><i class="fas fa-rocket"></i> Epic Sci-Fi</button>
+        </div>
+      </div>
+      <div id="mood-spotlight-viewport"></div>
+    `;
+
+    const shelvesHtml = shelvesData.shelves.map(s => 
+      Shelves.render(s.title, s.icon, s.movies, s.id)
+    ).join('');
+
+    const watchlistShelfHtml = Shelves.render('My Watchlist', 'fas fa-bookmark', watchlist.slice(0, 12), 'watchlist-shelf');
+
     shelvesViewport.innerHTML = `
-      ${Shelves.render('Trending Now', 'fas fa-fire', trending, 'trending-shelf')}
-      ${Shelves.render('Popular Hits', 'fas fa-star', popular, 'popular-shelf')}
-      ${Shelves.render('For You (Personalized)', 'fas fa-heart', forYou, 'foryou-shelf')}
-      ${Shelves.render('Hidden Gems', 'fas fa-gem', hiddenGems, 'gems-shelf')}
-      ${Shelves.render('Top Rated Classics', 'fas fa-trophy', topRated, 'rated-shelf')}
-      ${Shelves.render('My Watchlist', 'fas fa-bookmark', watchlist.slice(0, 12), 'watchlist-shelf')}
+      ${moodBarHtml}
+      ${shelvesHtml}
+      ${watchlistShelfHtml}
     `;
 
     Shelves.setupListeners();
     this.bindCardClicks(shelvesViewport);
+    this.setupMoodPillListeners();
   }
 
-  async getPersonalizedRecommendations(trending, popular) {
-    // If online and logged in, query hybrid recommendations engine from FastAPI
-    if (this.currentUser && this.dataProvider.isBackendOnline) {
-      try {
-        const backendPersonalized = await this.dataProvider.getPersonalizedRecommendations();
-        if (backendPersonalized && backendPersonalized.length > 0) {
-          return backendPersonalized;
+  setupMoodPillListeners() {
+    const pills = document.querySelectorAll('.mood-pill');
+    const spotlightViewport = document.getElementById('mood-spotlight-viewport');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', async (e) => {
+        e.preventDefault();
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const mood = pill.getAttribute('data-mood');
+        if (mood === 'all') {
+          spotlightViewport.innerHTML = '';
+          return;
         }
-      } catch (e) {
-        console.warn("[App] Failed to fetch backend personalized recommendations, using local logic:", e);
-      }
-    }
 
-    // Fallback local logic
-    const watchlist = this.currentUser && this.dataProvider.isBackendOnline
-      ? (await this.dataProvider.getWatchlist() || [])
-      : Storage.getWatchlist();
+        spotlightViewport.innerHTML = '<div class="ai-spinner" style="margin: 20px auto;"></div>';
 
-    if (watchlist.length === 0) {
-      // Fallback: mix high rated trending and popular
-      return [...trending, ...popular].filter(m => m.rating >= 8.0).slice(0, 10);
-    }
+        let movies = [];
+        try {
+          const res = await fetch(`http://localhost:8000/api/movies/by-mood/${encodeURIComponent(mood)}?limit=10`);
+          if (res.ok) {
+            movies = await res.json();
+          }
+        } catch (err) {
+          movies = this.dataProvider.getLocalMovies().filter(m => (m.mood || []).includes(mood));
+        }
 
-    // Tally user genre preferences
-    const genreTally = {};
-    watchlist.forEach(m => {
-      m.genres.forEach(g => {
-        genreTally[g] = (genreTally[g] || 0) + 1;
+        if (movies && movies.length > 0) {
+          spotlightViewport.innerHTML = `
+            <div class="anim-slide-up" style="margin: 15px 0 25px 0;">
+              ${Shelves.render(`Spotlight: ${mood}`, 'fas fa-sparkles', movies, 'mood-spotlight-shelf')}
+            </div>
+          `;
+          Shelves.setupListeners();
+          this.bindCardClicks(spotlightViewport);
+        } else {
+          spotlightViewport.innerHTML = '';
+        }
       });
     });
+  }
 
-    // Find top genres
-    const sortedGenres = Object.entries(genreTally)
-      .sort((a, b) => b[1] - a[1])
-      .map(entry => entry[0]);
+  buildClientDeduplicatedShelves() {
+    const all = this.dataProvider.getLocalMovies();
+    const used = new Set();
 
-    if (sortedGenres.length === 0) {
-      return trending.slice(0, 10);
-    }
+    const pick = (fn, sortFn, limit = 8) => {
+      const candidates = all.filter(m => !used.has(m.id) && fn(m));
+      candidates.sort(sortFn);
+      const chosen = candidates.slice(0, limit);
+      chosen.forEach(m => used.add(m.id));
+      return chosen;
+    };
 
-    // Score all local/API movies based on genre overlaps
-    const allMovies = this.dataProvider.getLocalMovies();
-    const scored = allMovies
-      .filter(m => !watchlist.some(w => w.id === m.id)) // Filter out already watched/bookmarked
-      .map(m => {
-        const overlap = m.genres.filter(g => sortedGenres.slice(0, 3).includes(g)).length;
-        return { movie: m, score: overlap + (m.rating / 10) };
-      })
-      .sort((a, b) => b.score - a.score)
-      .map(item => item.movie);
+    const heroMovies = [...all].sort((a, b) => b.popularity - a.popularity).slice(0, 5);
+    if (heroMovies.length > 0) used.add(heroMovies[0].id);
 
-    return scored.slice(0, 12);
+    const trending = pick(() => true, (a, b) => b.popularity - a.popularity, 8);
+    const masterpieces = pick(m => m.rating >= 8.4, (a, b) => b.rating - a.rating, 8);
+    const scifi = pick(m => (m.genres || []).includes("Science Fiction") || (m.mood || []).includes("Mind-bending"), (a, b) => b.rating - a.rating, 8);
+    const action = pick(m => (m.genres || []).some(g => ["Action", "Crime", "Adventure"].includes(g)), (a, b) => b.popularity - a.popularity, 8);
+    const animation = pick(m => (m.genres || []).some(g => ["Animation", "Family", "Comedy"].includes(g)), (a, b) => b.rating - a.rating, 8);
+    const darkGems = pick(m => (m.genres || []).some(g => ["Horror", "Thriller"].includes(g)) || (m.mood || []).includes("Dark"), (a, b) => b.rating - a.rating, 8);
+
+    return {
+      hero_movies: heroMovies,
+      shelves: [
+        { title: "Trending Blockbusters", icon: "fas fa-fire", movies: trending, id: "trending-shelf" },
+        { title: "All-Time Masterpieces", icon: "fas fa-trophy", movies: masterpieces, id: "masterpieces-shelf" },
+        { title: "Sci-Fi & Mind-Bending", icon: "fas fa-brain", movies: scifi, id: "scifi-shelf" },
+        { title: "Action & Epic Sagas", icon: "fas fa-shield-alt", movies: action, id: "action-shelf" },
+        { title: "Animation & Family Favorites", icon: "fas fa-wand-magic-sparkles", movies: animation, id: "animation-shelf" },
+        { title: "Dark & Psychological Thrillers", icon: "fas fa-mask", movies: darkGems, id: "dark-shelf" }
+      ]
+    };
   }
 
   async renderWatchlistPage() {

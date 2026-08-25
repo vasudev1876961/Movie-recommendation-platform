@@ -129,27 +129,142 @@ def get_movies(
     )
 
 @router.get("/movies/popular", response_model=List[MovieListItem])
-def get_popular_movies(limit: int = Query(20, ge=1, le=50), db: Session = Depends(get_db)):
-    movies = db.query(Movie).order_by(desc(Movie.popularity)).limit(limit).all()
+def get_popular_movies(
+    limit: int = Query(20, ge=1, le=50),
+    exclude_ids: Optional[str] = Query("", description="Comma-separated movie IDs to exclude"),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Movie)
+    if exclude_ids:
+        ids = [int(x) for x in exclude_ids.split(",") if x.strip().isdigit()]
+        if ids:
+            query = query.filter(Movie.id.notin_(ids))
+    movies = query.order_by(desc(Movie.popularity)).limit(limit).all()
     return [format_movie_list_item(m) for m in movies]
 
 @router.get("/movies/top-rated", response_model=List[MovieListItem])
-def get_top_rated_movies(limit: int = Query(20, ge=1, le=50), db: Session = Depends(get_db)):
-    movies = db.query(Movie).order_by(desc(Movie.rating)).limit(limit).all()
+def get_top_rated_movies(
+    limit: int = Query(20, ge=1, le=50),
+    exclude_ids: Optional[str] = Query("", description="Comma-separated movie IDs to exclude"),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Movie)
+    if exclude_ids:
+        ids = [int(x) for x in exclude_ids.split(",") if x.strip().isdigit()]
+        if ids:
+            query = query.filter(Movie.id.notin_(ids))
+    movies = query.order_by(desc(Movie.rating)).limit(limit).all()
     return [format_movie_list_item(m) for m in movies]
 
 @router.get("/movies/trending", response_model=List[MovieListItem])
-def get_trending_movies(limit: int = Query(20, ge=1, le=50), db: Session = Depends(get_db)):
-    movies = db.query(Movie).order_by(desc(Movie.popularity), desc(Movie.rating)).limit(limit).all()
+def get_trending_movies(
+    limit: int = Query(20, ge=1, le=50),
+    exclude_ids: Optional[str] = Query("", description="Comma-separated movie IDs to exclude"),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Movie)
+    if exclude_ids:
+        ids = [int(x) for x in exclude_ids.split(",") if x.strip().isdigit()]
+        if ids:
+            query = query.filter(Movie.id.notin_(ids))
+    movies = query.order_by(desc(Movie.popularity), desc(Movie.rating)).limit(limit).all()
     return [format_movie_list_item(m) for m in movies]
 
 @router.get("/movies/hidden-gems", response_model=List[MovieListItem])
-def get_hidden_gems_movies(limit: int = Query(20, ge=1, le=50), db: Session = Depends(get_db)):
-    # High rating but lower popularity
-    movies = db.query(Movie).filter(Movie.rating >= 7.5, Movie.popularity < 100.0).order_by(desc(Movie.rating)).limit(limit).all()
-    if not movies:
-        movies = db.query(Movie).order_by(desc(Movie.rating)).offset(10).limit(limit).all()
+def get_hidden_gems_movies(
+    limit: int = Query(20, ge=1, le=50),
+    exclude_ids: Optional[str] = Query("", description="Comma-separated movie IDs to exclude"),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Movie).filter(Movie.rating >= 7.5)
+    if exclude_ids:
+        ids = [int(x) for x in exclude_ids.split(",") if x.strip().isdigit()]
+        if ids:
+            query = query.filter(Movie.id.notin_(ids))
+    movies = query.order_by(desc(Movie.rating)).limit(limit).all()
     return [format_movie_list_item(m) for m in movies]
+
+@router.get("/movies/by-mood/{mood}", response_model=List[MovieListItem])
+def get_movies_by_mood(
+    mood: str,
+    limit: int = Query(15, ge=1, le=50),
+    exclude_ids: Optional[str] = Query("", description="Comma-separated movie IDs to exclude"),
+    db: Session = Depends(get_db)
+):
+    query = db.query(Movie).filter(Movie.mood.ilike(f"%{mood.strip()}%"))
+    if exclude_ids:
+        ids = [int(x) for x in exclude_ids.split(",") if x.strip().isdigit()]
+        if ids:
+            query = query.filter(Movie.id.notin_(ids))
+    movies = query.order_by(desc(Movie.rating), desc(Movie.popularity)).limit(limit).all()
+    return [format_movie_list_item(m) for m in movies]
+
+@router.get("/movies/shelves/deduplicated")
+def get_deduplicated_homepage_shelves(db: Session = Depends(get_db)):
+    """Returns 0-duplicate categorized shelves for the homepage."""
+    all_movies = db.query(Movie).all()
+    used_ids = set()
+
+    def pick_movies(filter_fn, sort_key, limit=10):
+        candidates = [m for m in all_movies if m.id not in used_ids and filter_fn(m)]
+        candidates.sort(key=sort_key, reverse=True)
+        chosen = candidates[:limit]
+        for m in chosen:
+            used_ids.add(m.id)
+        return [format_movie_list_item(m) for m in chosen]
+
+    # 1. Featured Hero Blockbuster (Top 5 rotating candidates)
+    hero_candidates = sorted(all_movies, key=lambda m: (m.popularity, m.rating), reverse=True)[:5]
+    hero_items = [format_movie_list_item(m) for m in hero_candidates]
+    # Mark top 1 hero as used so shelves don't immediately repeat it as card #1
+    if hero_candidates:
+        used_ids.add(hero_candidates[0].id)
+
+    # 2. Shelf: Trending Blockbusters
+    trending = pick_movies(lambda m: True, lambda m: (m.popularity, m.rating), limit=8)
+
+    # 3. Shelf: All-Time Masterpieces (Rating >= 8.5)
+    masterpieces = pick_movies(lambda m: m.rating >= 8.4, lambda m: (m.rating, m.popularity), limit=8)
+
+    # 4. Shelf: Sci-Fi & Mind-Bending Thrillers
+    scifi = pick_movies(
+        lambda m: any(g.name in ["Science Fiction", "Mystery"] for g in m.genres) or "Mind-bending" in (m.mood or ""),
+        lambda m: (m.rating, m.popularity),
+        limit=8
+    )
+
+    # 5. Shelf: Action, Crime & Epic Sagas
+    action = pick_movies(
+        lambda m: any(g.name in ["Action", "Crime", "Adventure"] for g in m.genres),
+        lambda m: (m.popularity, m.rating),
+        limit=8
+    )
+
+    # 6. Shelf: Animation, Family & Feel-Good
+    animation = pick_movies(
+        lambda m: any(g.name in ["Animation", "Family", "Comedy"] for g in m.genres) or "Feel Good" in (m.mood or ""),
+        lambda m: (m.rating, m.popularity),
+        limit=8
+    )
+
+    # 7. Shelf: Dark & Psychological Thrillers
+    dark_gems = pick_movies(
+        lambda m: any(g.name in ["Horror", "Thriller", "Drama"] for g in m.genres) or "Dark" in (m.mood or ""),
+        lambda m: (m.rating, m.popularity),
+        limit=8
+    )
+
+    return {
+        "hero_movies": hero_items,
+        "shelves": [
+            {"title": "Trending Blockbusters", "icon": "fas fa-fire", "movies": trending, "id": "trending-shelf"},
+            {"title": "All-Time Masterpieces", "icon": "fas fa-trophy", "movies": masterpieces, "id": "masterpieces-shelf"},
+            {"title": "Sci-Fi & Mind-Bending", "icon": "fas fa-brain", "movies": scifi, "id": "scifi-shelf"},
+            {"title": "Action & Epic Sagas", "icon": "fas fa-shield-alt", "movies": action, "id": "action-shelf"},
+            {"title": "Animation & Family Favorites", "icon": "fas fa-wand-magic-sparkles", "movies": animation, "id": "animation-shelf"},
+            {"title": "Dark & Psychological Thrillers", "icon": "fas fa-mask", "movies": dark_gems, "id": "dark-shelf"}
+        ]
+    }
 
 @router.get("/movies/search", response_model=List[MovieListItem])
 def search_movies_endpoint(

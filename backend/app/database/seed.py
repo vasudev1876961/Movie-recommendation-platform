@@ -282,6 +282,7 @@ def seed_from_offline_dataset(db: Session):
         movie.poster_path = m.get("poster", "")
         movie.backdrop_path = m.get("backdrop", "")
         movie.keywords = ", ".join(m.get("keywords", []))
+        movie.mood = ", ".join(m.get("mood", []))
 
         if is_new:
             db.add(movie)
