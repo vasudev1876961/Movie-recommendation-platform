@@ -4,7 +4,11 @@
   "description": "Movie Recommendation Platform Phase 1",
   "type": "module",
   "scripts": {
-    "check-syntax": "node --check js/*.js api/*.js data/*.js components/*.js"
+    "start": "npm run start:backend",
+    "start:backend": "venv\\Scripts\\python.exe -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload",
+    "start:frontend": "venv\\Scripts\\python.exe -m http.server 3000",
+    "seed": "venv\\Scripts\\python.exe scripts/import_movies.py",
+    "check-syntax": "node -e \"const fs = require('fs'), path = require('path'); ['js', 'components', 'api', 'data'].forEach(dir => fs.readdirSync(dir).filter(f => f.endsWith('.js')).forEach(f => require('child_process').execSync('node --check ' + path.join(dir, f))));\""
   },
   "dependencies": {},
   "devDependencies": {}

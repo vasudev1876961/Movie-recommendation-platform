@@ -34,6 +34,7 @@ class MovieListItem(BaseModel):
     poster_path: Optional[str] = ""
     backdrop_path: Optional[str] = ""
     popularity: Optional[float] = 0.0
+    trailer: Optional[str] = ""
     genres: List[str] = []
 
     class Config:
@@ -55,6 +56,7 @@ class MovieDetails(BaseModel):
     homepage: Optional[str] = ""
     tagline: Optional[str] = ""
     keywords: Optional[str] = ""
+    trailer: Optional[str] = ""
     genres: List[GenreResponse] = []
     cast: List[CastResponse] = []
     directors: List[DirectorResponse] = []

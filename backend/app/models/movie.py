@@ -49,6 +49,7 @@ class Movie(Base):
     tagline = Column(String, default="")
     keywords = Column(Text, default="")
     mood = Column(String, default="")
+    trailer = Column(String, default="")
 
     genres = relationship("Genre", secondary=movie_genre, back_populates="movies", lazy="joined")
     directors = relationship("Director", secondary=movie_director, back_populates="movies", lazy="joined")

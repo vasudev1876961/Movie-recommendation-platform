@@ -27,6 +27,7 @@ def format_movie_list_item(movie: Movie) -> MovieListItem:
         poster_path=movie.poster_path or "",
         backdrop_path=movie.backdrop_path or "",
         popularity=movie.popularity or 0.0,
+        trailer=getattr(movie, 'trailer', '') or "",
         genres=[g.name for g in movie.genres]
     )
 
@@ -56,6 +57,7 @@ def format_movie_details(movie: Movie) -> MovieDetails:
         homepage=movie.homepage or "",
         tagline=movie.tagline or "",
         keywords=movie.keywords or "",
+        trailer=getattr(movie, 'trailer', '') or "",
         genres=[GenreResponse(id=g.id, name=g.name) for g in movie.genres],
         cast=cast_list,
         directors=[DirectorResponse(id=d.id, name=d.name) for d in movie.directors]

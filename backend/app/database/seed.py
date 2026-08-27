@@ -152,8 +152,8 @@ def seed_from_tmdb(db: Session, target_count: int = 1200):
         total_to_process = len(movie_ids)
 
         for idx, tmdb_id in enumerate(movie_ids, 1):
-            # Fetch movie details with appended credits and keywords
-            data = fetch_tmdb(client, f"/movie/{tmdb_id}", {"append_to_response": "credits,keywords"})
+            # Fetch movie details with appended credits, keywords, and videos
+            data = fetch_tmdb(client, f"/movie/{tmdb_id}", {"append_to_response": "credits,keywords,videos"})
             if not data or not data.get("title"):
                 continue
 
@@ -170,6 +170,15 @@ def seed_from_tmdb(db: Session, target_count: int = 1200):
             backdrop_path = data.get("backdrop_path") or ""
             homepage = data.get("homepage") or ""
             tagline = data.get("tagline") or ""
+
+            # Trailer Key
+            videos = data.get("videos", {}).get("results", [])
+            trailer_key = ""
+            for v in videos:
+                if v.get("site") == "YouTube" and v.get("type") in ["Trailer", "Teaser"]:
+                    trailer_key = v.get("key", "")
+                    if v.get("type") == "Trailer":
+                        break
 
             # Keywords
             kw_list = []
@@ -198,6 +207,7 @@ def seed_from_tmdb(db: Session, target_count: int = 1200):
             movie.homepage = homepage
             movie.tagline = tagline
             movie.keywords = keywords_str
+            movie.trailer = trailer_key
 
             if is_new:
                 db.add(movie)
@@ -283,6 +293,7 @@ def seed_from_offline_dataset(db: Session):
         movie.backdrop_path = m.get("backdrop", "")
         movie.keywords = ", ".join(m.get("keywords", []))
         movie.mood = ", ".join(m.get("mood", []))
+        movie.trailer = m.get("trailer", "")
 
         if is_new:
             db.add(movie)
