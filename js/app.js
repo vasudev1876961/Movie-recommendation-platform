@@ -178,6 +178,52 @@ class App {
       ? (await this.dataProvider.getWatchlist() || [])
       : Storage.getWatchlist();
 
+    // 3b. Fetch Phase 3 Hybrid AI Recommendations
+    let hybridShelfHtml = '';
+    try {
+      const token = Storage.getAuthToken();
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+      const hybridRes = await fetch('http://localhost:8000/api/recommendations/hybrid?limit=10', { headers });
+      if (hybridRes.ok) {
+        const hybridItems = await hybridRes.json();
+        if (hybridItems && hybridItems.length > 0) {
+          const { MovieCard } = await import('../components/movieCard.js');
+          const hybridCards = hybridItems.map(item => {
+            const m = item.movie;
+            m.match_score = item.match_score;
+            m.reasoning = item.reasoning;
+            return MovieCard.render(m, item.match_score, item.reasoning);
+          }).join('');
+
+          hybridShelfHtml = `
+            <section class="shelf anim-slide-up" id="hybrid-shelf" style="margin-top: 10px;">
+              <div class="shelf-header">
+                <h3 class="shelf-title">
+                  <i class="fas fa-brain" style="color: var(--accent-color);"></i> Recommended For You 
+                  <span class="ai-header-badge" style="font-size: 11px; margin-left: 8px; vertical-align: middle; display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; color: #d8b4fe; font-weight: 600;">
+                    <i class="fas fa-sparkles"></i> Hybrid AI
+                  </span>
+                </h3>
+                <div class="shelf-nav">
+                  <button class="shelf-nav-btn prev-btn" data-shelf="hybrid-shelf" aria-label="Scroll Left">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="shelf-nav-btn next-btn" data-shelf="hybrid-shelf" aria-label="Scroll Right">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="shelf-container" id="hybrid-shelf-container">
+                ${hybridCards}
+              </div>
+            </section>
+          `;
+        }
+      }
+    } catch (e) {
+      console.warn("[App] Hybrid recommendation endpoint unavailable.", e);
+    }
+
     const moodBarHtml = `
       <div class="dashboard-mood-bar glass-panel anim-slide-up">
         <div class="mood-bar-title"><i class="fas fa-magic"></i> Mood Explorer:</div>
@@ -201,6 +247,7 @@ class App {
 
     shelvesViewport.innerHTML = `
       ${moodBarHtml}
+      ${hybridShelfHtml}
       ${shelvesHtml}
       ${watchlistShelfHtml}
     `;
@@ -208,6 +255,7 @@ class App {
     Shelves.setupListeners();
     this.bindCardClicks(shelvesViewport);
     this.setupMoodPillListeners();
+
   }
 
   setupMoodPillListeners() {

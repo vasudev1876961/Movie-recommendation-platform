@@ -1,17 +1,18 @@
-# MovieRec — Movie Recommendation Platform (Phase 1)
+# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 3)
 
-MovieRec is a stunning, production-quality movie recommendation web application built with a modern glassmorphic UI, an ES6 modular architecture, and hybrid data fetching capabilities. This project implements **Phase 1** of a multi-phase AI roadmap.
+MovieRec is a production-grade movie discovery and recommendation platform built with a high-end glassmorphic UI, an enterprise FastAPI backend, and a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering + Bayesian Quality Priors).
 
 ---
 
-## 🚀 Key Features
+## 🚀 Completed Milestones
 
-*   **Premium Glassmorphic UI**: High-end styling using CSS3 variables, deep indigo themes, backdrop-filter blurs, and smooth micro-animations.
-*   **Recommendation Wizard**: Interactive step-by-step preference questionnaire scoring movies based on Genre (40%), Mood (25%), Rating (15%), Era (10%), and Runtime (10%).
-*   **Hybrid Data Layer**: Seamlessly operates out-of-the-box using a high-fidelity curated **100-movie local dataset** (`data/movies.js`). Instantly switches to **live TMDB API integration** when configured with an API key.
-*   **AI-Ready Abstractions**: Fully decoupled providers for Search, Storage, and Recommendations, allowing later integration of FastAPI backends, vector search embeddings, and neural model scrapers without refactoring frontend components.
-*   **Persistent Watchlist & Search History**: Saved locally in the client browser using `localStorage`.
-*   **Cursor Spotlight Interaction**: A dynamic cursor glow spotlight following mouse movements (can be toggled in settings).
+*   ✅ **Phase 1: Glassmorphism Client & Dynamic Discovery**: Vanilla ES6 modular frontend, 100-movie curated offline database, live TMDB API fallback, responsive carousels, and multi-factor recommendation wizard.
+*   ✅ **Phase 2: FastAPI Backend & Persistence**: Enterprise FastAPI backend with SQLite catalog (`movies.db`), JWT authentication with passlib bcrypt hashing, persistent watchlists, and user star ratings (`/api/movies/{id}/rate`).
+*   ✅ **Phase 3: Hybrid Recommendation Engine (Machine Learning)**:
+    *   **TF-IDF Content-Based Filtering**: Scikit-Learn `TfidfVectorizer` (sublinear TF scaling, n-grams, entity tokenization for directors/actors/genres) and Pairwise Cosine Similarity over metadata soups.
+    *   **SVD Collaborative Filtering**: Singular Value Decomposition (`scipy.sparse.linalg.svds`) and Item-Item Pearson similarity matrix over user interaction history.
+    *   **Dynamic Adaptive Combiner**: Automatically shifts weights between content matching (new users) and collaborative latent factors (established users) with Bayesian quality priors and explainable AI reasoning strings.
+    *   **Interactive UI Integration**: Real-time "Recommended For You (Hybrid AI)" dashboard shelf, interactive 5-star ratings with instant re-ranking, and TF-IDF similar titles in movie modals.
 
 ---
 
@@ -20,75 +21,73 @@ MovieRec is a stunning, production-quality movie recommendation web application 
 ```
 movie-recom/
 │
-├── index.html               # Main single-page HTML layout
+├── index.html                   # Main single-page application layout
 │
 ├── css/
-│   ├── variables.css        # Design tokens, color system, and glass parameters
-│   ├── animations.css       # Custom keyframe loading effects and hovers
-│   └── styles.css           # Global resets, element layouts, and responsive grids
+│   ├── variables.css            # Glassmorphism tokens & color palettes
+│   ├── animations.css           # Micro-interactions & shimmer loaders
+│   └── styles.css               # Responsive layout grids & AI badges
 │
 ├── js/
-│   ├── app.js               # Main bootstrapper coordinating routing and triggers
-│   ├── router.js            # Hash-based routing controller
-│   ├── ui.js                # Spotlight cursor, toasts, and skeleton managers
-│   ├── search.js            # Autocomplete and AI search mock hook
-│   ├── filters.js           # Multi-criteria filtration utility
-│   ├── watchlist.js         # Dedicated Watchlist page controller
-│   ├── recommendation.js    # Multi-factor scoring engine
-│   └── storage.js           # LocalStorage wrapper
+│   ├── app.js                   # Client bootstrapper & Hybrid shelf controller
+│   ├── router.js                # Hash-based routing controller
+│   ├── modal.js                 # Movie modal with interactive 5-star rating & TF-IDF similar titles
+│   ├── ui.js                    # Spotlight cursor, toasts, and skeleton managers
+│   └── storage.js               # LocalStorage & JWT token manager
 │
-├── api/
-│   └── tmdb.js              # TMDB provider mapping responses to local types
+├── backend/
+│   ├── app/
+│   │   ├── main.py              # FastAPI application & startup ML model trainer
+│   │   ├── api/
+│   │   │   ├── recommendations.py # Phase 3 Hybrid, Content & Collaborative endpoints
+│   │   │   ├── movies.py        # Catalog search & pagination
+│   │   │   ├── auth.py          # JWT authentication (Signup, Login, Me)
+│   │   │   ├── ratings.py       # Star rating submission & aggregation
+│   │   │   └── watchlist.py     # Persistent user watchlists
+│   │   ├── services/
+│   │   │   ├── tfidf_recommender.py # Scikit-Learn TF-IDF Content Engine
+│   │   │   ├── collaborative_recommender.py # SVD Matrix Factorization & CF
+│   │   │   └── hybrid_recommender.py # Adaptive Dynamic Combiner
+│   │   ├── models/              # SQLAlchemy database models
+│   │   └── database/
+│   │       ├── database.py      # SQLite database engine & session maker
+│   │       └── seed_interactions.py # Interaction matrix seeder for CF archetypes
+│   └── requirements.txt         # Backend Python dependencies
 │
-├── data/
-│   └── movies.js            # Curated 100-movie local database
-│
-└── components/
-    ├── hero.js              # Featured Movie Banner
-    ├── movieCard.js         # Interactive Movie Card with hover overlays
-    ├── shelves.js           # Horizontal scrolling category containers
-    └── wizard.js            # recommendation questionnaire interface
+└── scripts/
+    ├── test_phase3.py           # Phase 3 automated test suite
+    └── import_movies.py         # TMDB / offline catalog seeder
 ```
 
 ---
 
 ## 🛠️ Getting Started
 
-### Prerequisites
-To run this application locally, you only need a modern web browser.
+### 1. Start the FastAPI Machine Learning Backend
+```bash
+# Activate virtual environment and start backend
+.\venv\Scripts\uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+The FastAPI backend will automatically initialize SQLite tables, load the movie catalog, and train the **TF-IDF & Collaborative Filtering** models in memory.
 
-### Running Locally
-1. Clone or download this project workspace:
-   `c:\Users\vasud\OneDrive\Desktop\movie recom`
-2. Since the project uses standard JavaScript ES6 Modules (`type="module"`), you must serve the files through a local web server to avoid CORS blockages from browser security controls.
-3. Open terminal/PowerShell in the folder and run:
-   ```bash
-   # If you have Node.js / NPM installed:
-   npx -y serve ./
-   
-   # Or using Python:
-   python -m http.server 8000
-   ```
-4. Access the application at the URL displayed in the terminal (e.g., `http://localhost:3000` or `http://localhost:8000`).
+### 2. Run the Frontend Client
+```bash
+# Serve frontend via Python HTTP server
+python -m http.server 3000
 
----
-
-## ⚙️ TMDB API Setup
-
-By default, the platform runs using the 100 curated movies in `data/movies.js`. To unlock live search and real-time movie categories:
-1. Obtain an API Key from [The Movie Database (TMDb)](https://www.themoviedb.org/).
-2. In the MovieRec application, click the **Settings (Gear icon)** in the top right.
-3. Paste your API Key in the **TMDB API Key** text field.
-4. The dashboard will automatically reload and fetch live trending films, video trailers, and real-time detailed cast credits.
+# Or using Node serve:
+npx -y serve ./
+```
+Open `http://localhost:3000` in your web browser.
 
 ---
 
 ## 🤖 Future AI Roadmap
 
-*   **Phase 1 (Current)**: Vanilla ES6 client, local dataset + TMDB failbacks, glassmorphism UI, rule-based recommendation.
-*   **Phase 2**: FastAPI backend integration, MongoDB integration, authentication, persistent user profiles.
-*   **Phase 3**: Hybrid Recommendation Engine (Collaborative Filtering + Content-Based TF-IDF).
-*   **Phase 4**: Semantic search using sentence-transformers vector embeddings.
-*   **Phase 5**: GraphRAG with Neo4j to query connections among genres, directors, and actors.
-*   **Phase 6**: Autonomous multi-agent network (Preference agent, Recommendation agent, Critic agent).
-*   **Phase 7**: Conversational AI chatbot and streaming service providers resolver.
+*   ✅ **Phase 1 (Complete)**: Vanilla ES6 client, local dataset + TMDB fallbacks, glassmorphism UI, rule-based recommendation.
+*   ✅ **Phase 2 (Complete)**: FastAPI backend integration, SQLite/MongoDB persistence, authentication, persistent user profiles.
+*   ✅ **Phase 3 (Complete)**: Hybrid Recommendation Engine (Collaborative Filtering + Content-Based TF-IDF + Adaptive Combiner).
+*   ⬜ **Phase 4**: Semantic search using sentence-transformers vector embeddings.
+*   ⬜ **Phase 5**: GraphRAG with Neo4j to query connections among genres, directors, and actors.
+*   ⬜ **Phase 6**: Autonomous multi-agent network (Preference agent, Recommendation agent, Critic agent).
+*   ⬜ **Phase 7**: Conversational AI chatbot and streaming service providers resolver.

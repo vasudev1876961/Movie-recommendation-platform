@@ -310,9 +310,23 @@ def get_wizard_recommendations(prefs: dict, db: Session = Depends(get_db)):
 
 @router.get("/movies/{movie_id}/recommendations", response_model=List[MovieListItem])
 def get_movie_recommendations(movie_id: int, limit: int = Query(10, ge=1, le=20), db: Session = Depends(get_db)):
+    from backend.app.services.tfidf_recommender import tfidf_engine
+    if not tfidf_engine.is_trained:
+        tfidf_engine.fit(db)
+
+    # Find internal movie id
     source = db.query(Movie).filter(or_(Movie.id == movie_id, Movie.tmdb_id == movie_id)).first()
     if not source:
         return []
+
+    sim_tuples = tfidf_engine.get_similar_movies(source.id, top_n=limit)
+    if sim_tuples:
+        cand_ids = [m_id for m_id, _, _ in sim_tuples]
+        cand_movies = db.query(Movie).filter(Movie.id.in_(cand_ids)).all()
+        cand_map = {m.id: m for m in cand_movies}
+        return [format_movie_list_item(cand_map[m_id]) for m_id, _, _ in sim_tuples if m_id in cand_map]
+
+    # Fallback to genre overlap
     genre_ids = [g.id for g in source.genres]
     similar = db.query(Movie).filter(
         Movie.id != source.id,

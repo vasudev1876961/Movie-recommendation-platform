@@ -1,4 +1,5 @@
 # backend/app/models/movie.py
+# pyrefly: ignore [missing-import]
 from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from backend.app.database.database import Base

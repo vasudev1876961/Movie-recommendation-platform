@@ -55,12 +55,21 @@ export class MovieModal {
       return;
     }
 
-    // Fetch similar recommendations
+    // Fetch similar recommendations via Phase 3 TF-IDF Engine
     let similar = [];
     try {
-      similar = await this.dataProvider.getRecommendations(movie.id);
+      const res = await fetch(`http://localhost:8000/api/recommendations/content/${movie.id}?limit=6`);
+      if (res.ok) {
+        similar = await res.json();
+      } else {
+        similar = await this.dataProvider.getRecommendations(movie.id);
+      }
     } catch (e) {
-      similar = [];
+      try {
+        similar = await this.dataProvider.getRecommendations(movie.id);
+      } catch (err) {
+        similar = [];
+      }
     }
 
     // Fetch user rating if authenticated
@@ -117,11 +126,15 @@ export class MovieModal {
       ? movie.directors.map(d => d.name).join(', ')
       : (movie.director || 'Unknown Director');
 
-    // Similar movies cards
-    const similarHtml = similar && similar.length > 0 ? similar.slice(0, 6).map(m => {
-      const p = m.poster ? (m.poster.startsWith('http') ? m.poster : `https://image.tmdb.org/t/p/w200${m.poster}`) : posterUrl;
+    // Similar movies cards with TF-IDF Match scores
+    const similarHtml = similar && similar.length > 0 ? similar.slice(0, 6).map(item => {
+      const m = item.movie || item;
+      const matchScore = item.match_score ? Math.round(item.match_score) : null;
+      const reasoning = item.reasoning || '';
+      const p = (m.poster_path || m.poster) ? ((m.poster_path || m.poster).startsWith('http') ? (m.poster_path || m.poster) : `https://image.tmdb.org/t/p/w200${m.poster_path || m.poster}`) : posterUrl;
       return `
-        <div class="modal-similar-card" data-id="${m.id}">
+        <div class="modal-similar-card" data-id="${m.id}" title="${reasoning ? `${matchScore}% Match: ${reasoning}` : m.title}">
+          ${matchScore ? `<div class="modal-sim-badge"><i class="fas fa-bolt"></i> ${matchScore}%</div>` : ''}
           <img src="${p}" alt="${m.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';">
           <div class="modal-similar-info">
             <span class="modal-similar-title">${m.title}</span>
@@ -130,6 +143,7 @@ export class MovieModal {
         </div>
       `;
     }).join('') : '<p style="color: var(--text-muted); font-size: 13px;">No direct recommendations available.</p>';
+
 
     // Star rating markup
     const currentStars = userRating ? Math.round(userRating / 2) : 0;

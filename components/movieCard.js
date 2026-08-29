@@ -2,7 +2,7 @@
 import { Storage } from '../js/storage.js';
 
 export const MovieCard = {
-  render(movie) {
+  render(movie, matchScore = null, reasoning = null) {
     const isBookmarked = Storage.isInWatchlist(movie.id);
     const rawPoster = movie.poster_path || movie.poster || '';
     
@@ -24,8 +24,18 @@ export const MovieCard = {
       : '';
     const displayYear = movie.year || (movie.release_date ? movie.release_date.split('-')[0] : '');
 
+    const effectiveScore = matchScore || movie.match_score || null;
+    const effectiveReason = reasoning || movie.reasoning || null;
+
+    const matchBadgeHtml = effectiveScore ? `
+      <div class="card-match-badge anim-scale-in" title="${effectiveReason || 'Neural Match'}">
+        <i class="fas fa-bolt"></i> ${Math.round(effectiveScore)}% Match
+      </div>
+    ` : '';
+
     return `
-      <div class="movie-card anim-slide-up" data-id="${movie.id}">
+      <div class="movie-card anim-slide-up" data-id="${movie.id}" ${effectiveReason ? `title="${effectiveReason}"` : ''}>
+        ${matchBadgeHtml}
         <div class="movie-card-rating">
           <i class="fas fa-star"></i>
           <span>${movie.rating ? Number(movie.rating).toFixed(1) : 'N/A'}</span>
@@ -36,6 +46,7 @@ export const MovieCard = {
         <img src="${posterUrl}" alt="${movie.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';">
         <div class="movie-card-info">
           <h4 class="movie-card-title">${movie.title}</h4>
+          ${effectiveReason ? `<div class="movie-card-reason"><i class="fas fa-sparkles"></i> ${effectiveReason}</div>` : ''}
           <p class="movie-card-genres">${genresText}</p>
           <div class="movie-card-meta">
             <span>${displayYear}</span>
@@ -46,3 +57,4 @@ export const MovieCard = {
     `;
   }
 };
+
