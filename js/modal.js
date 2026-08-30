@@ -72,6 +72,17 @@ export class MovieModal {
       }
     }
 
+    // Fetch Phase 4 Neural Conceptual Twins
+    let conceptualTwins = [];
+    try {
+      const twinRes = await fetch(`http://localhost:8000/api/movies/${movie.id}/semantic-similar?limit=6`);
+      if (twinRes.ok) {
+        conceptualTwins = await twinRes.json();
+      }
+    } catch (e) {
+      conceptualTwins = [];
+    }
+
     // Fetch user rating if authenticated
     let userRating = null;
     try {
@@ -84,7 +95,7 @@ export class MovieModal {
       }
     } catch (e) {}
 
-    this.render(movie, similar, userRating);
+    this.render(movie, similar, userRating, conceptualTwins);
   }
 
   close() {
@@ -93,7 +104,7 @@ export class MovieModal {
     document.body.style.overflow = '';
   }
 
-  render(movie, similar = [], userRating = null) {
+  render(movie, similar = [], userRating = null, conceptualTwins = []) {
     const isBookmarked = Storage.isInWatchlist(movie.id);
     const rawPoster = movie.poster_path || movie.poster || '';
     let posterUrl = 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';
@@ -126,6 +137,24 @@ export class MovieModal {
       ? movie.directors.map(d => d.name).join(', ')
       : (movie.director || 'Unknown Director');
 
+    // Phase 4 Neural Conceptual Twins cards
+    const twinsHtml = conceptualTwins && conceptualTwins.length > 0 ? conceptualTwins.slice(0, 6).map(item => {
+      const m = item.movie || item;
+      const matchScore = item.match_score ? Math.round(item.match_score) : (item.cosine_similarity ? Math.round(item.cosine_similarity * 100) : null);
+      const reasoning = item.reasoning || '';
+      const p = (m.poster_path || m.poster) ? ((m.poster_path || m.poster).startsWith('http') ? (m.poster_path || m.poster) : `https://image.tmdb.org/t/p/w200${m.poster_path || m.poster}`) : posterUrl;
+      return `
+        <div class="modal-similar-card" data-id="${m.id}" title="${reasoning ? `${matchScore}% Resonance: ${reasoning}` : m.title}">
+          ${matchScore ? `<div class="modal-sim-badge" style="background: linear-gradient(135deg, #a855f7, #6366f1);"><i class="fas fa-brain"></i> ${matchScore}%</div>` : ''}
+          <img src="${p}" alt="${m.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';">
+          <div class="modal-similar-info">
+            <span class="modal-similar-title">${m.title}</span>
+            <span class="modal-similar-rating" style="font-size: 10px; color: #d8b4fe;"><i class="fas fa-sparkles"></i> Twin</span>
+          </div>
+        </div>
+      `;
+    }).join('') : '';
+
     // Similar movies cards with TF-IDF Match scores
     const similarHtml = similar && similar.length > 0 ? similar.slice(0, 6).map(item => {
       const m = item.movie || item;
@@ -143,7 +172,6 @@ export class MovieModal {
         </div>
       `;
     }).join('') : '<p style="color: var(--text-muted); font-size: 13px;">No direct recommendations available.</p>';
-
 
     // Star rating markup
     const currentStars = userRating ? Math.round(userRating / 2) : 0;
@@ -219,9 +247,22 @@ export class MovieModal {
               ${videoIframe}
             </div>
 
+            ${twinsHtml ? `
+            <!-- Phase 4 Neural Conceptual Twins Shelf -->
+            <div class="modal-similar-section" style="margin-bottom: 20px;">
+              <h3 class="modal-similar-header">
+                <i class="fas fa-brain" style="color: #a855f7;"></i> Neural Conceptual Twins
+                <span style="font-size: 11px; margin-left: 8px; padding: 2px 8px; border-radius: 10px; background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.4); color: #d8b4fe;">Vector Search</span>
+              </h3>
+              <div class="modal-similar-row">
+                ${twinsHtml}
+              </div>
+            </div>
+            ` : ''}
+
             <!-- More Like This Shelf -->
             <div class="modal-similar-section">
-              <h3 class="modal-similar-header"><i class="fas fa-magic"></i> More Like This</h3>
+              <h3 class="modal-similar-header"><i class="fas fa-magic"></i> More Like This (TF-IDF Content)</h3>
               <div class="modal-similar-row">
                 ${similarHtml}
               </div>

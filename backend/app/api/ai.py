@@ -5,9 +5,10 @@ from pydantic import BaseModel
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from backend.app.database.database import get_db
-from backend.app.models.movie import Movie, Genre, Director, CastMember
+from backend.app.models.movie import Movie
 from backend.app.schemas.movie import MovieListItem
 from backend.app.api.movies import format_movie_list_item
+from backend.app.services.semantic_search import semantic_search_engine
 
 router = APIRouter(prefix="/api/ai", tags=["AI Recommendation Assistant"])
 
@@ -65,19 +66,47 @@ MOOD_KEYWORDS = {
 
 @router.post("/recommend", response_model=AIRecommendResponse)
 def get_ai_recommendations(data: AIRecommendRequest, db: Session = Depends(get_db)):
-    query = data.query.strip().lower()
+    query = data.query.strip()
     if not query:
         return AIRecommendResponse(query="", summary="Please provide a movie prompt.", recommendations=[])
 
-    words = set(re.findall(r'\b[a-z0-9\-]+\b', query))
-    
-    # 1. Detect target genres from query
-    target_genres = set()
-    for word in words:
-        if word in GENRE_SYNONYMS:
-            target_genres.add(GENRE_SYNONYMS[word])
+    # 1. Try Phase 4 Deep Neural Vector Search first
+    if not semantic_search_engine.is_trained:
+        semantic_search_engine.fit(db)
 
-    # 2. Score all movies in the catalog
+    neural_results = semantic_search_engine.search(
+        query=query,
+        top_k=data.limit or 6,
+        min_score=0.15
+    )
+
+    if neural_results:
+        movie_ids = [r["movie_id"] for r in neural_results]
+        movies = db.query(Movie).filter(Movie.id.in_(movie_ids)).all()
+        movie_map = {m.id: m for m in movies}
+
+        recommendations = []
+        for r in neural_results:
+            m = movie_map.get(r["movie_id"])
+            if m:
+                recommendations.append(AIRecommendedMovie(
+                    movie=format_movie_list_item(m),
+                    match_score=r["match_score"],
+                    reasoning=r["reasoning"]
+                ))
+
+        summary = f"Identified {len(recommendations)} matches using Neural Transformer embeddings (Sentence-Transformers) for \"{query}\"."
+        return AIRecommendResponse(
+            query=query,
+            summary=summary,
+            recommendations=recommendations
+        )
+
+    # 2. Heuristic fallback if neural search returned 0 items
+    q_lower = query.lower()
+    words = set(re.findall(r'\b[a-z0-9\-]+\b', q_lower))
+    target_genres = set(GENRE_SYNONYMS[w] for w in words if w in GENRE_SYNONYMS)
+
     all_movies = db.query(Movie).all()
     scored = []
 
@@ -92,7 +121,6 @@ def get_ai_recommendations(data: AIRecommendRequest, db: Session = Depends(get_d
         m_directors = [d.name.lower() for d in movie.directors]
         m_cast = [assoc.cast_member.name.lower() for assoc in movie.cast_associations]
 
-        # Exact title or keyword match
         for word in words:
             if len(word) > 2:
                 if word in m_title:
@@ -110,39 +138,31 @@ def get_ai_recommendations(data: AIRecommendRequest, db: Session = Depends(get_d
                     score += 15.0
                     reasons.append("Features requested cast member")
 
-        # Genre overlap
         genre_matches = [g for g in m_genres if g in target_genres]
         if genre_matches:
             score += len(genre_matches) * 18.0
             reasons.append(f"Matches genre: {', '.join(genre_matches)}")
 
-        # Mood & Theme alignment
         for mood, terms in MOOD_KEYWORDS.items():
-            if mood in query or any(t in query for t in terms):
+            if mood in q_lower or any(t in q_lower for t in terms):
                 matched_terms = [t for t in terms if t in m_overview or t in m_keywords]
                 if matched_terms:
                     score += len(matched_terms) * 10.0
                     reasons.append(f"Delivers {mood} vibes ({', '.join(matched_terms[:2])})")
 
-        # Quality multiplier
         quality_score = (movie.rating * 2.0) + (min(movie.popularity, 100.0) * 0.1)
         total_score = round(score + quality_score, 1)
 
-        # Fallback reasoning
         if not reasons:
             top_genre = m_genres[0] if m_genres else "Cinema"
             reasons.append(f"Critically acclaimed {top_genre} with a {movie.rating} rating")
 
         unique_reasons = list(dict.fromkeys(reasons))
-        explanation = " • ".join(unique_reasons[:3])
+        scored.append((total_score, movie, " • ".join(unique_reasons[:3])))
 
-        scored.append((total_score, movie, explanation))
-
-    # Sort descending
     scored.sort(key=lambda x: x[0], reverse=True)
     top_picks = scored[:data.limit]
 
-    # Calculate normalized match percentage
     max_score = top_picks[0][0] if top_picks else 1.0
     recommendations = []
     for s, movie, exp in top_picks:
@@ -153,7 +173,7 @@ def get_ai_recommendations(data: AIRecommendRequest, db: Session = Depends(get_d
             reasoning=exp
         ))
 
-    summary = f"Found {len(recommendations)} curated titles matching your request for '{data.query}' based on genre harmony, thematic mood, and critical reception."
+    summary = f"Found {len(recommendations)} curated titles matching your request for '{data.query}' based on thematic mood and critical reception."
 
     return AIRecommendResponse(
         query=data.query,

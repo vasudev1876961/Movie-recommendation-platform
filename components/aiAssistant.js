@@ -9,26 +9,29 @@ export const AIAssistant = {
     return `
       <div class="ai-assistant-container anim-fade-in">
         <div class="ai-header glass-panel">
-          <div class="ai-header-badge"><i class="fas fa-robot"></i> Powered by Neural AI Engine</div>
+          <div class="ai-header-badge"><i class="fas fa-brain"></i> Powered by Neural Vector Search (Sentence-Transformers)</div>
           <h1 class="ai-title">What kind of movie are you looking for?</h1>
-          <p class="ai-subtitle">Describe any mood, theme, complex scenario, or reference movies in natural language.</p>
+          <p class="ai-subtitle">Describe any complex mood, theme, plot twist, or scenario in natural language.</p>
           
           <!-- Prompt Chips -->
           <div class="ai-chips-container">
-            <button class="ai-chip" data-query="Mind-bending sci-fi movies like Interstellar and Inception">
-              <i class="fas fa-brain"></i> Mind-bending Sci-Fi
+            <button class="ai-chip" data-query="Mind-bending sci-fi movies where characters enter dreams to steal secrets">
+              <i class="fas fa-brain"></i> Dream Theft Sci-Fi
             </button>
-            <button class="ai-chip" data-query="Dark and gritty psychological crime thrillers with serial killers">
+            <button class="ai-chip" data-query="An astronaut travels through a wormhole black hole to save his daughter">
+              <i class="fas fa-space-shuttle"></i> Space Time Paradox
+            </button>
+            <button class="ai-chip" data-query="Dark and gritty psychological crime thrillers with serial killers in rainy city">
               <i class="fas fa-mask"></i> Dark Psychological Thrillers
             </button>
-            <button class="ai-chip" data-query="Epic superhero blockbusters with massive battles and emotional stakes">
-              <i class="fas fa-shield-alt"></i> Epic Superhero Battles
+            <button class="ai-chip" data-query="Social inequality dark comedy where a poor family infiltrates a wealthy home">
+              <i class="fas fa-home"></i> Class Satire & Heist
             </button>
-            <button class="ai-chip" data-query="Heartwarming animated adventures with great emotional storytelling">
-              <i class="fas fa-smile"></i> Heartwarming Animation
+            <button class="ai-chip" data-query="Clever detective whodunit murder mystery inside a wealthy family mansion">
+              <i class="fas fa-search"></i> Mansion Whodunit Mystery
             </button>
-            <button class="ai-chip" data-query="Masterpiece mafia and crime dramas directed by legendary filmmakers">
-              <i class="fas fa-crown"></i> Mafia & Crime Classics
+            <button class="ai-chip" data-query="High octane post-apocalyptic desert convoy car chase with war rigs">
+              <i class="fas fa-truck-monster"></i> Desert Survival Chase
             </button>
           </div>
 

@@ -36,6 +36,8 @@ class MovieListItem(BaseModel):
     popularity: Optional[float] = 0.0
     trailer: Optional[str] = ""
     genres: List[str] = []
+    match_score: Optional[float] = None
+    reasoning: Optional[str] = None
 
     class Config:
         from_attributes = True

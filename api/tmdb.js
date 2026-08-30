@@ -117,6 +117,19 @@ export class DataProvider {
     );
   }
 
+  async semanticSearch(query, limit = 12) {
+    const res = await this.request('/search/semantic', 'POST', { query, limit });
+    if (res && res.results) {
+      return res.results;
+    }
+    return null;
+  }
+
+  async getSemanticSimilar(movieId, limit = 6) {
+    const res = await this.request(`/movies/${movieId}/semantic-similar?limit=${limit}`);
+    return res;
+  }
+
   async getMovieDetails(movieId) {
     const res = await this.request(`/movies/${movieId}`);
     if (res) return res;

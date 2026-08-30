@@ -386,13 +386,19 @@ class App {
 
     container.innerHTML = results.map(m => {
       const cardHTML = MovieCard.render(m);
-      if (m.semanticMatchScore) {
+      if (m.semanticMatchScore || m.match_score) {
+        const score = m.match_score ? Math.round(m.match_score) : Math.round(m.semanticMatchScore * 100);
         return `
-          <div>
-            <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 11px; text-align: center; font-weight: 700; color: white; margin-bottom: 8px;">
-              Relevance: ${Math.round(m.semanticMatchScore * 100)}%
+          <div class="anim-slide-up" style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(99, 102, 241, 0.25)); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 11px; text-align: center; font-weight: 700; color: #e2e8f0; display: flex; align-items: center; justify-content: center; gap: 5px;">
+              <i class="fas fa-brain" style="color: #a855f7;"></i> Neural Resonance: ${score}%
             </div>
             ${cardHTML}
+            ${m.reasoning ? `
+              <div style="font-size: 11px; color: var(--text-muted); background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 4px 8px; margin-top: -4px;">
+                <i class="fas fa-sparkles" style="color: var(--accent-color); font-size: 9px;"></i> ${m.reasoning}
+              </div>
+            ` : ''}
           </div>
         `;
       }

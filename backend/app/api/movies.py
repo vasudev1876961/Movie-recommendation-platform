@@ -17,7 +17,11 @@ from backend.app.schemas.movie import (
 
 router = APIRouter(prefix="/api", tags=["Movies & Catalog"])
 
-def format_movie_list_item(movie: Movie) -> MovieListItem:
+def format_movie_list_item(
+    movie: Movie,
+    match_score: Optional[float] = None,
+    reasoning: Optional[str] = None
+) -> MovieListItem:
     return MovieListItem(
         id=movie.id,
         tmdb_id=movie.tmdb_id,
@@ -28,7 +32,9 @@ def format_movie_list_item(movie: Movie) -> MovieListItem:
         backdrop_path=movie.backdrop_path or "",
         popularity=movie.popularity or 0.0,
         trailer=getattr(movie, 'trailer', '') or "",
-        genres=[g.name for g in movie.genres]
+        genres=[g.name for g in movie.genres],
+        match_score=match_score,
+        reasoning=reasoning
     )
 
 def format_movie_details(movie: Movie) -> MovieDetails:
@@ -272,10 +278,32 @@ def get_deduplicated_homepage_shelves(db: Session = Depends(get_db)):
 def search_movies_endpoint(
     q: str = Query("", description="Search term"),
     limit: int = Query(20, ge=1, le=50),
+    semantic: bool = Query(False, description="Enable neural semantic vector search"),
     db: Session = Depends(get_db)
 ):
     if not q.strip():
         return []
+
+    if semantic:
+        from backend.app.services.semantic_search import semantic_search_engine
+        if not semantic_search_engine.is_trained:
+            semantic_search_engine.fit(db)
+        raw_results = semantic_search_engine.search(q.strip(), top_k=limit)
+        if raw_results:
+            movie_ids = [r["movie_id"] for r in raw_results]
+            movies = db.query(Movie).filter(Movie.id.in_(movie_ids)).all()
+            movie_map = {m.id: m for m in movies}
+            result_items = []
+            for r in raw_results:
+                m = movie_map.get(r["movie_id"])
+                if m:
+                    result_items.append(format_movie_list_item(
+                        m,
+                        match_score=r["match_score"],
+                        reasoning=r["reasoning"]
+                    ))
+            return result_items
+
     term = f"%{q.strip()}%"
     movies = db.query(Movie).filter(
         or_(

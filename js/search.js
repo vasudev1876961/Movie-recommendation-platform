@@ -1,14 +1,14 @@
 /* js/search.js */
 import { Storage } from './storage.js';
 
-// Pre-defined matches for semantic search simulation
+// Fallback matches for offline semantic search simulation
 const MOCK_SEMANTIC_MATCHES = [
   {
-    phrases: ["dream inside dream", "dreams inside dreams", "dream theft", "spinning top"],
+    phrases: ["dream inside dream", "dreams inside dreams", "dream theft", "spinning top", "subconscious"],
     movieId: 1 // Inception
   },
   {
-    phrases: ["space travel time dilation", "wormhole black hole", "father and daughter in space", "stay cooper"],
+    phrases: ["space travel time dilation", "wormhole black hole", "father and daughter in space", "stay cooper", "tesseract"],
     movieId: 3 // Interstellar
   },
   {
@@ -16,7 +16,7 @@ const MOCK_SEMANTIC_MATCHES = [
     movieId: 4 // Parasite
   },
   {
-    phrases: ["we live in a simulation", "red pill blue pill", "kung fu hacker leather coat"],
+    phrases: ["we live in a simulation", "red pill blue pill", "kung fu hacker leather coat", "neo matrix"],
     movieId: 5 // The Matrix
   },
   {
@@ -24,7 +24,7 @@ const MOCK_SEMANTIC_MATCHES = [
     movieId: 10 // La La Land
   },
   {
-    phrases: ["detective whodunit mansion", "donut hole inside a donut hole", "poison cure inheritance"],
+    phrases: ["detective whodunit mansion", "donut hole inside a donut hole", "poison cure inheritance", "benoit blanc"],
     movieId: 11 // Knives Out
   },
   {
@@ -59,8 +59,16 @@ export class SearchProvider {
     if (this.semanticSearchMode) {
       if (this.dataProvider.isBackendOnline) {
         try {
-          const results = await this.dataProvider.searchMovies(query, true);
-          if (results) return results;
+          const results = await this.dataProvider.semanticSearch(query, 16);
+          if (results && results.length > 0) {
+            return results.map(item => {
+              const movie = item.movie;
+              movie.semanticMatchScore = item.cosine_similarity;
+              movie.match_score = item.match_score;
+              movie.reasoning = item.reasoning;
+              return movie;
+            });
+          }
         } catch (e) {
           console.warn("[Search] Backend semantic search query failed. Falling back to local simulation:", e);
         }
@@ -90,8 +98,12 @@ export class SearchProvider {
       // Fetch details of matching movie
       const movie = await this.dataProvider.getMovieDetails(matchedMovieId);
       if (movie) {
-        // Tag it with semantic score
-        return [{ ...movie, semanticMatchScore: 0.96 }];
+        return [{
+          ...movie,
+          semanticMatchScore: 0.94,
+          match_score: 96.0,
+          reasoning: "Deep thematic & narrative harmony with your query concepts"
+        }];
       }
     }
 
@@ -112,7 +124,12 @@ export class SearchProvider {
     })
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score)
-    .map(item => ({ ...item.movie, semanticMatchScore: Math.min(0.5 + (item.score * 0.1), 0.88) }));
+    .map(item => ({
+      ...item.movie,
+      semanticMatchScore: Math.min(0.5 + (item.score * 0.1), 0.88),
+      match_score: Math.min(65.0 + (item.score * 7.0), 92.0),
+      reasoning: "Thematic alignment with queried keywords and genre concepts"
+    }));
 
     return results;
   }

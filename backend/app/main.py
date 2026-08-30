@@ -10,7 +10,9 @@ from backend.app.api.watchlist import router as watchlist_router
 from backend.app.api.ratings import router as ratings_router
 from backend.app.api.ai import router as ai_router
 from backend.app.api.recommendations import router as recommendations_router
+from backend.app.api.semantic import router as semantic_router
 from backend.app.services.hybrid_recommender import hybrid_engine
+from backend.app.services.semantic_search import semantic_search_engine
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -21,14 +23,18 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing SQLite database tables...")
     Base.metadata.create_all(bind=engine)
     
-    # Train and initialize Phase 3 Hybrid Machine Learning models
-    logger.info("Training and caching Phase 3 Machine Learning models (TF-IDF & Collaborative Filtering)...")
+    # Train and initialize Phase 3 & Phase 4 Machine Learning models
+    logger.info("Training and caching Machine Learning models (TF-IDF, SVD Collaborative & Sentence-Transformers Semantic)...")
     db = SessionLocal()
     try:
         stats = hybrid_engine.retrain_all(db)
         logger.info(f"Phase 3 ML Models initialized successfully: {stats}")
+        
+        # Initialize Phase 4 Semantic Vector Index
+        semantic_ok = semantic_search_engine.fit(db)
+        logger.info(f"Phase 4 Semantic Vector Engine initialized: {semantic_ok} ({len(semantic_search_engine.movie_ids)} vectors)")
     except Exception as e:
-        logger.error(f"Failed to initialize Phase 3 ML models on startup: {e}", exc_info=True)
+        logger.error(f"Failed to initialize ML models on startup: {e}", exc_info=True)
     finally:
         db.close()
 
@@ -38,8 +44,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movie AI Platform API",
-    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 3 Hybrid ML)",
-    version="3.0.0",
+    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 4 Semantic Vector Search)",
+    version="4.0.0",
     lifespan=lifespan
 )
 
@@ -59,13 +65,14 @@ app.include_router(watchlist_router)
 app.include_router(ratings_router)
 app.include_router(recommendations_router)
 app.include_router(ai_router)
+app.include_router(semantic_router)
 
 @app.get("/", tags=["Health"])
 def health_check():
     return {
         "status": "online",
         "service": "Movie AI Platform API",
-        "version": "3.0.0",
+        "version": "4.0.0",
         "docs_url": "/docs"
     }
 
