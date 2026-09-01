@@ -10,6 +10,7 @@ import { Shelves } from '../components/shelves.js';
 import { Wizard } from '../components/wizard.js';
 import { Explore } from '../components/explore.js';
 import { AIAssistant } from '../components/aiAssistant.js';
+import { GraphExplorer } from '../components/graphExplorer.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -49,7 +50,7 @@ class App {
       this.handleLogout(true);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 2.");
+    console.log("MovieRec Platform initialized successfully in Phase 5.");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -58,6 +59,7 @@ class App {
     const tabs = {
       '#/': document.getElementById('tab-home'),
       '#/explore': document.getElementById('tab-explore'),
+      '#/graph': document.getElementById('tab-graph'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -98,6 +100,16 @@ class App {
       if (exploreViewport) {
         exploreViewport.innerHTML = Explore.render();
         Explore.setupListeners();
+      }
+    });
+
+    // Knowledge Graph Route (Phase 5)
+    this.router.addRoute('#/graph', () => {
+      activateTab('#/graph');
+      switchView('view-graph');
+      const graphViewport = document.getElementById('graph-viewport');
+      if (graphViewport) {
+        GraphExplorer.init(graphViewport, this.openMovieDetails);
       }
     });
 

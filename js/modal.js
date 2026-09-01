@@ -83,6 +83,17 @@ export class MovieModal {
       conceptualTwins = [];
     }
 
+    // Fetch Phase 5 Knowledge Graph Connections
+    let graphConnections = [];
+    try {
+      const graphRes = await fetch(`http://localhost:8000/api/graph/recommend/${movie.id}?limit=6`);
+      if (graphRes.ok) {
+        graphConnections = await graphRes.json();
+      }
+    } catch (e) {
+      graphConnections = [];
+    }
+
     // Fetch user rating if authenticated
     let userRating = null;
     try {
@@ -95,7 +106,7 @@ export class MovieModal {
       }
     } catch (e) {}
 
-    this.render(movie, similar, userRating, conceptualTwins);
+    this.render(movie, similar, userRating, conceptualTwins, graphConnections);
   }
 
   close() {
@@ -104,7 +115,7 @@ export class MovieModal {
     document.body.style.overflow = '';
   }
 
-  render(movie, similar = [], userRating = null, conceptualTwins = []) {
+  render(movie, similar = [], userRating = null, conceptualTwins = [], graphConnections = []) {
     const isBookmarked = Storage.isInWatchlist(movie.id);
     const rawPoster = movie.poster_path || movie.poster || '';
     let posterUrl = 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';
@@ -136,6 +147,23 @@ export class MovieModal {
     const directorName = Array.isArray(movie.directors)
       ? movie.directors.map(d => d.name).join(', ')
       : (movie.director || 'Unknown Director');
+
+    // Phase 5 Knowledge Graph Connections cards
+    const graphHtml = graphConnections && graphConnections.length > 0 ? graphConnections.slice(0, 6).map(item => {
+      const m = item.movie || item;
+      const reasoning = item.reasoning || '';
+      const p = (m.poster_path || m.poster) ? ((m.poster_path || m.poster).startsWith('http') ? (m.poster_path || m.poster) : `https://image.tmdb.org/t/p/w200${m.poster_path || m.poster}`) : posterUrl;
+      return `
+        <div class="modal-similar-card" data-id="${m.id}" title="${reasoning}">
+          <div class="modal-sim-badge" style="background: linear-gradient(135deg, #10b981, #06b6d4);"><i class="fas fa-project-diagram"></i> Graph</div>
+          <img src="${p}" alt="${m.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';">
+          <div class="modal-similar-info">
+            <span class="modal-similar-title">${m.title}</span>
+            <span class="modal-similar-rating" style="font-size: 10px; color: #6ee7b7;"><i class="fas fa-link"></i> Linked</span>
+          </div>
+        </div>
+      `;
+    }).join('') : '';
 
     // Phase 4 Neural Conceptual Twins cards
     const twinsHtml = conceptualTwins && conceptualTwins.length > 0 ? conceptualTwins.slice(0, 6).map(item => {
@@ -238,6 +266,9 @@ export class MovieModal {
               <button class="btn-glow" id="modal-watchlist-btn">
                 <i class="fas ${watchlistBtnIcon}"></i> ${watchlistBtnText}
               </button>
+              <button class="btn-secondary" id="modal-graph-btn" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4);">
+                <i class="fas fa-project-diagram" style="color: #818cf8;"></i> Explore Graph
+              </button>
               <button class="btn-secondary" id="modal-share-btn">
                 <i class="fas fa-share-alt"></i> Share
               </button>
@@ -246,6 +277,19 @@ export class MovieModal {
             <div class="modal-video-wrapper">
               ${videoIframe}
             </div>
+
+            ${graphHtml ? `
+            <!-- Phase 5 Knowledge Graph Connections Shelf -->
+            <div class="modal-similar-section" style="margin-bottom: 20px;">
+              <h3 class="modal-similar-header">
+                <i class="fas fa-project-diagram" style="color: #34d399;"></i> Knowledge Graph Connections
+                <span style="font-size: 11px; margin-left: 8px; padding: 2px 8px; border-radius: 10px; background: rgba(52, 211, 153, 0.2); border: 1px solid rgba(52, 211, 153, 0.4); color: #6ee7b7;">Multi-Hop Relational</span>
+              </h3>
+              <div class="modal-similar-row">
+                ${graphHtml}
+              </div>
+            </div>
+            ` : ''}
 
             ${twinsHtml ? `
             <!-- Phase 4 Neural Conceptual Twins Shelf -->
@@ -274,6 +318,15 @@ export class MovieModal {
 
     // Bind Close
     this.backdrop.querySelector('#modal-close-trigger').addEventListener('click', () => this.close());
+
+    // Explore Graph trigger
+    const graphBtn = this.backdrop.querySelector('#modal-graph-btn');
+    if (graphBtn) {
+      graphBtn.addEventListener('click', () => {
+        this.close();
+        window.location.hash = '#/graph';
+      });
+    }
     
     // Watchlist trigger
     const watchlistBtn = this.backdrop.querySelector('#modal-watchlist-btn');
