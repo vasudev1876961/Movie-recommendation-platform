@@ -12,9 +12,11 @@ from backend.app.api.ai import router as ai_router
 from backend.app.api.recommendations import router as recommendations_router
 from backend.app.api.semantic import router as semantic_router
 from backend.app.api.graph import router as graph_router
+from backend.app.api.agents import router as agents_router
 from backend.app.services.hybrid_recommender import hybrid_engine
 from backend.app.services.semantic_search import semantic_search_engine
 from backend.app.services.graph_service import knowledge_graph_engine
+from backend.app.services.agents.agent_orchestrator import agent_orchestrator
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -25,8 +27,8 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing SQLite database tables...")
     Base.metadata.create_all(bind=engine)
     
-    # Train and initialize Phase 3, Phase 4 & Phase 5 ML / Vector / Graph models
-    logger.info("Initializing ML models, Semantic Vector index & Cinematic Knowledge Graph...")
+    # Train and initialize Phase 3, Phase 4, Phase 5 & Phase 6 ML / Vector / Graph / Agent models
+    logger.info("Initializing ML models, Semantic Vector index, Cinematic Knowledge Graph & Multi-Agent Network...")
     db = SessionLocal()
     try:
         # Phase 3 Hybrid ML Engine
@@ -41,6 +43,10 @@ async def lifespan(app: FastAPI):
         graph_ok = knowledge_graph_engine.build_graph(db)
         graph_stats = knowledge_graph_engine.get_graph_stats()
         logger.info(f"Phase 5 Knowledge Graph initialized: {graph_ok} ({graph_stats.get('total_nodes', 0)} nodes, {graph_stats.get('total_edges', 0)} edges)")
+
+        # Phase 6 Autonomous Multi-Agent Network
+        roster = agent_orchestrator.get_roster()
+        logger.info(f"Phase 6 Multi-Agent Network initialized: {len(roster)} agents active ({', '.join([a['name'] for a in roster])})")
     except Exception as e:
         logger.error(f"Failed to initialize models on startup: {e}", exc_info=True)
     finally:
@@ -52,8 +58,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movie AI Platform API",
-    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 5 Knowledge Graph & GraphRAG)",
-    version="5.0.0",
+    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 6 Multi-Agent Consensus Network)",
+    version="6.0.0",
     lifespan=lifespan
 )
 
@@ -75,13 +81,14 @@ app.include_router(recommendations_router)
 app.include_router(ai_router)
 app.include_router(semantic_router)
 app.include_router(graph_router)
+app.include_router(agents_router)
 
 @app.get("/", tags=["Health"])
 def health_check():
     return {
         "status": "online",
         "service": "Movie AI Platform API",
-        "version": "5.0.0",
+        "version": "6.0.0",
         "docs_url": "/docs"
     }
 
