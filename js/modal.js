@@ -266,6 +266,9 @@ export class MovieModal {
               <button class="btn-glow" id="modal-watchlist-btn">
                 <i class="fas ${watchlistBtnIcon}"></i> ${watchlistBtnText}
               </button>
+              <button class="btn-secondary" id="modal-debate-btn" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
+                <i class="fas fa-gavel"></i> Agent Debate
+              </button>
               <button class="btn-secondary" id="modal-graph-btn" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4);">
                 <i class="fas fa-project-diagram" style="color: #818cf8;"></i> Explore Graph
               </button>
@@ -273,6 +276,9 @@ export class MovieModal {
                 <i class="fas fa-share-alt"></i> Share
               </button>
             </div>
+
+            <!-- Phase 6 Quick Agent Debate Showdown Container -->
+            <div id="modal-debate-container" class="modal-debate-section" style="display: none; margin: 15px 0 25px 0;"></div>
 
             <div class="modal-video-wrapper">
               ${videoIframe}
@@ -325,6 +331,81 @@ export class MovieModal {
       graphBtn.addEventListener('click', () => {
         this.close();
         window.location.hash = '#/graph';
+      });
+    }
+
+    // Phase 6 Agent Debate Showdown trigger
+    const debateBtn = this.backdrop.querySelector('#modal-debate-btn');
+    const debateContainer = this.backdrop.querySelector('#modal-debate-container');
+    if (debateBtn && debateContainer) {
+      debateBtn.addEventListener('click', async () => {
+        if (debateContainer.style.display !== 'none') {
+          debateContainer.style.display = 'none';
+          debateBtn.classList.remove('active');
+          return;
+        }
+
+        debateContainer.style.display = 'block';
+        debateBtn.classList.add('active');
+        debateContainer.innerHTML = `
+          <div class="glass-panel anim-scale-in" style="padding: 16px; border-radius: var(--radius-md); border: 1px solid rgba(245, 158, 11, 0.3);">
+            <div class="ai-spinner" style="margin: 10px auto;"></div>
+            <p style="text-align:center; font-size:12px; color: var(--text-muted);">Summoning Scout & Film Critic for real-time showdown...</p>
+          </div>
+        `;
+
+        try {
+          const res = await fetch('http://localhost:8000/api/agents/quick-debate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ movie_id: movie.id, debate_rigor: 'Balanced & Analytical' })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            const rubric = data.critic_rubric;
+            debateContainer.innerHTML = `
+              <div class="glass-panel anim-scale-in" style="padding: 18px; border-radius: var(--radius-md); border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(15, 23, 42, 0.75);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px;">
+                  <span style="font-weight:700; font-size:13px; color:#fbbf24;"><i class="fas fa-gavel"></i> Multi-Agent Debate Duel</span>
+                  <span style="font-size:12px; font-weight:700; color:#10b981; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:2px 8px; border-radius:10px;">
+                    ${Math.round(data.consensus_score)}% Consensus (${data.agreement_level})
+                  </span>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <!-- Scout Pitch -->
+                  <div style="background:rgba(6, 182, 212, 0.08); border-left:3px solid #06b6d4; padding:10px; border-radius:4px; font-size:12px;">
+                    <div style="font-weight:700; color:#06b6d4; margin-bottom:3px;">🔭 Argus (Candidate Scout):</div>
+                    <p style="color:#e2e8f0; margin:0;">${data.scout_pitch}</p>
+                  </div>
+
+                  <!-- Critic Review -->
+                  <div style="background:rgba(245, 158, 11, 0.08); border-left:3px solid #f59e0b; padding:10px; border-radius:4px; font-size:12px;">
+                    <div style="font-weight:700; color:#f59e0b; margin-bottom:3px;">🎬 Kael (Film Critic &bull; ${Math.round(rubric.overall_critic_score)}/100):</div>
+                    <p style="color:#e2e8f0; margin:0 0 6px 0;">${data.critic_review}</p>
+                    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:6px; font-size:11px; color:var(--text-muted);">
+                      <span>Visuals: <strong>${Math.round(rubric.visual_craft)}%</strong></span>
+                      <span>Narrative: <strong>${Math.round(rubric.narrative_depth)}%</strong></span>
+                      <span>Pacing: <strong>${Math.round(rubric.pacing_tension)}%</strong></span>
+                      <span>Resonance: <strong>${Math.round(rubric.emotional_resonance)}%</strong></span>
+                    </div>
+                  </div>
+
+                  <!-- Arbiter Verdict -->
+                  <div style="background:rgba(16, 185, 129, 0.08); border-left:3px solid #10b981; padding:10px; border-radius:4px; font-size:12px;">
+                    <div style="font-weight:700; color:#10b981; margin-bottom:3px;">⚖️ Solon (Consensus Arbiter):</div>
+                    <p style="color:#e2e8f0; margin:0;">${data.consensus_verdict}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            debateContainer.innerHTML = `<div style="font-size:12px; color:#ef4444; padding:8px;">Failed to conduct debate. Ensure backend is running.</div>`;
+          }
+        } catch (e) {
+          debateContainer.innerHTML = `<div style="font-size:12px; color:#ef4444; padding:8px;">FastAPI Backend is offline. Cannot run live agent debate.</div>`;
+        }
       });
     }
     

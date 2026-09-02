@@ -11,6 +11,7 @@ import { Wizard } from '../components/wizard.js';
 import { Explore } from '../components/explore.js';
 import { AIAssistant } from '../components/aiAssistant.js';
 import { GraphExplorer } from '../components/graphExplorer.js';
+import { AgentNetwork } from '../components/agentNetwork.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -50,7 +51,7 @@ class App {
       this.handleLogout(true);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 5.");
+    console.log("MovieRec Platform initialized successfully in Phase 6 (Autonomous Multi-Agent Consensus Network).");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -60,6 +61,7 @@ class App {
       '#/': document.getElementById('tab-home'),
       '#/explore': document.getElementById('tab-explore'),
       '#/graph': document.getElementById('tab-graph'),
+      '#/agents': document.getElementById('tab-agents'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -110,6 +112,16 @@ class App {
       const graphViewport = document.getElementById('graph-viewport');
       if (graphViewport) {
         GraphExplorer.init(graphViewport, this.openMovieDetails);
+      }
+    });
+
+    // Autonomous Multi-Agent Consensus Route (Phase 6)
+    this.router.addRoute('#/agents', () => {
+      activateTab('#/agents');
+      switchView('view-agents');
+      const agentsViewport = document.getElementById('agents-viewport');
+      if (agentsViewport) {
+        AgentNetwork.init(agentsViewport, this.openMovieDetails);
       }
     });
 
