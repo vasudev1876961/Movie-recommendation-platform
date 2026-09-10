@@ -4,6 +4,7 @@ import { MovieCard } from './movieCard.js';
 export const Explore = {
   currentPage: 1,
   currentGenre: 'all',
+  currentProvider: 'all',
   currentMinRating: 0.0,
   currentSort: 'popularity',
   currentOrder: 'desc',
@@ -15,28 +16,56 @@ export const Explore = {
     "Crime", "Thriller", "Animation", "Comedy", "Family", "Fantasy"
   ],
 
+  PROVIDERS: [
+    { id: 'all', name: 'All Platforms', icon: 'fa-globe' },
+    { id: 'netflix', name: 'Netflix', icon: 'fa-brands fa-netflix', color: '#E50914' },
+    { id: 'prime', name: 'Prime Video', icon: 'fa-brands fa-amazon', color: '#00A8E1' },
+    { id: 'max', name: 'Max', icon: 'fa-solid fa-play', color: '#002BE7' },
+    { id: 'disney', name: 'Disney+', icon: 'fa-brands fa-disney', color: '#113CCF' },
+    { id: 'apple', name: 'Apple TV+', icon: 'fa-brands fa-apple', color: '#8e8e93' },
+    { id: 'paramount', name: 'Paramount+', icon: 'fa-solid fa-mountain', color: '#0064FF' },
+    { id: 'tubi', name: 'Tubi (Free)', icon: 'fa-solid fa-circle-play', color: '#FA3200' }
+  ],
+
   render() {
     const genrePillsHtml = this.GENRES.map(g => {
       const activeClass = (g.toLowerCase() === this.currentGenre.toLowerCase()) ? 'active' : '';
       return `<button class="genre-pill ${activeClass}" data-genre="${g}">${g}</button>`;
     }).join('');
 
+    const providerPillsHtml = this.PROVIDERS.map(p => {
+      const activeClass = (p.id === this.currentProvider) ? 'active' : '';
+      return `
+        <button class="streaming-pill ${activeClass}" data-provider="${p.id}" style="${p.color ? `--provider-color: ${p.color};` : ''}">
+          <i class="${p.icon}"></i> ${p.name}
+        </button>
+      `;
+    }).join('');
+
     return `
       <div class="explore-container anim-fade-in">
         <!-- Explore Header & Filter Controls -->
         <div class="explore-header-section glass-panel">
-          <div class="shelf-header" style="margin-bottom: 15px;">
-            <h2 class="shelf-title"><i class="fas fa-compass"></i> Explore Full Movie Catalog</h2>
+          <div class="shelf-header" style="margin-bottom: 12px;">
+            <h2 class="shelf-title"><i class="fas fa-compass"></i> Explore Movie Catalog</h2>
             <div id="explore-stats" class="explore-stats-text">Loading catalog...</div>
           </div>
 
+          <!-- Phase 7 Streaming Service Providers Filter Row -->
+          <div class="explore-provider-filter-wrapper">
+            <span class="provider-filter-label"><i class="fas fa-tv"></i> Where to Watch:</span>
+            <div class="streaming-pills-container">
+              ${providerPillsHtml}
+            </div>
+          </div>
+
           <!-- Genre Filter Pills -->
-          <div class="genre-pills-container">
+          <div class="genre-pills-container" style="margin-top: 12px;">
             ${genrePillsHtml}
           </div>
 
           <!-- Advanced Controls Row (Rating & Sorting) -->
-          <div class="explore-controls-row">
+          <div class="explore-controls-row" style="margin-top: 15px;">
             <div class="explore-control-group">
               <label for="explore-rating-select"><i class="fas fa-star"></i> Minimum Rating:</label>
               <select id="explore-rating-select" class="setting-select">
@@ -79,13 +108,25 @@ export const Explore = {
   },
 
   setupListeners() {
+    // Streaming Provider Filter Pills (Phase 7)
+    document.querySelectorAll('.streaming-pill').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.streaming-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        this.currentProvider = btn.getAttribute('data-provider') || 'all';
+        this.currentPage = 1;
+        this.fetchAndRenderMovies();
+      });
+    });
+
     // Genre Pills
     document.querySelectorAll('.genre-pill').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
-        this.currentGenre = btn.getAttribute('data-genre');
+        this.currentGenre = btn.getAttribute('data-genre') || 'all';
         this.currentPage = 1;
         this.fetchAndRenderMovies();
       });
@@ -153,40 +194,68 @@ export const Explore = {
     grid.innerHTML = '<div class="ai-spinner" style="grid-column: 1 / -1; margin: 50px auto;"></div>';
 
     try {
-      const genreParam = (this.currentGenre && this.currentGenre.toLowerCase() !== 'all') ? `&genre=${encodeURIComponent(this.currentGenre)}` : '';
-      const ratingParam = this.currentMinRating > 0 ? `&min_rating=${this.currentMinRating}` : '';
-      const url = `http://localhost:8000/api/movies?page=${this.currentPage}&limit=${this.limit}&sort_by=${this.currentSort}&order=${this.currentOrder}${genreParam}${ratingParam}`;
+      let movies = [];
+      let total = 0;
+      let pages = 1;
 
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to fetch catalog from backend");
-      
-      const data = await res.json();
-      this.totalPages = data.pages || 1;
+      // Phase 7: Provider-filtered browse endpoint if a specific platform is selected
+      if (this.currentProvider && this.currentProvider !== 'all') {
+        const url = `http://localhost:8000/api/streaming/browse?provider=${encodeURIComponent(this.currentProvider)}&page=${this.currentPage}&limit=${this.limit}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to fetch streaming platform catalog");
+        const data = await res.json();
+        movies = data.movies || [];
+        total = data.total || movies.length;
+        pages = data.pages || 1;
+
+        // Apply client-side genre and rating filters if needed
+        if (this.currentGenre && this.currentGenre.toLowerCase() !== 'all') {
+          movies = movies.filter(m => m.genres && m.genres.some(g => g.toLowerCase() === this.currentGenre.toLowerCase()));
+        }
+        if (this.currentMinRating > 0) {
+          movies = movies.filter(m => m.rating >= this.currentMinRating);
+        }
+      } else {
+        // Standard full catalog endpoint
+        const genreParam = (this.currentGenre && this.currentGenre.toLowerCase() !== 'all') ? `&genre=${encodeURIComponent(this.currentGenre)}` : '';
+        const ratingParam = this.currentMinRating > 0 ? `&min_rating=${this.currentMinRating}` : '';
+        const url = `http://localhost:8000/api/movies?page=${this.currentPage}&limit=${this.limit}&sort_by=${this.currentSort}&order=${this.currentOrder}${genreParam}${ratingParam}`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to fetch catalog from backend");
+        const data = await res.json();
+        movies = data.movies || [];
+        total = data.total || 0;
+        pages = data.pages || 1;
+      }
+
+      this.totalPages = pages;
 
       // Update stats and pagination
-      if (statsText) statsText.innerText = `Showing ${data.movies.length} of ${data.total} Titles`;
-      if (pageInfo) pageInfo.innerText = `Page ${data.page} of ${data.pages}`;
-      if (prevBtn) prevBtn.disabled = (data.page <= 1);
-      if (nextBtn) nextBtn.disabled = (data.page >= data.pages);
+      const providerLabel = this.currentProvider !== 'all' ? ` on ${this.PROVIDERS.find(p => p.id === this.currentProvider)?.name || ''}` : '';
+      if (statsText) statsText.innerText = `Showing ${movies.length} of ${total} Titles${providerLabel}`;
+      if (pageInfo) pageInfo.innerText = `Page ${this.currentPage} of ${pages}`;
+      if (prevBtn) prevBtn.disabled = (this.currentPage <= 1);
+      if (nextBtn) nextBtn.disabled = (this.currentPage >= pages);
 
-      if (data.movies.length === 0) {
+      if (movies.length === 0) {
         grid.innerHTML = `
           <div class="no-results glass-panel" style="grid-column: 1 / -1;">
             <i class="fas fa-film"></i>
             <h3>No movies found</h3>
-            <p>Try lowering the rating threshold or selecting a different genre.</p>
+            <p>Try switching streaming providers, lowering the rating threshold, or selecting a different genre.</p>
           </div>
         `;
         return;
       }
 
-      grid.innerHTML = data.movies.map(m => MovieCard.render(m)).join('');
+      grid.innerHTML = movies.map(m => MovieCard.render(m)).join('');
 
     } catch (err) {
       grid.innerHTML = `
         <div class="no-results glass-panel" style="grid-column: 1 / -1;">
           <i class="fas fa-exclamation-circle"></i>
-          <p>Failed to connect to backend movie catalog.</p>
+          <p>Failed to connect to movie catalog.</p>
         </div>
       `;
     }

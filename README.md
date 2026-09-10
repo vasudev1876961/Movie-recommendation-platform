@@ -1,6 +1,6 @@
-# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 6)
+# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 7)
 
-MovieRec is a production-grade movie discovery and recommendation platform built with a high-end glassmorphic UI, an enterprise FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), and an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist).
+MovieRec is a production-grade movie discovery and recommendation platform built with a high-end glassmorphic UI, an enterprise FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), and a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock).
 
 ---
 
@@ -32,6 +32,12 @@ MovieRec is a production-grade movie discovery and recommendation platform built
         *   🍿 **Vesper (Viewing Strategist)**: Recommends real-world optimal viewing settings, target vibes, ambient atmosphere pairings, and curated Double Feature companion films.
     *   **Interactive Deliberation Room (`#/agents`)**: Real-time 5-agent visual stage, live collapsible deliberation transcript, tunable persona controls, and comprehensive Consensus Dossier cards.
     *   **Quick Debate Showdown on Movie Modal**: Instant Scout vs Critic live duel on any catalog movie with score meters and rubric breakdowns.
+*   ✅ **Phase 7: Conversational AI Copilot ("CineCopilot") & Streaming Providers Resolver**:
+    *   **12-Platform Streaming Watch Resolver**: Real-time watch availability across subscription platforms (*Netflix, Amazon Prime Video, Max, Disney+, Apple TV+, Hulu, Paramount+, Peacock, Criterion*), digital transactional VOD (*Apple TV, Amazon, Google Play*), and free ad-supported FAST services (*Tubi, Pluto TV*). Provides authentic deep links, 4K/Dolby Vision quality badges, and pricing tiers.
+    *   **Multi-Turn CineCopilot Chat Engine**: Stateful conversational intelligence maintaining multi-turn dialogue memory, coreference resolution (*"Where can I stream the first one?"*, *"Who directed it?"*), and automated tool orchestration (Neural Vectors, Knowledge Graph, Multi-Agent rubrics, and Watch Resolvers).
+    *   **Side-by-Side Film Comparison**: Automatic comparative breakdowns analyzing ratings, runtimes, directors, and critical consensus between two cinematic masterworks.
+    *   **Universal Floating Chat Dock**: Collapsible glassmorphic chat launcher accessible globally from all views (`#floating-chat-trigger`), plus a dedicated cinema command room (`#/chat`).
+    *   **Catalog & Modal Streaming Badges**: Interactive "Where to Watch" section inside the movie modal with 1-click platform launch buttons, plus Explore catalog filtering by streaming service.
 
 ---
 
@@ -143,4 +149,5 @@ Open `http://localhost:3000` in your web browser and click the **AI Agents** tab
 *   ✅ **Phase 4 (Complete)**: Semantic search using sentence-transformers dense vector embeddings & conceptual twin discovery.
 *   ✅ **Phase 5 (Complete)**: Knowledge Graph & GraphRAG Engine with multi-hop shortest paths, interactive force canvas visualizer, and Neo4j Cypher generation.
 *   ✅ **Phase 6 (Complete)**: Autonomous multi-agent network (Persona Profiler, Candidate Scout, Film Critic, Consensus Arbiter, Viewing Strategist, interactive deliberation room, modal quick debate showdown).
-*   ⬜ **Phase 7**: Conversational AI chatbot and streaming service providers resolver.
+*   ✅ **Phase 7 (Complete)**: Conversational AI chatbot (CineCopilot) and streaming service providers resolver.
+*   ⬜ **Phase 8**: Personalized multimodal trailer analysis and real-time collaborative watch parties.

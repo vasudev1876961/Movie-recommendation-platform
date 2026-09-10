@@ -64,6 +64,9 @@
           <a href="#/agents" class="nav-tab" id="tab-agents">
             <i class="fas fa-users-cog"></i> AI Agents
           </a>
+          <a href="#/chat" class="nav-tab" id="tab-chat">
+            <i class="fas fa-comment-dots"></i> CineCopilot
+          </a>
           <a href="#/ai-assistant" class="nav-tab" id="tab-ai-assistant">
             <i class="fas fa-brain"></i> AI Assistant
           </a>
@@ -110,6 +113,11 @@
       <!-- MULTI-AGENT DELIBERATION ROOM VIEW (Phase 6) -->
       <section class="view-section" id="view-agents">
         <div id="agents-viewport"></div>
+      </section>
+
+      <!-- CINECOPILOT CONVERSATIONAL AI VIEW (Phase 7) -->
+      <section class="view-section" id="view-chat">
+        <div id="chat-viewport"></div>
       </section>
 
       <!-- AI ASSISTANT VIEW -->
@@ -238,13 +246,26 @@
 
     <!-- Footer -->
     <footer>
-      <div>&copy; 2026 MovieRec Recommendation Engine. Created for Phase 2.</div>
+      <div>&copy; 2026 MovieRec Recommendation Engine. Phase 7 CineCopilot & Streaming Resolver.</div>
       <div class="footer-links">
         <a href="#/">Home</a>
-        <a href="#/wizard">Wizard</a>
+        <a href="#/chat">CineCopilot</a>
+        <a href="#/explore">Explore</a>
+        <a href="#/agents">AI Agents</a>
         <a href="#/watchlist">Watchlist</a>
       </div>
     </footer>
+  </div>
+
+  <!-- Universal Floating CineCopilot Dock (Phase 7) -->
+  <div class="floating-chat-container" id="floating-chat-container">
+    <button class="floating-chat-btn" id="floating-chat-trigger" title="Chat with CineCopilot">
+      <div class="floating-chat-icon"><i class="fas fa-sparkles"></i></div>
+      <span class="floating-chat-label">Ask CineCopilot</span>
+    </button>
+    <div class="floating-chat-drawer glass-panel" id="floating-chat-drawer">
+      <div id="drawer-chat-viewport"></div>
+    </div>
   </div>
 
   <!-- Entry Module -->

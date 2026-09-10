@@ -106,7 +106,18 @@ export class MovieModal {
       }
     } catch (e) {}
 
-    this.render(movie, similar, userRating, conceptualTwins, graphConnections);
+    // Fetch Phase 7 Streaming Watch Availability
+    let streamingAvailability = null;
+    try {
+      const streamRes = await fetch(`http://localhost:8000/api/streaming/movie/${movie.id}?region=US`);
+      if (streamRes.ok) {
+        streamingAvailability = await streamRes.json();
+      }
+    } catch (e) {
+      streamingAvailability = null;
+    }
+
+    this.render(movie, similar, userRating, conceptualTwins, graphConnections, streamingAvailability);
   }
 
   close() {
@@ -115,7 +126,7 @@ export class MovieModal {
     document.body.style.overflow = '';
   }
 
-  render(movie, similar = [], userRating = null, conceptualTwins = [], graphConnections = []) {
+  render(movie, similar = [], userRating = null, conceptualTwins = [], graphConnections = [], streamingAvailability = null) {
     const isBookmarked = Storage.isInWatchlist(movie.id);
     const rawPoster = movie.poster_path || movie.poster || '';
     let posterUrl = 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=500';
@@ -232,6 +243,9 @@ export class MovieModal {
               <span><i class="far fa-calendar-alt"></i> ${movie.year || (movie.release_date ? movie.release_date.split('-')[0] : '')}</span>
               <span><i class="far fa-clock"></i> ${movie.runtime ? movie.runtime + ' min' : 'N/A'}</span>
               <span><i class="fas fa-globe"></i> ${movie.language || 'English'}</span>
+              <span class="pv-badge pv-badge-maturity">16+</span>
+              <span class="pv-badge pv-badge-spec">4K UHD</span>
+              <span class="pv-badge pv-badge-spec">HDR</span>
             </div>
 
             <div class="modal-genres">
@@ -262,9 +276,71 @@ export class MovieModal {
               </div>
             </div>
 
+            <!-- Phase 7 Streaming Service Providers Section (Where to Watch) -->
+            <div class="modal-streaming-section glass-panel">
+              <div class="streaming-section-header">
+                <span class="streaming-header-title">
+                  <i class="fas fa-tv" style="color: #38bdf8;"></i> Where to Watch
+                </span>
+                <span class="streaming-region-tag"><i class="fas fa-globe"></i> ${streamingAvailability ? streamingAvailability.region : 'US'} Availability</span>
+              </div>
+              <div class="streaming-options-body">
+                ${streamingAvailability && (streamingAvailability.stream.length > 0 || streamingAvailability.rent.length > 0 || streamingAvailability.free.length > 0) ? `
+                  ${streamingAvailability.stream.length > 0 ? `
+                    <div class="stream-tier-group">
+                      <span class="stream-tier-label"><i class="fas fa-play-circle" style="color: #34d399;"></i> Stream Subscription:</span>
+                      <div class="stream-buttons-row">
+                        ${streamingAvailability.stream.map(opt => `
+                          <a href="${opt.deep_link}" target="_blank" rel="noopener" class="stream-watch-btn" style="border-left: 3px solid ${opt.provider.brand_color};">
+                            <span class="btn-prov-name">${opt.provider.name}</span>
+                            <span class="btn-prov-badge">${opt.quality}</span>
+                          </a>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+
+                  ${streamingAvailability.rent.length > 0 ? `
+                    <div class="stream-tier-group">
+                      <span class="stream-tier-label"><i class="fas fa-tag" style="color: #fbbf24;"></i> Rent / Buy:</span>
+                      <div class="stream-buttons-row">
+                        ${streamingAvailability.rent.slice(0, 3).map(opt => `
+                          <a href="${opt.deep_link}" target="_blank" rel="noopener" class="rent-watch-btn">
+                            <span>${opt.provider.name}</span>
+                            <span class="rent-price-badge">${opt.price}</span>
+                          </a>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+
+                  ${streamingAvailability.free.length > 0 ? `
+                    <div class="stream-tier-group">
+                      <span class="stream-tier-label"><i class="fas fa-gift" style="color: #f472b6;"></i> Free / Ads:</span>
+                      <div class="stream-buttons-row">
+                        ${streamingAvailability.free.map(opt => `
+                          <a href="${opt.deep_link}" target="_blank" rel="noopener" class="free-watch-btn">
+                            <span>${opt.provider.name}</span>
+                            <span class="free-badge-tag">Free with Ads</span>
+                          </a>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+                ` : `
+                  <div class="streaming-fallback-msg">
+                    <i class="fas fa-info-circle"></i> Check back soon for updated streaming platform availability for this title.
+                  </div>
+                `}
+              </div>
+            </div>
+
             <div class="modal-actions">
               <button class="btn-glow" id="modal-watchlist-btn">
                 <i class="fas ${watchlistBtnIcon}"></i> ${watchlistBtnText}
+              </button>
+              <button class="btn-secondary" id="modal-cinecopilot-btn" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
+                <i class="fas fa-sparkles"></i> Ask CineCopilot
               </button>
               <button class="btn-secondary" id="modal-debate-btn" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
                 <i class="fas fa-gavel"></i> Agent Debate
@@ -470,6 +546,21 @@ export class MovieModal {
         }
       });
     });
+
+    // CineCopilot button click
+    const cinecopilotBtn = this.backdrop.querySelector('#modal-cinecopilot-btn');
+    if (cinecopilotBtn) {
+      cinecopilotBtn.addEventListener('click', () => {
+        this.close();
+        document.dispatchEvent(new CustomEvent('open-cinecopilot-query', {
+          detail: {
+            movieTitle: movie.title,
+            movieId: movie.id,
+            prompt: `Where can I watch ${movie.title} and what do you recommend like it?`
+          }
+        }));
+      });
+    }
 
     // Similar movie card clicks
     this.backdrop.querySelectorAll('.modal-similar-card').forEach(card => {

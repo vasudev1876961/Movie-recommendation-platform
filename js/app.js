@@ -12,6 +12,7 @@ import { Explore } from '../components/explore.js';
 import { AIAssistant } from '../components/aiAssistant.js';
 import { GraphExplorer } from '../components/graphExplorer.js';
 import { AgentNetwork } from '../components/agentNetwork.js';
+import { CineCopilot } from '../components/cineCopilot.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -62,6 +63,7 @@ class App {
       '#/explore': document.getElementById('tab-explore'),
       '#/graph': document.getElementById('tab-graph'),
       '#/agents': document.getElementById('tab-agents'),
+      '#/chat': document.getElementById('tab-chat'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -122,6 +124,17 @@ class App {
       const agentsViewport = document.getElementById('agents-viewport');
       if (agentsViewport) {
         AgentNetwork.init(agentsViewport, this.openMovieDetails);
+      }
+    });
+
+    // CineCopilot Conversational AI & Streaming Route (Phase 7)
+    this.router.addRoute('#/chat', () => {
+      activateTab('#/chat');
+      switchView('view-chat');
+      const chatViewport = document.getElementById('chat-viewport');
+      if (chatViewport) {
+        chatViewport.innerHTML = CineCopilot.render(false);
+        CineCopilot.setupListeners(false);
       }
     });
 
@@ -443,6 +456,15 @@ class App {
         if (action === 'bookmark') {
           e.stopPropagation();
           this.toggleWatchlist(parseInt(movieId), e.target.closest('[data-action]'));
+        } else if (action === 'ask-copilot') {
+          e.stopPropagation();
+          const title = e.target.closest('[data-action="ask-copilot"]')?.getAttribute('data-title') || 'this movie';
+          document.dispatchEvent(new CustomEvent('open-cinecopilot-query', {
+            detail: { prompt: `Tell me about "${title}", where I can stream it, and what makes it special.` }
+          }));
+        } else if (action === 'play-card') {
+          e.stopPropagation();
+          this.openMovieDetails(parseInt(movieId));
         } else {
           this.openMovieDetails(parseInt(movieId));
         }
@@ -902,6 +924,42 @@ class App {
       this.router.navigate('#/');
     });
 
+    // Universal Floating CineCopilot Drawer (Phase 7)
+    const floatingTrigger = document.getElementById('floating-chat-trigger');
+    const floatingDrawer = document.getElementById('floating-chat-drawer');
+    const drawerChatViewport = document.getElementById('drawer-chat-viewport');
+
+    if (floatingTrigger && floatingDrawer) {
+      floatingTrigger.addEventListener('click', () => {
+        const isOpen = floatingDrawer.classList.toggle('open');
+        if (isOpen && drawerChatViewport && !drawerChatViewport.hasChildNodes()) {
+          drawerChatViewport.innerHTML = CineCopilot.render(true);
+          CineCopilot.setupListeners(true);
+        }
+      });
+    }
+
+    // Listen for custom event 'open-cinecopilot-query' from modal
+    document.addEventListener('open-cinecopilot-query', (e) => {
+      if (floatingDrawer && drawerChatViewport) {
+        floatingDrawer.classList.add('open');
+        if (!drawerChatViewport.hasChildNodes()) {
+          drawerChatViewport.innerHTML = CineCopilot.render(true);
+          CineCopilot.setupListeners(true);
+        }
+        if (e.detail && e.detail.prompt) {
+          CineCopilot.submitMessage(e.detail.prompt, true);
+        }
+      }
+    });
+
+    // Listen for custom event 'open-movie-modal' from CineCopilot
+    document.addEventListener('open-movie-modal', (e) => {
+      if (e.detail && e.detail.movieId) {
+        this.openMovieDetails(e.detail.movieId);
+      }
+    });
+
     // Global delegated click handler for movie cards across all views
     document.querySelector('main').addEventListener('click', (e) => {
       // 1. Check if Hero play button was clicked
@@ -917,10 +975,19 @@ class App {
       if (card) {
         const movieId = card.getAttribute('data-id');
         const bookmarkBtn = e.target.closest('[data-action="bookmark"]');
+        const copilotBtn = e.target.closest('[data-action="ask-copilot"]');
+        const playCardBtn = e.target.closest('[data-action="play-card"]');
+        
         if (bookmarkBtn) {
           e.stopPropagation();
           this.toggleWatchlist(parseInt(movieId), bookmarkBtn);
-        } else if (movieId) {
+        } else if (copilotBtn) {
+          e.stopPropagation();
+          const title = copilotBtn.getAttribute('data-title') || 'this movie';
+          document.dispatchEvent(new CustomEvent('open-cinecopilot-query', {
+            detail: { prompt: `Tell me about "${title}", where I can stream it, and what makes it special.` }
+          }));
+        } else if (playCardBtn || movieId) {
           this.openMovieDetails(parseInt(movieId));
         }
       }

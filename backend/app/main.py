@@ -13,10 +13,13 @@ from backend.app.api.recommendations import router as recommendations_router
 from backend.app.api.semantic import router as semantic_router
 from backend.app.api.graph import router as graph_router
 from backend.app.api.agents import router as agents_router
+from backend.app.api.streaming import router as streaming_router
+from backend.app.api.chat import router as chat_router
 from backend.app.services.hybrid_recommender import hybrid_engine
 from backend.app.services.semantic_search import semantic_search_engine
 from backend.app.services.graph_service import knowledge_graph_engine
 from backend.app.services.agents.agent_orchestrator import agent_orchestrator
+from backend.app.services.streaming_resolver import streaming_resolver
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -27,8 +30,8 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing SQLite database tables...")
     Base.metadata.create_all(bind=engine)
     
-    # Train and initialize Phase 3, Phase 4, Phase 5 & Phase 6 ML / Vector / Graph / Agent models
-    logger.info("Initializing ML models, Semantic Vector index, Cinematic Knowledge Graph & Multi-Agent Network...")
+    # Train and initialize Phase 3, Phase 4, Phase 5, Phase 6 & Phase 7 engines
+    logger.info("Initializing ML models, Semantic Vector index, Knowledge Graph, Multi-Agent Network & Streaming Resolver...")
     db = SessionLocal()
     try:
         # Phase 3 Hybrid ML Engine
@@ -47,6 +50,10 @@ async def lifespan(app: FastAPI):
         # Phase 6 Autonomous Multi-Agent Network
         roster = agent_orchestrator.get_roster()
         logger.info(f"Phase 6 Multi-Agent Network initialized: {len(roster)} agents active ({', '.join([a['name'] for a in roster])})")
+
+        # Phase 7 Streaming Service Providers Resolver & CineCopilot
+        providers = streaming_resolver.list_all_providers(db=db)
+        logger.info(f"Phase 7 Streaming Resolver & CineCopilot initialized: {len(providers)} streaming platforms connected.")
     except Exception as e:
         logger.error(f"Failed to initialize models on startup: {e}", exc_info=True)
     finally:
@@ -58,8 +65,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movie AI Platform API",
-    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 6 Multi-Agent Consensus Network)",
-    version="6.0.0",
+    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 7 CineCopilot & Streaming Resolver)",
+    version="7.0.0",
     lifespan=lifespan
 )
 
@@ -82,13 +89,15 @@ app.include_router(ai_router)
 app.include_router(semantic_router)
 app.include_router(graph_router)
 app.include_router(agents_router)
+app.include_router(streaming_router)
+app.include_router(chat_router)
 
 @app.get("/", tags=["Health"])
 def health_check():
     return {
         "status": "online",
         "service": "Movie AI Platform API",
-        "version": "6.0.0",
+        "version": "7.0.0",
         "docs_url": "/docs"
     }
 

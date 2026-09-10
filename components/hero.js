@@ -27,33 +27,39 @@ export const Hero = {
     const genresText = Array.isArray(movie.genres) 
       ? (typeof movie.genres[0] === 'object' ? movie.genres.map(g => g.name).join(', ') : movie.genres.join(', '))
       : '';
+    const displayYear = movie.year || (movie.release_date ? movie.release_date.split('-')[0] : '');
 
     const dotsHtml = this.movies.map((_, idx) => `
       <button class="hero-dot ${idx === this.currentIndex ? 'active' : ''}" data-index="${idx}" aria-label="Go to slide ${idx + 1}"></button>
     `).join('');
 
     container.innerHTML = `
-      <div class="hero-container anim-fade-in" style="background-image: url('${backdropUrl}')" id="hero-slider">
-        <div class="hero-overlay"></div>
+      <div class="hero-container pv-hero-container anim-fade-in" style="background-image: url('${backdropUrl}')" id="hero-slider">
+        <div class="hero-overlay pv-hero-overlay"></div>
         <div class="hero-content">
-          <span class="hero-featured-tag"><i class="fas fa-fire"></i> Featured Spotlight</span>
+          <div class="pv-hero-topline">
+            <span class="hero-featured-tag pv-hero-tag"><i class="fas fa-play-circle"></i> Prime Spotlight</span>
+            <span class="pv-badge pv-badge-spec">4K UHD</span>
+            <span class="pv-badge pv-badge-spec">HDR</span>
+            <span class="pv-badge pv-badge-maturity">16+</span>
+          </div>
           <h2 class="hero-title">${movie.title}</h2>
           <div class="hero-meta">
             <span class="hero-rating">
               <i class="fas fa-star"></i>
               ${movie.rating ? Number(movie.rating).toFixed(1) : 'N/A'}
             </span>
-            <span>${movie.year || (movie.release_date ? movie.release_date.split('-')[0] : '')}</span>
+            <span>${displayYear}</span>
             <span>${movie.runtime ? movie.runtime + ' min' : ''}</span>
             <span class="hero-genres-pill">${genresText}</span>
           </div>
           <p class="hero-overview">${movie.overview || ''}</p>
-          <div class="hero-actions">
-            <button class="btn-glow" data-id="${movie.id}" data-action="play-hero">
-              <i class="fas fa-play"></i> Watch Trailer & Details
+          <div class="hero-actions pv-hero-actions">
+            <button class="btn-glow pv-hero-play" data-id="${movie.id}" data-action="play-hero">
+              <i class="fas fa-play"></i> Watch Details & Trailer
             </button>
-            <a href="#/ai-assistant" class="btn-secondary">
-              <i class="fas fa-robot"></i> Ask AI Assistant
+            <a href="#/chat" class="btn-secondary pv-hero-chat">
+              <i class="fas fa-sparkles"></i> Ask CineCopilot
             </a>
           </div>
         </div>
