@@ -1,6 +1,6 @@
-# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 7)
+# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 8)
 
-MovieRec is a production-grade movie discovery and recommendation platform built with a high-end glassmorphic UI, an enterprise FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), and a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock).
+MovieRec is an enterprise-grade cinematic discovery and recommendation platform built with a high-end glassmorphic UI, a high-performance FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock), and a **Phase 8 Multimodal Cinematic Trailer Intelligence & Real-Time Collaborative Watch Parties Engine** (VisionWave AI Telemetry + CineSync WebSocket Synchronized Theaters).
 
 ---
 
@@ -34,10 +34,22 @@ MovieRec is a production-grade movie discovery and recommendation platform built
     *   **Quick Debate Showdown on Movie Modal**: Instant Scout vs Critic live duel on any catalog movie with score meters and rubric breakdowns.
 *   ✅ **Phase 7: Conversational AI Copilot ("CineCopilot") & Streaming Providers Resolver**:
     *   **12-Platform Streaming Watch Resolver**: Real-time watch availability across subscription platforms (*Netflix, Amazon Prime Video, Max, Disney+, Apple TV+, Hulu, Paramount+, Peacock, Criterion*), digital transactional VOD (*Apple TV, Amazon, Google Play*), and free ad-supported FAST services (*Tubi, Pluto TV*). Provides authentic deep links, 4K/Dolby Vision quality badges, and pricing tiers.
-    *   **Multi-Turn CineCopilot Chat Engine**: Stateful conversational intelligence maintaining multi-turn dialogue memory, coreference resolution (*"Where can I stream the first one?"*, *"Who directed it?"*), and automated tool orchestration (Neural Vectors, Knowledge Graph, Multi-Agent rubrics, and Watch Resolvers).
+    *   **Multi-Turn CineCopilot Chat Engine**: Stateful conversational intelligence maintaining multi-turn dialogue memory, coreference resolution (*"Where can I stream the first one?"*, *"Who directed it?"*), and automated tool orchestration.
     *   **Side-by-Side Film Comparison**: Automatic comparative breakdowns analyzing ratings, runtimes, directors, and critical consensus between two cinematic masterworks.
     *   **Universal Floating Chat Dock**: Collapsible glassmorphic chat launcher accessible globally from all views (`#floating-chat-trigger`), plus a dedicated cinema command room (`#/chat`).
-    *   **Catalog & Modal Streaming Badges**: Interactive "Where to Watch" section inside the movie modal with 1-click platform launch buttons, plus Explore catalog filtering by streaming service.
+*   ✅ **Phase 8: Multimodal Cinematic Trailer Intelligence & Real-Time Collaborative Watch Parties**:
+    *   **VisionWave Multimodal Trailer Intelligence Engine**:
+        *   **4-Act Structural Segmentation**: Deconstructs movie trailers into sequential narrative movements (*Act I Exposition, Act II Escalation, Act III Climax/Spectacle, Act IV Stinger*).
+        *   **Temporal Sensory & Affective Telemetry**: Real-time continuous modeling of dramatic tension, shot velocity (cuts per minute), acoustic decibel crescendo, visual contrast, and 6-dimensional affective vectors (*tension, adrenaline, awe, mystery, melancholia, humor*).
+        *   **Aesthetic DNA & 5-Color Harmonic Swatches**: Extracts 5-color palette, aspect ratio classification (e.g. *1.43:1 IMAX 70mm, 2.39:1 Anamorphic*), camera motion kinematics, lighting keys, and spoiler risk safety scoring.
+        *   **Multimodal Sensory Trailer Twins**: Cosine similarity discovery over multimodal feature trajectories finding films with matching sensory cadence and emotional arcs.
+        *   **Interactive Cinema Player & Telemetry HUD**: Synchronized video player featuring an interactive tension waveform sparkline, clickable act segment markers, dynamic sensor gauges, and palette swatch inspection.
+    *   **CineSync Real-Time Collaborative Watch Parties**:
+        *   **Full-Duplex WebSocket Synchronization (`/api/watch-party/ws/{code}`)**: Synchronized play/pause/seek states across all party participants with host-only lock toggle.
+        *   **Floating Live Emoji Reactions**: Real-time floating particle emissions (🍿, 🔥, 😱, 🤯, 👏, ❤️) that animate gracefully upward across the theater screen for all viewers.
+        *   **Collaborative Up-Next Queue & Live Voting**: Participants search the catalog, suggest upcoming titles to the room playlist, and upvote/downvote queue entries.
+        *   **AI CineBot Scene Trivia**: Contextual behind-the-scenes filmmaking facts and score trivia delivered into the party chat stream in real time.
+        *   **Dedicated Watch Party Lobby (`#/watch-party`)**: Browse active public rooms, create custom theaters, or join with 6-character room codes (`CINE-XXXX`).
 
 ---
 
@@ -62,19 +74,26 @@ movie-recom/
 │   └── storage.js               # LocalStorage & JWT token manager
 │
 ├── components/
+│   ├── watchParty.js            # Phase 8 Real-Time Collaborative Watch Party Hub & Theater
+│   ├── trailerPlayer.js         # Phase 8 VisionWave Multimodal Cinema Player & Telemetry HUD
+│   ├── cineCopilot.js           # Phase 7 CineCopilot Multi-Turn Chat & Watch Resolver
 │   ├── agentNetwork.js          # Phase 6 Multi-Agent Deliberation Room & Consensus Dossiers
 │   ├── graphExplorer.js         # Interactive Force-Directed Knowledge Graph Visualizer & Path Finder
 │   ├── aiAssistant.js           # GraphRAG AI Assistant with entity pills & reasoning facts
 │   ├── explore.js               # Dynamic catalog browser with filters & sorting
 │   ├── hero.js                  # Rotating blockbuster hero carousel
-│   ├── movieCard.js             # Card component with match badges & watchlist triggers
+│   ├── movieCard.js             # Card component with match badges, trailer telemetry & party buttons
 │   ├── shelves.js               # Horizontal scrolling shelf manager
 │   └── wizard.js                # Multi-step recommendation wizard
 │
 ├── backend/
 │   ├── app/
-│   │   ├── main.py              # FastAPI application & startup ML / Vector / Graph / Agent loader
+│   │   ├── main.py              # FastAPI application & startup ML / Vector / Graph / Agent / Party loader
 │   │   ├── api/
+│   │   │   ├── watch_party.py   # Phase 8 Real-Time Watch Party REST & WebSocket endpoints
+│   │   │   ├── trailers.py      # Phase 8 VisionWave Multimodal Trailer Intelligence endpoints
+│   │   │   ├── chat.py          # Phase 7 CineCopilot Conversational AI endpoints
+│   │   │   ├── streaming.py     # Phase 7 Streaming Service Providers Resolver endpoints
 │   │   │   ├── agents.py        # Phase 6 Multi-Agent Deliberation & Quick Debate endpoints
 │   │   │   ├── graph.py         # Phase 5 Knowledge Graph, Subgraph, Path & GraphRAG endpoints
 │   │   │   ├── semantic.py      # Phase 4 Neural Semantic search & Conceptual Twins endpoints
@@ -85,17 +104,15 @@ movie-recom/
 │   │   │   ├── ratings.py       # Star rating submission & aggregation
 │   │   │   └── watchlist.py     # Persistent user watchlists
 │   │   ├── schemas/
+│   │   │   ├── watch_party.py   # Phase 8 Pydantic models for Watch Parties, Rooms & Sync
+│   │   │   ├── trailer.py       # Phase 8 Pydantic models for Acts, Telemetry & Aesthetic DNA
 │   │   │   ├── agents.py        # Phase 6 Pydantic models for Agents, Rubrics & Consensus
 │   │   │   └── movie.py         # Catalog Pydantic schemas
 │   │   ├── services/
+│   │   │   ├── watch_party_service.py # Phase 8 CineSync Watch Party Manager & WebSocket Broadcaster
+│   │   │   ├── trailer_intelligence.py # Phase 8 VisionWave Multimodal Analysis & Twins Engine
+│   │   │   ├── streaming_resolver.py # Phase 7 Streaming 12-platform resolver engine
 │   │   │   ├── agents/          # Phase 6 Multi-Agent Autonomous Network
-│   │   │   │   ├── base_agent.py # Abstract agent class & telemetry
-│   │   │   │   ├── persona_agent.py # Aura (Persona Profiler)
-│   │   │   │   ├── scout_agent.py   # Argus (Candidate Scout)
-│   │   │   │   ├── critic_agent.py  # Kael (Film Critic & Fact-Checker)
-│   │   │   │   ├── arbiter_agent.py # Solon (Consensus Arbiter)
-│   │   │   │   ├── strategist_agent.py # Vesper (Viewing Strategist)
-│   │   │   │   └── agent_orchestrator.py # Pipeline coordinator
 │   │   │   ├── graph_service.py # NetworkX Knowledge Graph & Cypher export engine
 │   │   │   ├── graph_rag.py     # GraphRAG multi-hop entity grounding & rank fusion engine
 │   │   │   ├── semantic_search.py # SentenceTransformers 384-d dense vector search engine
@@ -111,6 +128,8 @@ movie-recom/
 │   └── requirements.txt         # Backend Python dependencies
 │
 └── scripts/
+    ├── test_phase8.py           # Phase 8 Multimodal Trailer & Watch Party automated test suite
+    ├── test_phase7.py           # Phase 7 Streaming & CineCopilot automated test suite
     ├── test_phase6.py           # Phase 6 Multi-Agent Consensus Network automated test suite
     ├── test_phase5.py           # Phase 5 Knowledge Graph & GraphRAG automated test suite
     ├── test_phase4.py           # Phase 4 Neural Semantic Search automated test suite
@@ -122,12 +141,12 @@ movie-recom/
 
 ## 🛠️ Getting Started
 
-### 1. Start the FastAPI Machine Learning, Vector, Graph & Agent Backend
+### 1. Start the FastAPI Machine Learning, Vector, Graph, Agent & Watch Party Backend
 ```bash
 # Activate virtual environment and start backend
 .\venv\Scripts\uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-The FastAPI backend will automatically initialize SQLite tables, load the movie catalog, and train / load the **TF-IDF, SVD Collaborative Filtering, Sentence-Transformers Semantic Vector, NetworkX Knowledge Graph, and Multi-Agent Network** in memory.
+The FastAPI backend will automatically initialize SQLite tables, load the movie catalog, and train / load the **TF-IDF, SVD Collaborative Filtering, Sentence-Transformers Semantic Vector, NetworkX Knowledge Graph, Multi-Agent Network, VisionWave Trailer Intelligence, and CineSync Watch Party Manager** in memory.
 
 ### 2. Run the Frontend Client
 ```bash
@@ -137,7 +156,7 @@ python -m http.server 3000
 # Or using Node serve:
 npx -y serve ./
 ```
-Open `http://localhost:3000` in your web browser and click the **AI Agents** tab (`#/agents`) or click **Agent Debate** on any movie card.
+Open `http://localhost:3000` in your web browser and click the **Watch Party** tab (`#/watch-party`) or click **VisionWave Trailer** on any movie card or details modal.
 
 ---
 
@@ -150,4 +169,5 @@ Open `http://localhost:3000` in your web browser and click the **AI Agents** tab
 *   ✅ **Phase 5 (Complete)**: Knowledge Graph & GraphRAG Engine with multi-hop shortest paths, interactive force canvas visualizer, and Neo4j Cypher generation.
 *   ✅ **Phase 6 (Complete)**: Autonomous multi-agent network (Persona Profiler, Candidate Scout, Film Critic, Consensus Arbiter, Viewing Strategist, interactive deliberation room, modal quick debate showdown).
 *   ✅ **Phase 7 (Complete)**: Conversational AI chatbot (CineCopilot) and streaming service providers resolver.
-*   ⬜ **Phase 8**: Personalized multimodal trailer analysis and real-time collaborative watch parties.
+*   ✅ **Phase 8 (Complete)**: Personalized multimodal trailer analysis (VisionWave AI) and real-time collaborative watch parties (CineSync).
+*   ⬜ **Phase 9**: Neuro-Cinematic Generative Trailer Summarization & Real-Time Multilingual AI Voice Dubbing.

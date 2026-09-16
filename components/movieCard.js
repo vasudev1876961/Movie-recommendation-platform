@@ -87,6 +87,12 @@ export const MovieCard = {
               <button class="pv-action-btn ${bookmarkClass}" data-action="bookmark" data-id="${movie.id}" title="${isBookmarked ? 'Remove from Watchlist' : 'Add to Watchlist'}" aria-label="Toggle Watchlist">
                 <i class="${bookmarkIcon}"></i>
               </button>
+              <button class="pv-action-btn pv-trailer-btn" data-action="view-trailer" data-id="${movie.id}" title="VisionWave AI Trailer Telemetry" aria-label="VisionWave Trailer">
+                <i class="fas fa-wave-square"></i>
+              </button>
+              <button class="pv-action-btn pv-party-btn" data-action="watch-party" data-id="${movie.id}" title="Host Watch Party" aria-label="Host Watch Party">
+                <i class="fas fa-users"></i>
+              </button>
               <button class="pv-action-btn pv-copilot-btn" data-action="ask-copilot" data-id="${movie.id}" data-title="${movie.title.replace(/"/g, '&quot;')}" title="Ask CineCopilot" aria-label="Ask CineCopilot">
                 <i class="fas fa-sparkles"></i>
               </button>

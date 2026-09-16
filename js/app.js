@@ -13,6 +13,8 @@ import { AIAssistant } from '../components/aiAssistant.js';
 import { GraphExplorer } from '../components/graphExplorer.js';
 import { AgentNetwork } from '../components/agentNetwork.js';
 import { CineCopilot } from '../components/cineCopilot.js';
+import { TrailerPlayer } from '../components/trailerPlayer.js';
+import { WatchParty } from '../components/watchParty.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -52,7 +54,7 @@ class App {
       this.handleLogout(true);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 6 (Autonomous Multi-Agent Consensus Network).");
+    console.log("MovieRec Platform initialized successfully in Phase 8 (VisionWave Multimodal Trailer Intelligence & CineSync Watch Parties).");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -64,6 +66,7 @@ class App {
       '#/graph': document.getElementById('tab-graph'),
       '#/agents': document.getElementById('tab-agents'),
       '#/chat': document.getElementById('tab-chat'),
+      '#/watch-party': document.getElementById('tab-watch-party'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -136,6 +139,13 @@ class App {
         chatViewport.innerHTML = CineCopilot.render(false);
         CineCopilot.setupListeners(false);
       }
+    });
+
+    // Real-Time Collaborative Watch Party Route (Phase 8)
+    this.router.addRoute('#/watch-party', async (params) => {
+      activateTab('#/watch-party');
+      switchView('view-watch-party');
+      await WatchParty.render(params);
     });
 
     // AI Assistant Route
@@ -462,6 +472,12 @@ class App {
           document.dispatchEvent(new CustomEvent('open-cinecopilot-query', {
             detail: { prompt: `Tell me about "${title}", where I can stream it, and what makes it special.` }
           }));
+        } else if (action === 'view-trailer') {
+          e.stopPropagation();
+          TrailerPlayer.open(parseInt(movieId));
+        } else if (action === 'watch-party') {
+          e.stopPropagation();
+          window.location.hash = `#/watch-party?create=${movieId}`;
         } else if (action === 'play-card') {
           e.stopPropagation();
           this.openMovieDetails(parseInt(movieId));

@@ -339,6 +339,12 @@ export class MovieModal {
               <button class="btn-glow" id="modal-watchlist-btn">
                 <i class="fas ${watchlistBtnIcon}"></i> ${watchlistBtnText}
               </button>
+              <button class="btn-secondary" id="modal-visionwave-btn" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+                <i class="fas fa-wave-square"></i> VisionWave Trailer
+              </button>
+              <button class="btn-secondary" id="modal-watchparty-btn" style="background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.4); color: #f472b6;">
+                <i class="fas fa-users"></i> Host Watch Party
+              </button>
               <button class="btn-secondary" id="modal-cinecopilot-btn" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">
                 <i class="fas fa-sparkles"></i> Ask CineCopilot
               </button>
@@ -546,6 +552,25 @@ export class MovieModal {
         }
       });
     });
+
+    // VisionWave Trailer button click
+    const visionwaveBtn = this.backdrop.querySelector('#modal-visionwave-btn');
+    if (visionwaveBtn) {
+      visionwaveBtn.addEventListener('click', async () => {
+        this.close();
+        const { TrailerPlayer } = await import('../components/trailerPlayer.js');
+        TrailerPlayer.open(movie.id);
+      });
+    }
+
+    // Host Watch Party button click
+    const watchpartyBtn = this.backdrop.querySelector('#modal-watchparty-btn');
+    if (watchpartyBtn) {
+      watchpartyBtn.addEventListener('click', () => {
+        this.close();
+        window.location.hash = `#/watch-party?create=${movie.id}`;
+      });
+    }
 
     // CineCopilot button click
     const cinecopilotBtn = this.backdrop.querySelector('#modal-cinecopilot-btn');

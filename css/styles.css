@@ -4273,3 +4273,1334 @@ footer {
   color: #00a8e1 !important;
 }
 
+/* ==========================================================================
+   PHASE 8: VISIONWAVE MULTIMODAL TRAILER & CINESYNC WATCH PARTY STYLING
+   ========================================================================== */
+
+/* Live Navigation Badge */
+.wp-live-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  margin-left: 6px;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+  animation: livePulse 2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+  50% { transform: scale(1.08); opacity: 0.85; box-shadow: 0 0 18px rgba(239, 68, 68, 0.8); }
+}
+
+/* Packshot action buttons */
+.pv-trailer-btn:hover {
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.2) !important;
+}
+
+.pv-party-btn:hover {
+  color: #f472b6 !important;
+  border-color: #f472b6 !important;
+  background: rgba(236, 72, 153, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   VisionWave Multimodal Trailer Modal
+   -------------------------------------------------------------------------- */
+.vw-player-modal {
+  max-width: 1060px !important;
+  width: 95% !important;
+  padding: 28px !important;
+  max-height: 92vh !important;
+  overflow-y: auto !important;
+  background: rgba(10, 15, 29, 0.88) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(56, 189, 248, 0.15) !important;
+}
+
+.vw-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--glass-border);
+  gap: 16px;
+}
+
+.vw-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.vw-movie-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 6px 0;
+}
+
+.vw-pacing-tag {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.vw-stage-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+  .vw-stage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vw-video-screen {
+  position: relative;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  aspect-ratio: 16 / 9;
+}
+
+.vw-video-screen iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.vw-screen-hud {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(5, 10, 20, 0.95) 100%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.vw-hud-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.vw-hud-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.vw-hud-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.vw-hud-val.highlight {
+  color: #38bdf8;
+}
+
+.vw-sensor-deck {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vw-deck-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+}
+
+.vw-gauge-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vw-gauge-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.vw-gauge-name {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vw-gauge-value {
+  font-weight: 700;
+  color: #fff;
+}
+
+.vw-gauge-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.vw-gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.vw-gauge-fill.audio-gradient {
+  background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444);
+}
+
+.vw-gauge-subtext {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.vw-climax-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.vw-climax-icon {
+  font-size: 20px;
+  color: #f87171;
+}
+
+.vw-climax-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.vw-climax-score {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.vw-safety-note {
+  font-size: 11px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* Waveform Timeline Container */
+.vw-waveform-container {
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.vw-waveform-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.vw-timeline-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vw-duration-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.vw-waveform-interactive-wrapper {
+  position: relative;
+  height: 80px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.vw-act-segments-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  pointer-events: auto;
+}
+
+.vw-act-segment {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px dashed rgba(255, 255, 255, 0.15);
+  padding: 6px 8px;
+  transition: background 0.2s ease;
+}
+
+.vw-act-segment:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.vw-act-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vw-waveform-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.vw-scrubber-needle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+  pointer-events: none;
+  transition: left 0.3s linear;
+}
+
+/* Bottom Grid (Aesthetic DNA & Twins) */
+.vw-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .vw-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vw-dna-panel, .vw-twins-panel {
+  padding: 20px;
+  border-radius: var(--radius-md);
+}
+
+.vw-palette-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.vw-color-swatch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.vw-color-swatch-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.vw-swatch-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.vw-swatch-info {
+  text-align: center;
+}
+
+.vw-swatch-name {
+  font-size: 9px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70px;
+}
+
+.vw-swatch-hex {
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.vw-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.vw-spec-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 23, 42, 0.4);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.vw-spec-label {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.vw-spec-val {
+  color: #fff;
+  font-weight: 600;
+}
+
+.vw-twins-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.vw-twin-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--glass-border);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vw-twin-card:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateX(4px);
+}
+
+.vw-twin-poster {
+  width: 38px;
+  height: 54px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.vw-twin-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px 0;
+}
+
+.vw-twin-match {
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.vw-twin-tone {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   CineSync Real-Time Collaborative Watch Party Hub
+   -------------------------------------------------------------------------- */
+.wp-lobby-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.wp-hero-banner {
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  background: 
+    radial-gradient(ellipse at 90% 10%, rgba(236, 72, 153, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 90%, rgba(56, 189, 248, 0.15) 0%, transparent 60%),
+    rgba(15, 23, 42, 0.7);
+}
+
+.wp-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(236, 72, 153, 0.15);
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  color: #f472b6;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #ec4899;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ec4899;
+  animation: livePulse 1.5s infinite;
+}
+
+.wp-hero-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.wp-hero-subtitle {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 760px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.wp-hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wp-lobby-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .wp-lobby-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wp-public-rooms-card, .wp-quick-create-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+}
+
+.wp-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 12px;
+}
+
+.wp-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wp-refresh-btn {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-refresh-btn:hover {
+  color: #fff;
+  border-color: #38bdf8;
+  transform: rotate(180deg);
+}
+
+.wp-rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wp-room-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--glass-border);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-room-row:hover {
+  background: rgba(236, 72, 153, 0.08);
+  border-color: rgba(236, 72, 153, 0.4);
+  transform: translateY(-2px);
+}
+
+.wp-room-thumb {
+  width: 48px;
+  height: 68px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.wp-room-info {
+  flex: 1;
+}
+
+.wp-room-header-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.wp-room-code-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #f472b6;
+  background: rgba(236, 72, 153, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.wp-viewers-badge {
+  font-size: 11px;
+  color: #34d399;
+  font-weight: 600;
+}
+
+.wp-room-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px 0;
+}
+
+.wp-room-movie-name {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.wp-room-enter-btn {
+  padding: 8px 16px !important;
+  font-size: 12px !important;
+}
+
+.wp-instant-catalog {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.wp-instant-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--glass-border);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.wp-instant-item img {
+  width: 40px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.wp-instant-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wp-instant-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.wp-instant-launch-btn {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.wp-instant-launch-btn:hover {
+  background: #38bdf8;
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   Watch Party Active Theater View
+   -------------------------------------------------------------------------- */
+.wp-theater-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.wp-theater-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.wp-leave-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: #e2e8f0;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-leave-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.wp-theater-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.wp-theater-movie-tag {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.wp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wp-code-badge {
+  background: rgba(236, 72, 153, 0.15);
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  color: #f472b6;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-code-badge:hover {
+  background: rgba(236, 72, 153, 0.3);
+  transform: scale(1.02);
+}
+
+.wp-status-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.wp-viewers-pill {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wp-theater-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 980px) {
+  .wp-theater-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wp-screen-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wp-screen-box {
+  position: relative;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.wp-screen-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Floating Reactions Particle Overlay */
+.wp-reactions-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wp-floating-particle {
+  position: absolute;
+  bottom: 10px;
+  font-size: 38px;
+  animation: floatReactionParticle 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  will-change: transform, opacity;
+}
+
+@keyframes floatReactionParticle {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(-40px) scale(1.2) rotate(-8deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-160px) scale(1.1) rotate(12deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-340px) scale(0.9) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* Playback Sync Bar */
+.wp-sync-control-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.wp-sync-left, .wp-sync-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wp-sync-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-sync-btn:hover {
+  background: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.wp-time-display {
+  font-size: 12px;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+}
+
+.wp-scrub-container {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-scrub-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899, #f43f5e);
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+.wp-trivia-btn {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wp-trivia-btn:hover {
+  background: rgba(168, 85, 247, 0.3);
+  transform: scale(1.03);
+}
+
+/* Floating Reaction Buttons Bar */
+.wp-reaction-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  justify-content: space-between;
+}
+
+.wp-reaction-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wp-emoji-row {
+  display: flex;
+  gap: 8px;
+}
+
+.wp-emoji-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  font-size: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.wp-emoji-btn:hover {
+  transform: scale(1.25) translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.wp-emoji-btn:active {
+  transform: scale(0.9);
+}
+
+/* Social Drawer Column (Tabs: Chat & Queue) */
+.wp-sidebar-column {
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 180px);
+  min-height: 520px;
+}
+
+.wp-sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 8px;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wp-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 4px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wp-tab-btn.active {
+  color: #fff;
+  border-bottom-color: #ec4899;
+}
+
+.wp-tab-content {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wp-tab-content.active {
+  display: flex;
+}
+
+/* Chat View */
+.wp-chat-stream {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+  margin-bottom: 12px;
+}
+
+.wp-chat-bubble {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+.wp-chat-bubble.other-bubble {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid var(--glass-border);
+  align-self: flex-start;
+}
+
+.wp-chat-bubble.me-bubble {
+  background: rgba(236, 72, 153, 0.2);
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  align-self: flex-end;
+}
+
+.wp-chat-bubble.ai-bubble {
+  background: rgba(168, 85, 247, 0.15);
+  border-left: 3px solid #c084fc;
+  border-top: 1px solid rgba(168, 85, 247, 0.3);
+  border-right: 1px solid rgba(168, 85, 247, 0.3);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+  align-self: stretch;
+  max-width: 100%;
+}
+
+.wp-bubble-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.wp-bubble-sender {
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.wp-host-tag {
+  background: #ec4899;
+  color: #fff;
+  font-size: 8px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+
+.wp-bubble-text {
+  color: #fff;
+}
+
+.wp-chat-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.wp-chat-input-row input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  outline: none;
+}
+
+.wp-chat-input-row input:focus {
+  border-color: #ec4899;
+}
+
+/* Queue View */
+.wp-queue-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wp-add-queue-btn {
+  flex: 1;
+  justify-content: center;
+  padding: 8px !important;
+  font-size: 12px !important;
+}
+
+.wp-advance-queue-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wp-advance-queue-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.wp-queue-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wp-queue-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.wp-queue-idx {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  width: 18px;
+}
+
+.wp-queue-item img {
+  width: 32px;
+  height: 46px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.wp-queue-info {
+  flex: 1;
+}
+
+.wp-queue-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.wp-queue-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.wp-queue-votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wp-vote-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.wp-vote-btn:hover {
+  color: #ec4899;
+  transform: scale(1.2);
+}
+
+.wp-vote-val {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.wp-search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.wp-search-row img {
+  width: 36px;
+  height: 52px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.wp-search-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-search-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wp-search-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.wp-add-to-queue-btn {
+  padding: 6px 12px !important;
+  font-size: 11px !important;
+}
+
+
