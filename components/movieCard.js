@@ -96,6 +96,9 @@ export const MovieCard = {
               <button class="pv-action-btn pv-copilot-btn" data-action="ask-copilot" data-id="${movie.id}" data-title="${movie.title.replace(/"/g, '&quot;')}" title="Ask CineCopilot" aria-label="Ask CineCopilot">
                 <i class="fas fa-sparkles"></i>
               </button>
+              <button class="pv-action-btn pv-studio-btn" data-action="ai-studio" data-id="${movie.id}" title="CineGen AI Studio Re-Cut" aria-label="AI Studio">
+                <i class="fas fa-sliders-h"></i>
+              </button>
             </div>
             <span class="pv-drawer-rating">
               <i class="fas fa-star"></i> ${movie.rating ? Number(movie.rating).toFixed(1) : 'N/A'}

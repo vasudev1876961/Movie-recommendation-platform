@@ -17,6 +17,7 @@ from backend.app.api.streaming import router as streaming_router
 from backend.app.api.chat import router as chat_router
 from backend.app.api.trailers import router as trailers_router
 from backend.app.api.watch_party import router as watch_party_router
+from backend.app.api.studio import router as studio_router
 from backend.app.services.hybrid_recommender import hybrid_engine
 from backend.app.services.semantic_search import semantic_search_engine
 from backend.app.services.graph_service import knowledge_graph_engine
@@ -24,6 +25,7 @@ from backend.app.services.agents.agent_orchestrator import agent_orchestrator
 from backend.app.services.streaming_resolver import streaming_resolver
 from backend.app.services.trailer_intelligence import trailer_intelligence
 from backend.app.services.watch_party_service import watch_party_manager
+from backend.app.services.neuro_studio import neuro_studio
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -62,6 +64,11 @@ async def lifespan(app: FastAPI):
         # Phase 8 Multimodal Trailer Intelligence & Watch Party Hub
         public_rooms = watch_party_manager.list_public_rooms()
         logger.info(f"Phase 8 Multimodal Trailer Intelligence & Real-Time Watch Parties initialized ({len(public_rooms)} active demo rooms).")
+
+        # Phase 9 Neuro-Cinematic Generative Studio & LinguaCine Engine
+        voices = neuro_studio.get_available_voices()
+        vibes = neuro_studio.get_preset_vibes()
+        logger.info(f"Phase 9 Neuro-Cinematic Studio & LinguaCine initialized: {len(voices)} voices, {len(vibes)} directorial vibes.")
     except Exception as e:
         logger.error(f"Failed to initialize models on startup: {e}", exc_info=True)
     finally:
@@ -73,8 +80,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movie AI Platform API",
-    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 8 Multimodal Trailer Intelligence & Real-Time Watch Parties)",
-    version="8.0.0",
+    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 9 Neuro-Cinematic Generative Studio & LinguaCine Multilingual Voice Dubbing)",
+    version="9.0.0",
     lifespan=lifespan
 )
 
@@ -101,13 +108,14 @@ app.include_router(streaming_router)
 app.include_router(chat_router)
 app.include_router(trailers_router)
 app.include_router(watch_party_router)
+app.include_router(studio_router)
 
 @app.get("/", tags=["Health"])
 def health_check():
     return {
         "status": "online",
         "service": "Movie AI Platform API",
-        "version": "8.0.0",
+        "version": "9.0.0",
         "docs_url": "/docs"
     }
 

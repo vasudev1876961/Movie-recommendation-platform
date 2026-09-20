@@ -1,6 +1,6 @@
-# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 8)
+# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 9)
 
-MovieRec is an enterprise-grade cinematic discovery and recommendation platform built with a high-end glassmorphic UI, a high-performance FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock), and a **Phase 8 Multimodal Cinematic Trailer Intelligence & Real-Time Collaborative Watch Parties Engine** (VisionWave AI Telemetry + CineSync WebSocket Synchronized Theaters).
+MovieRec is an enterprise-grade cinematic discovery and recommendation platform built with a high-end glassmorphic UI, a high-performance FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock), a **Phase 8 Multimodal Cinematic Trailer Intelligence & Real-Time Collaborative Watch Parties Engine** (VisionWave AI Telemetry + CineSync WebSocket Synchronized Theaters), and a **Phase 9 Neuro-Cinematic Generative Studio & Multilingual Voice Synthesis Engine** (CineGen AI Director's Cut Re-Cutter + LinguaCine Neural Multilingual Voiceover + Real-Time CSS LUT Color Grading).
 
 ---
 
@@ -50,6 +50,19 @@ MovieRec is an enterprise-grade cinematic discovery and recommendation platform 
         *   **Collaborative Up-Next Queue & Live Voting**: Participants search the catalog, suggest upcoming titles to the room playlist, and upvote/downvote queue entries.
         *   **AI CineBot Scene Trivia**: Contextual behind-the-scenes filmmaking facts and score trivia delivered into the party chat stream in real time.
         *   **Dedicated Watch Party Lobby (`#/watch-party`)**: Browse active public rooms, create custom theaters, or join with 6-character room codes (`CINE-XXXX`).
+*   ✅ **Phase 9: Neuro-Cinematic Generative Studio & Multilingual Voice Synthesis**:
+    *   **CineGen AI Director's Cut Re-Cutter**:
+        *   **6 Signature Directorial Vibes**: Re-cuts any catalog movie into *Cyberpunk Synthwave Dystopia, Pastel Whimsical Symmetrical, 90s Grungy Neo-Noir, High-Tension Psychological Thriller, 80s VHS Grindhouse Slasher, or Intimate French New Wave*.
+        *   **Dynamic Live CSS Color Grade LUT Filters**: Real-time optical color transform filters rendered directly over video playback.
+        *   **4-Act Shot Sequence Blueprints**: Generates camera movements, editing transitions (Match Cuts, Smash Cuts, Whip Pans), visual scene tableaus, and narrative voiceover lines.
+        *   **Acoustic Score Blueprint**: Models recommended soundtrack tempos (BPM), musical key signatures, acoustic instruments, and sound design cues.
+        *   **Freeform Neuro-Prompts**: Injects custom narrative directions, genre fusions, and directorial instructions.
+    *   **LinguaCine Multilingual Voiceover & Neural Dubbing**:
+        *   **12 Curated Voice Personas across 6 Global Languages**: Authentic localized voice talent for *English, Spanish, French, Japanese, German, and Hindi* with distinct vocal archetypes.
+        *   **Web Speech Synthesis & Waveform Telemetry**: Zero-dependency browser audio playback with real-time animated equalizer waveform visualizer.
+        *   **Synchronized Word-Highlighting Karaoke Subtitle HUD**: Millisecond word-level timing markers (`start_ms`, `end_ms`) highlighting words dynamically as narration speaks.
+        *   **Export Director's Cut Dossier**: One-click Markdown/JSON treatment compilation with complete shot lists, soundtrack profiles, and voiceover scripts.
+        *   **Dedicated AI Studio Hub (`#/studio`)**: Complete creative workbench accessible via top navigation, movie card packshot drawers, and details modals.
 
 ---
 
@@ -74,6 +87,7 @@ movie-recom/
 │   └── storage.js               # LocalStorage & JWT token manager
 │
 ├── components/
+│   ├── cineStudio.js            # Phase 9 Neuro-Cinematic Generative Studio & LinguaCine Lab
 │   ├── watchParty.js            # Phase 8 Real-Time Collaborative Watch Party Hub & Theater
 │   ├── trailerPlayer.js         # Phase 8 VisionWave Multimodal Cinema Player & Telemetry HUD
 │   ├── cineCopilot.js           # Phase 7 CineCopilot Multi-Turn Chat & Watch Resolver
@@ -82,14 +96,15 @@ movie-recom/
 │   ├── aiAssistant.js           # GraphRAG AI Assistant with entity pills & reasoning facts
 │   ├── explore.js               # Dynamic catalog browser with filters & sorting
 │   ├── hero.js                  # Rotating blockbuster hero carousel
-│   ├── movieCard.js             # Card component with match badges, trailer telemetry & party buttons
+│   ├── movieCard.js             # Card component with match badges, trailer telemetry, party & studio buttons
 │   ├── shelves.js               # Horizontal scrolling shelf manager
 │   └── wizard.js                # Multi-step recommendation wizard
 │
 ├── backend/
 │   ├── app/
-│   │   ├── main.py              # FastAPI application & startup ML / Vector / Graph / Agent / Party loader
+│   │   ├── main.py              # FastAPI application & startup ML / Vector / Graph / Agent / Studio loader
 │   │   ├── api/
+│   │   │   ├── studio.py        # Phase 9 Neuro-Cinematic Studio & LinguaCine Voice Dubbing endpoints
 │   │   │   ├── watch_party.py   # Phase 8 Real-Time Watch Party REST & WebSocket endpoints
 │   │   │   ├── trailers.py      # Phase 8 VisionWave Multimodal Trailer Intelligence endpoints
 │   │   │   ├── chat.py          # Phase 7 CineCopilot Conversational AI endpoints
@@ -104,11 +119,13 @@ movie-recom/
 │   │   │   ├── ratings.py       # Star rating submission & aggregation
 │   │   │   └── watchlist.py     # Persistent user watchlists
 │   │   ├── schemas/
+│   │   │   ├── studio.py        # Phase 9 Pydantic models for Directorial Vibes, Re-Cuts & Dubbing
 │   │   │   ├── watch_party.py   # Phase 8 Pydantic models for Watch Parties, Rooms & Sync
 │   │   │   ├── trailer.py       # Phase 8 Pydantic models for Acts, Telemetry & Aesthetic DNA
 │   │   │   ├── agents.py        # Phase 6 Pydantic models for Agents, Rubrics & Consensus
 │   │   │   └── movie.py         # Catalog Pydantic schemas
 │   │   ├── services/
+│   │   │   ├── neuro_studio.py  # Phase 9 CineGen Re-Cutter & LinguaCine Multilingual Dubbing Engine
 │   │   │   ├── watch_party_service.py # Phase 8 CineSync Watch Party Manager & WebSocket Broadcaster
 │   │   │   ├── trailer_intelligence.py # Phase 8 VisionWave Multimodal Analysis & Twins Engine
 │   │   │   ├── streaming_resolver.py # Phase 7 Streaming 12-platform resolver engine
@@ -128,6 +145,7 @@ movie-recom/
 │   └── requirements.txt         # Backend Python dependencies
 │
 └── scripts/
+    ├── test_phase9.py           # Phase 9 Neuro-Cinematic Studio & Multilingual Voice automated test suite
     ├── test_phase8.py           # Phase 8 Multimodal Trailer & Watch Party automated test suite
     ├── test_phase7.py           # Phase 7 Streaming & CineCopilot automated test suite
     ├── test_phase6.py           # Phase 6 Multi-Agent Consensus Network automated test suite
@@ -141,12 +159,12 @@ movie-recom/
 
 ## 🛠️ Getting Started
 
-### 1. Start the FastAPI Machine Learning, Vector, Graph, Agent & Watch Party Backend
+### 1. Start the FastAPI Machine Learning, Vector, Graph, Agent, Watch Party & Studio Backend
 ```bash
 # Activate virtual environment and start backend
 .\venv\Scripts\uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-The FastAPI backend will automatically initialize SQLite tables, load the movie catalog, and train / load the **TF-IDF, SVD Collaborative Filtering, Sentence-Transformers Semantic Vector, NetworkX Knowledge Graph, Multi-Agent Network, VisionWave Trailer Intelligence, and CineSync Watch Party Manager** in memory.
+The FastAPI backend will automatically initialize SQLite tables, load the movie catalog, and train / load the **TF-IDF, SVD Collaborative Filtering, Sentence-Transformers Semantic Vector, NetworkX Knowledge Graph, Multi-Agent Network, VisionWave Trailer Intelligence, CineSync Watch Party Manager, and CineGen Neuro-Studio** in memory.
 
 ### 2. Run the Frontend Client
 ```bash
@@ -156,7 +174,7 @@ python -m http.server 3000
 # Or using Node serve:
 npx -y serve ./
 ```
-Open `http://localhost:3000` in your web browser and click the **Watch Party** tab (`#/watch-party`) or click **VisionWave Trailer** on any movie card or details modal.
+Open `http://localhost:3000` in your web browser and click the **AI Studio** tab (`#/studio`) or click **AI Studio Re-Cut** on any movie card or details modal.
 
 ---
 
@@ -170,4 +188,5 @@ Open `http://localhost:3000` in your web browser and click the **Watch Party** t
 *   ✅ **Phase 6 (Complete)**: Autonomous multi-agent network (Persona Profiler, Candidate Scout, Film Critic, Consensus Arbiter, Viewing Strategist, interactive deliberation room, modal quick debate showdown).
 *   ✅ **Phase 7 (Complete)**: Conversational AI chatbot (CineCopilot) and streaming service providers resolver.
 *   ✅ **Phase 8 (Complete)**: Personalized multimodal trailer analysis (VisionWave AI) and real-time collaborative watch parties (CineSync).
-*   ⬜ **Phase 9**: Neuro-Cinematic Generative Trailer Summarization & Real-Time Multilingual AI Voice Dubbing.
+*   ✅ **Phase 9 (Complete)**: Neuro-Cinematic Generative Studio (CineGen AI Director's Cut Re-Cutter, Live CSS LUT Color Grading, Acoustic Score Blueprints) & Multilingual Voice Synthesis (LinguaCine AI 12-Voice Persona Roster, Karaoke Subtitles HUD).
+*   ⬜ **Phase 10**: Decentralized Edge-AI Peer Mesh, Real-Time Emotional Biometrics & AR Spatial Cinema Theater.

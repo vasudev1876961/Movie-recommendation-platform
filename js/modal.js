@@ -351,6 +351,9 @@ export class MovieModal {
               <button class="btn-secondary" id="modal-debate-btn" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
                 <i class="fas fa-gavel"></i> Agent Debate
               </button>
+              <button class="btn-secondary" id="modal-studio-btn" style="background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.4); color: #00e5ff;">
+                <i class="fas fa-sliders-h"></i> AI Studio Re-Cut
+              </button>
               <button class="btn-secondary" id="modal-graph-btn" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4);">
                 <i class="fas fa-project-diagram" style="color: #818cf8;"></i> Explore Graph
               </button>
@@ -584,6 +587,15 @@ export class MovieModal {
             prompt: `Where can I watch ${movie.title} and what do you recommend like it?`
           }
         }));
+      });
+    }
+
+    // AI Studio button click
+    const studioBtn = this.backdrop.querySelector('#modal-studio-btn');
+    if (studioBtn) {
+      studioBtn.addEventListener('click', () => {
+        this.close();
+        window.location.hash = `#/studio?movie=${movie.id}`;
       });
     }
 

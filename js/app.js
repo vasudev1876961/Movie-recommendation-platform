@@ -15,6 +15,7 @@ import { AgentNetwork } from '../components/agentNetwork.js';
 import { CineCopilot } from '../components/cineCopilot.js';
 import { TrailerPlayer } from '../components/trailerPlayer.js';
 import { WatchParty } from '../components/watchParty.js';
+import { CineStudio } from '../components/cineStudio.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -54,7 +55,7 @@ class App {
       this.handleLogout(true);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 8 (VisionWave Multimodal Trailer Intelligence & CineSync Watch Parties).");
+    console.log("MovieRec Platform initialized successfully in Phase 9 (CineGen Neuro-Cinematic Studio & LinguaCine Multilingual Voice Dubbing).");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -67,6 +68,7 @@ class App {
       '#/agents': document.getElementById('tab-agents'),
       '#/chat': document.getElementById('tab-chat'),
       '#/watch-party': document.getElementById('tab-watch-party'),
+      '#/studio': document.getElementById('tab-studio'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -146,6 +148,13 @@ class App {
       activateTab('#/watch-party');
       switchView('view-watch-party');
       await WatchParty.render(params);
+    });
+
+    // Neuro-Cinematic Generative Studio & LinguaCine Route (Phase 9)
+    this.router.addRoute('#/studio', async (params) => {
+      activateTab('#/studio');
+      switchView('view-studio');
+      await CineStudio.render(params);
     });
 
     // AI Assistant Route
@@ -992,11 +1001,23 @@ class App {
         const movieId = card.getAttribute('data-id');
         const bookmarkBtn = e.target.closest('[data-action="bookmark"]');
         const copilotBtn = e.target.closest('[data-action="ask-copilot"]');
+        const trailerBtn = e.target.closest('[data-action="view-trailer"]');
+        const partyBtn = e.target.closest('[data-action="watch-party"]');
+        const studioBtn = e.target.closest('[data-action="ai-studio"]');
         const playCardBtn = e.target.closest('[data-action="play-card"]');
         
         if (bookmarkBtn) {
           e.stopPropagation();
           this.toggleWatchlist(parseInt(movieId), bookmarkBtn);
+        } else if (trailerBtn) {
+          e.stopPropagation();
+          TrailerPlayer.open(parseInt(movieId));
+        } else if (partyBtn) {
+          e.stopPropagation();
+          window.location.hash = `#/watch-party?create=${movieId}`;
+        } else if (studioBtn) {
+          e.stopPropagation();
+          window.location.hash = `#/studio?movie=${movieId}`;
         } else if (copilotBtn) {
           e.stopPropagation();
           const title = copilotBtn.getAttribute('data-title') || 'this movie';
