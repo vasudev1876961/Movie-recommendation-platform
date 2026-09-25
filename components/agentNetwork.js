@@ -1,5 +1,6 @@
 /* components/agentNetwork.js */
 import { MovieCard } from './movieCard.js';
+import { API_BASE } from '../js/config.js';
 
 export const AgentNetwork = {
   currentArchetype: 'The Adaptive Cinephile',
@@ -218,7 +219,7 @@ export const AgentNetwork = {
     `;
 
     try {
-      const res = await fetch('http://localhost:8000/api/agents/deliberate', {
+      const res = await fetch(`${API_BASE}/agents/deliberate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

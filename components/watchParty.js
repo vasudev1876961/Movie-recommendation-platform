@@ -1,6 +1,7 @@
 /* components/watchParty.js */
 import { UI } from '../js/ui.js';
 import { Storage } from '../js/storage.js';
+import { API_BASE, WS_BASE } from '../js/config.js';
 
 export const WatchParty = {
   currentRoom: null,
@@ -159,7 +160,7 @@ export const WatchParty = {
     if (!listEl) return;
 
     try {
-      const res = await fetch('http://localhost:8000/api/watch-party/rooms');
+      const res = await fetch(`${API_BASE}/watch-party/rooms`);
       if (!res.ok) throw new Error("Failed to load rooms");
       const rooms = await res.json();
 
@@ -214,7 +215,7 @@ export const WatchParty = {
     if (!listEl) return;
 
     try {
-      const res = await fetch('http://localhost:8000/api/movies?limit=6');
+      const res = await fetch(`${API_BASE}/movies?limit=6`);
       if (!res.ok) return;
       const data = await res.json();
       const movies = data.movies || [];
@@ -290,7 +291,7 @@ export const WatchParty = {
       createModal?.classList.remove('active');
 
       try {
-        const res = await fetch('http://localhost:8000/api/watch-party/create', {
+        const res = await fetch(`${API_BASE}/watch-party/create`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -339,7 +340,7 @@ export const WatchParty = {
 
   async joinRoom(roomCode) {
     try {
-      const res = await fetch(`http://localhost:8000/api/watch-party/${roomCode}`);
+      const res = await fetch(`${API_BASE}/watch-party/${roomCode}`);
       if (!res.ok) {
         throw new Error(`Watch party ${roomCode} was not found or has ended.`);
       }
@@ -364,7 +365,7 @@ export const WatchParty = {
       this.socket = null;
     }
 
-    const wsUrl = `ws://localhost:8000/api/watch-party/ws/${roomCode}?client_id=${this.clientId}&nickname=${encodeURIComponent(this.nickname)}`;
+    const wsUrl = `${WS_BASE}/api/watch-party/ws/${roomCode}?client_id=${this.clientId}&nickname=${encodeURIComponent(this.nickname)}`;
     try {
       this.socket = new WebSocket(wsUrl);
 
@@ -395,7 +396,7 @@ export const WatchParty = {
     if (this.pollInterval) clearInterval(this.pollInterval);
     this.pollInterval = setInterval(async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/watch-party/${roomCode}`);
+        const res = await fetch(`${API_BASE}/watch-party/${roomCode}`);
         if (res.ok) {
           const fresh = await res.json();
           this.currentRoom = fresh;
@@ -440,7 +441,7 @@ export const WatchParty = {
   async refreshRoomState() {
     if (!this.currentRoom) return;
     try {
-      const res = await fetch(`http://localhost:8000/api/watch-party/${this.currentRoom.room.room_code}`);
+      const res = await fetch(`${API_BASE}/watch-party/${this.currentRoom.room.room_code}`);
       if (res.ok) {
         this.currentRoom = await res.json();
         this.updateParticipantsBadge();
@@ -703,7 +704,7 @@ export const WatchParty = {
     // Queue advance
     document.getElementById('wp-advance-queue-btn')?.addEventListener('click', async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/watch-party/${this.currentRoom.room.room_code}/advance`, {
+        const res = await fetch(`${API_BASE}/watch-party/${this.currentRoom.room.room_code}/advance`, {
           method: 'POST'
         });
         if (!res.ok) throw new Error("No movies in queue");
@@ -735,7 +736,7 @@ export const WatchParty = {
     if (!resultsEl) return;
 
     try {
-      const url = query ? `http://localhost:8000/api/movies?q=${encodeURIComponent(query)}&limit=6` : `http://localhost:8000/api/movies?limit=6`;
+      const url = query ? `${API_BASE}/movies?q=${encodeURIComponent(query)}&limit=6` : `${API_BASE}/movies?limit=6`;
       const res = await fetch(url);
       if (!res.ok) return;
       const data = await res.json();
@@ -766,7 +767,7 @@ export const WatchParty = {
 
   async addMovieToQueue(movieId) {
     try {
-      const res = await fetch(`http://localhost:8000/api/watch-party/${this.currentRoom.room.room_code}/queue`, {
+      const res = await fetch(`${API_BASE}/watch-party/${this.currentRoom.room.room_code}/queue`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -786,7 +787,7 @@ export const WatchParty = {
 
   async voteQueue(queueId, delta) {
     try {
-      const res = await fetch(`http://localhost:8000/api/watch-party/${this.currentRoom.room.room_code}/queue/vote`, {
+      const res = await fetch(`${API_BASE}/watch-party/${this.currentRoom.room.room_code}/queue/vote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

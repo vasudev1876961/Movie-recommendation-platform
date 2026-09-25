@@ -1,4 +1,14 @@
-# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 9)
+---
+title: MovieRec AI Platform
+emoji: 🎬
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
+# MovieRec — Advanced Hybrid AI Movie Discovery Platform (Phase 10)
 
 MovieRec is an enterprise-grade cinematic discovery and recommendation platform built with a high-end glassmorphic UI, a high-performance FastAPI backend, a **Phase 3 Machine Learning Hybrid Recommendation Engine** (Scikit-Learn TF-IDF Content-Based Filtering + SVD Collaborative Filtering), a **Phase 4 Neural Semantic Search & Vector Discovery Engine** (`sentence-transformers/all-MiniLM-L6-v2` dense vector embeddings), a **Phase 5 Cinematic Knowledge Graph & GraphRAG Engine** (NetworkX Multi-Relational Property Graph + Multi-Hop Graph Traversal + Neo4j Cypher Integration), an autonomous **Phase 6 Multi-Agent Recommendation & Debate Network** (Persona Profiler + Candidate Scout + Film Critic + Consensus Arbiter + Viewing Strategist), a **Phase 7 Conversational AI Copilot & Streaming Service Providers Resolver** (CineCopilot + 12-Platform Watch Availability Engine + Universal Floating Chat Dock), a **Phase 8 Multimodal Cinematic Trailer Intelligence & Real-Time Collaborative Watch Parties Engine** (VisionWave AI Telemetry + CineSync WebSocket Synchronized Theaters), and a **Phase 9 Neuro-Cinematic Generative Studio & Multilingual Voice Synthesis Engine** (CineGen AI Director's Cut Re-Cutter + LinguaCine Neural Multilingual Voiceover + Real-Time CSS LUT Color Grading).
 

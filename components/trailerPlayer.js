@@ -1,6 +1,7 @@
 /* components/trailerPlayer.js */
 import { UI } from '../js/ui.js';
 import { Storage } from '../js/storage.js';
+import { API_BASE } from '../js/config.js';
 
 export const TrailerPlayer = {
   activeData: null,
@@ -46,8 +47,8 @@ export const TrailerPlayer = {
     try {
       // Fetch Multimodal Trailer Analysis & Sensory Twins
       const [analysisRes, twinsRes] = await Promise.all([
-        fetch(`http://localhost:8000/api/trailers/${movieId}/analysis`),
-        fetch(`http://localhost:8000/api/trailers/${movieId}/twins?limit=4`)
+        fetch(`${API_BASE}/trailers/${movieId}/analysis`),
+        fetch(`${API_BASE}/trailers/${movieId}/twins?limit=4`)
       ]);
 
       if (!analysisRes.ok) {

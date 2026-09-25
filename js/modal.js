@@ -1,6 +1,7 @@
 /* js/modal.js */
 import { Storage } from './storage.js';
 import { UI } from './ui.js';
+import { API_BASE } from './config.js';
 
 export class MovieModal {
   constructor(dataProvider, onToggleWatchlist) {
@@ -58,7 +59,7 @@ export class MovieModal {
     // Fetch similar recommendations via Phase 3 TF-IDF Engine
     let similar = [];
     try {
-      const res = await fetch(`http://localhost:8000/api/recommendations/content/${movie.id}?limit=6`);
+      const res = await fetch(`${API_BASE}/recommendations/content/${movie.id}?limit=6`);
       if (res.ok) {
         similar = await res.json();
       } else {
@@ -75,7 +76,7 @@ export class MovieModal {
     // Fetch Phase 4 Neural Conceptual Twins
     let conceptualTwins = [];
     try {
-      const twinRes = await fetch(`http://localhost:8000/api/movies/${movie.id}/semantic-similar?limit=6`);
+      const twinRes = await fetch(`${API_BASE}/movies/${movie.id}/semantic-similar?limit=6`);
       if (twinRes.ok) {
         conceptualTwins = await twinRes.json();
       }
@@ -86,7 +87,7 @@ export class MovieModal {
     // Fetch Phase 5 Knowledge Graph Connections
     let graphConnections = [];
     try {
-      const graphRes = await fetch(`http://localhost:8000/api/graph/recommend/${movie.id}?limit=6`);
+      const graphRes = await fetch(`${API_BASE}/graph/recommend/${movie.id}?limit=6`);
       if (graphRes.ok) {
         graphConnections = await graphRes.json();
       }
@@ -99,7 +100,7 @@ export class MovieModal {
     try {
       const token = Storage.getAuthToken();
       const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-      const res = await fetch(`http://localhost:8000/api/movies/${movie.id}/rating`, { headers });
+      const res = await fetch(`${API_BASE}/movies/${movie.id}/rating`, { headers });
       if (res.ok) {
         const rData = await res.json();
         userRating = rData.user_score;
@@ -109,7 +110,7 @@ export class MovieModal {
     // Fetch Phase 7 Streaming Watch Availability
     let streamingAvailability = null;
     try {
-      const streamRes = await fetch(`http://localhost:8000/api/streaming/movie/${movie.id}?region=US`);
+      const streamRes = await fetch(`${API_BASE}/streaming/movie/${movie.id}?region=US`);
       if (streamRes.ok) {
         streamingAvailability = await streamRes.json();
       }
@@ -354,6 +355,9 @@ export class MovieModal {
               <button class="btn-secondary" id="modal-studio-btn" style="background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.4); color: #00e5ff;">
                 <i class="fas fa-sliders-h"></i> AI Studio Re-Cut
               </button>
+              <button class="btn-secondary" id="modal-spatial-btn" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); color: #a78bfa;">
+                <i class="fas fa-vr-cardboard"></i> 3D AR Theater
+              </button>
               <button class="btn-secondary" id="modal-graph-btn" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4);">
                 <i class="fas fa-project-diagram" style="color: #818cf8;"></i> Explore Graph
               </button>
@@ -440,7 +444,7 @@ export class MovieModal {
         `;
 
         try {
-          const res = await fetch('http://localhost:8000/api/agents/quick-debate', {
+          const res = await fetch(`${API_BASE}/agents/quick-debate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ movie_id: movie.id, debate_rigor: 'Balanced & Analytical' })
@@ -536,7 +540,7 @@ export class MovieModal {
           const headers = { 'Content-Type': 'application/json' };
           if (token) headers['Authorization'] = `Bearer ${token}`;
 
-          const res = await fetch(`http://localhost:8000/api/movies/${movie.id}/rate`, {
+          const res = await fetch(`${API_BASE}/movies/${movie.id}/rate`, {
             method: 'POST',
             headers,
             body: JSON.stringify({ score: score, review: '' })
@@ -596,6 +600,15 @@ export class MovieModal {
       studioBtn.addEventListener('click', () => {
         this.close();
         window.location.hash = `#/studio?movie=${movie.id}`;
+      });
+    }
+
+    // 3D Spatial Theater button click
+    const spatialBtn = this.backdrop.querySelector('#modal-spatial-btn');
+    if (spatialBtn) {
+      spatialBtn.addEventListener('click', () => {
+        this.close();
+        window.location.hash = `#/spatial?movie=${movie.id}`;
       });
     }
 

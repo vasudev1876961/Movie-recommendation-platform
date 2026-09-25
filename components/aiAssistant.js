@@ -1,6 +1,7 @@
 /* components/aiAssistant.js */
 import { DataProvider } from '../api/tmdb.js';
 import { MovieCard } from './movieCard.js';
+import { API_BASE } from '../js/config.js';
 
 export const AIAssistant = {
   dataProvider: new DataProvider(),
@@ -135,8 +136,8 @@ export const AIAssistant = {
     try {
       let data = null;
       const endpoint = this.useGraphRAG
-        ? 'http://localhost:8000/api/graph/rag-recommend'
-        : 'http://localhost:8000/api/ai/recommend';
+        ? `${API_BASE}/graph/rag-recommend`
+        : `${API_BASE}/ai/recommend`;
 
       try {
         const res = await fetch(endpoint, {

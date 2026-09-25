@@ -1,4 +1,5 @@
 /* js/app.js */
+import { API_BASE } from './config.js';
 import { Router } from './router.js';
 import { DataProvider } from '../api/tmdb.js';
 import { Storage } from './storage.js';
@@ -16,6 +17,7 @@ import { CineCopilot } from '../components/cineCopilot.js';
 import { TrailerPlayer } from '../components/trailerPlayer.js';
 import { WatchParty } from '../components/watchParty.js';
 import { CineStudio } from '../components/cineStudio.js';
+import { SpatialTheater } from '../components/spatialTheater.js';
 import { MovieModal } from './modal.js';
 import { WatchlistController } from './watchlist.js';
 
@@ -32,6 +34,7 @@ class App {
     this.openMovieDetails = this.openMovieDetails.bind(this);
 
     this.modal = new MovieModal(this.dataProvider, this.toggleWatchlist);
+    this.spatialTheater = new SpatialTheater(this.dataProvider);
 
     this.init();
   }
@@ -50,12 +53,18 @@ class App {
       this.toggleWatchlist(movieId, element);
     });
 
+    // Listen for Spatial Theater launch requests
+    document.addEventListener('open-spatial-theater', (e) => {
+      const { movieId } = e.detail;
+      this.router.navigate(movieId ? `#/spatial?movie=${movieId}` : '#/spatial');
+    });
+
     // Handle token expiration notifications from data provider
     document.addEventListener('session-expired', () => {
       this.handleLogout(true);
     });
 
-    console.log("MovieRec Platform initialized successfully in Phase 9 (CineGen Neuro-Cinematic Studio & LinguaCine Multilingual Voice Dubbing).");
+    console.log("MovieRec Platform initialized successfully in Phase 10 (CineSpatial AR 3D Theater & CinePulse Real-Time Biometrics).");
   }
 
   // --- ROUTER VIEW CONTROLLERS ---
@@ -69,6 +78,7 @@ class App {
       '#/chat': document.getElementById('tab-chat'),
       '#/watch-party': document.getElementById('tab-watch-party'),
       '#/studio': document.getElementById('tab-studio'),
+      '#/spatial': document.getElementById('tab-spatial'),
       '#/ai-assistant': document.getElementById('tab-ai-assistant'),
       '#/wizard': document.getElementById('tab-wizard'),
       '#/watchlist': document.getElementById('tab-watchlist')
@@ -157,6 +167,19 @@ class App {
       await CineStudio.render(params);
     });
 
+    // CineSpatial AR 3D Spatial Theater & CinePulse Biometrics Route (Phase 10)
+    this.router.addRoute('#/spatial', async (params) => {
+      activateTab('#/spatial');
+      switchView('view-spatial');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const movieId = params.movie ? parseInt(params.movie, 10) : null;
+      if (movieId) {
+        await this.spatialTheater.loadMovie(movieId);
+      } else if (!this.spatialTheater.currentMovie) {
+        this.spatialTheater.render();
+      }
+    });
+
     // AI Assistant Route
     this.router.addRoute('#/ai-assistant', () => {
       activateTab('#/ai-assistant');
@@ -211,7 +234,7 @@ class App {
     // 1. Fetch pre-deduplicated categorized shelves
     let shelvesData = null;
     try {
-      const res = await fetch('http://localhost:8000/api/movies/shelves/deduplicated');
+      const res = await fetch(`${API_BASE}/movies/shelves/deduplicated`);
       if (res.ok) {
         shelvesData = await res.json();
       }
@@ -239,7 +262,7 @@ class App {
     try {
       const token = Storage.getAuthToken();
       const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-      const hybridRes = await fetch('http://localhost:8000/api/recommendations/hybrid?limit=10', { headers });
+      const hybridRes = await fetch(`${API_BASE}/recommendations/hybrid?limit=10`, { headers });
       if (hybridRes.ok) {
         const hybridItems = await hybridRes.json();
         if (hybridItems && hybridItems.length > 0) {
@@ -334,7 +357,7 @@ class App {
 
         let movies = [];
         try {
-          const res = await fetch(`http://localhost:8000/api/movies/by-mood/${encodeURIComponent(mood)}?limit=10`);
+          const res = await fetch(`${API_BASE}/movies/by-mood/${encodeURIComponent(mood)}?limit=10`);
           if (res.ok) {
             movies = await res.json();
           }
@@ -487,6 +510,12 @@ class App {
         } else if (action === 'watch-party') {
           e.stopPropagation();
           window.location.hash = `#/watch-party?create=${movieId}`;
+        } else if (action === 'ai-studio') {
+          e.stopPropagation();
+          window.location.hash = `#/studio?movie=${movieId}`;
+        } else if (action === 'spatial-theater') {
+          e.stopPropagation();
+          window.location.hash = `#/spatial?movie=${movieId}`;
         } else if (action === 'play-card') {
           e.stopPropagation();
           this.openMovieDetails(parseInt(movieId));
@@ -636,7 +665,7 @@ class App {
       const password = document.getElementById('login-password').value;
 
       try {
-        const response = await fetch('http://localhost:8000/api/auth/login', {
+        const response = await fetch(`${API_BASE}/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })
@@ -678,7 +707,7 @@ class App {
       const password = document.getElementById('signup-password').value;
 
       try {
-        const response = await fetch('http://localhost:8000/api/auth/signup', {
+        const response = await fetch(`${API_BASE}/auth/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, email, password })

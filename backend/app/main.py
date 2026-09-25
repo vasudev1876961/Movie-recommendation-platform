@@ -18,6 +18,7 @@ from backend.app.api.chat import router as chat_router
 from backend.app.api.trailers import router as trailers_router
 from backend.app.api.watch_party import router as watch_party_router
 from backend.app.api.studio import router as studio_router
+from backend.app.api.spatial import router as spatial_router
 from backend.app.services.hybrid_recommender import hybrid_engine
 from backend.app.services.semantic_search import semantic_search_engine
 from backend.app.services.graph_service import knowledge_graph_engine
@@ -26,6 +27,7 @@ from backend.app.services.streaming_resolver import streaming_resolver
 from backend.app.services.trailer_intelligence import trailer_intelligence
 from backend.app.services.watch_party_service import watch_party_manager
 from backend.app.services.neuro_studio import neuro_studio
+from backend.app.services.spatial_biometrics import spatial_biometrics_service
 
 # Configure loggers
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -69,6 +71,11 @@ async def lifespan(app: FastAPI):
         voices = neuro_studio.get_available_voices()
         vibes = neuro_studio.get_preset_vibes()
         logger.info(f"Phase 9 Neuro-Cinematic Studio & LinguaCine initialized: {len(voices)} voices, {len(vibes)} directorial vibes.")
+
+        # Phase 10 CineSpatial AR 3D Theater & CinePulse Biometrics Engine
+        envs = spatial_biometrics_service.get_environments()
+        presets = spatial_biometrics_service.get_audio_presets()
+        logger.info(f"Phase 10 CineSpatial AR & CinePulse initialized: {len(envs)} 3D environments, {len(presets)} binaural audio presets.")
     except Exception as e:
         logger.error(f"Failed to initialize models on startup: {e}", exc_info=True)
     finally:
@@ -80,8 +87,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Movie AI Platform API",
-    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 9 Neuro-Cinematic Generative Studio & LinguaCine Multilingual Voice Dubbing)",
-    version="9.0.0",
+    description="Enterprise Movie Discovery & Recommendation Platform Backend (Phase 10 CineSpatial AR 3D Spatial Theater, CinePulse Biometrics & CineMesh Edge Mesh)",
+    version="10.0.0",
     lifespan=lifespan
 )
 
@@ -109,17 +116,52 @@ app.include_router(chat_router)
 app.include_router(trailers_router)
 app.include_router(watch_party_router)
 app.include_router(studio_router)
+app.include_router(spatial_router)
+
+import os
+from fastapi import Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, JSONResponse
+
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+# Mount static asset folders if they exist
+for folder in ["js", "css", "components", "data"]:
+    folder_path = os.path.join(ROOT_DIR, folder)
+    if os.path.exists(folder_path):
+        app.mount(f"/{folder}", StaticFiles(directory=folder_path), name=folder)
+
+@app.get("/api/tmdb.js", include_in_schema=False)
+async def serve_tmdb_js():
+    tmdb_path = os.path.join(ROOT_DIR, "api", "tmdb.js")
+    if os.path.exists(tmdb_path):
+        return FileResponse(tmdb_path, media_type="application/javascript")
+    return JSONResponse({"error": "not found"}, status_code=404)
 
 @app.get("/", tags=["Health"])
+def health_or_index(request: Request):
+    index_path = os.path.join(ROOT_DIR, "index.html")
+    # If requested by a web browser, serve the single-page application
+    if "text/html" in request.headers.get("accept", "") and os.path.exists(index_path):
+        return FileResponse(index_path, media_type="text/html")
+    return {
+        "status": "online",
+        "service": "Movie AI Platform API",
+        "version": "10.0.0",
+        "docs_url": "/docs"
+    }
+
+@app.get("/health", tags=["Health"])
 def health_check():
     return {
         "status": "online",
         "service": "Movie AI Platform API",
-        "version": "9.0.0",
+        "version": "10.0.0",
         "docs_url": "/docs"
     }
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.app.main:app", host="127.0.0.1", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("backend.app.main:app", host="0.0.0.0", port=port, reload=True)
 

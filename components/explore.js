@@ -1,5 +1,6 @@
 /* components/explore.js */
 import { MovieCard } from './movieCard.js';
+import { API_BASE } from '../js/config.js';
 
 export const Explore = {
   currentPage: 1,
@@ -200,7 +201,7 @@ export const Explore = {
 
       // Phase 7: Provider-filtered browse endpoint if a specific platform is selected
       if (this.currentProvider && this.currentProvider !== 'all') {
-        const url = `http://localhost:8000/api/streaming/browse?provider=${encodeURIComponent(this.currentProvider)}&page=${this.currentPage}&limit=${this.limit}`;
+        const url = `${API_BASE}/streaming/browse?provider=${encodeURIComponent(this.currentProvider)}&page=${this.currentPage}&limit=${this.limit}`;
         const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch streaming platform catalog");
         const data = await res.json();
@@ -219,7 +220,7 @@ export const Explore = {
         // Standard full catalog endpoint
         const genreParam = (this.currentGenre && this.currentGenre.toLowerCase() !== 'all') ? `&genre=${encodeURIComponent(this.currentGenre)}` : '';
         const ratingParam = this.currentMinRating > 0 ? `&min_rating=${this.currentMinRating}` : '';
-        const url = `http://localhost:8000/api/movies?page=${this.currentPage}&limit=${this.limit}&sort_by=${this.currentSort}&order=${this.currentOrder}${genreParam}${ratingParam}`;
+        const url = `${API_BASE}/movies?page=${this.currentPage}&limit=${this.limit}&sort_by=${this.currentSort}&order=${this.currentOrder}${genreParam}${ratingParam}`;
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch catalog from backend");

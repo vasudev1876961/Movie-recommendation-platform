@@ -1,5 +1,6 @@
 /* components/graphExplorer.js */
 import { UI } from '../js/ui.js';
+import { API_BASE } from '../js/config.js';
 
 export const GraphExplorer = {
   canvas: null,
@@ -43,7 +44,7 @@ export const GraphExplorer = {
             </div>
             
             <div class="graph-header-actions">
-              <a href="http://localhost:8000/api/graph/cypher-export" target="_blank" download="movierec_knowledge_graph.cypher" class="btn-secondary graph-action-btn" title="Download Neo4j Cypher DDL & import script">
+              <a href="${API_BASE}/graph/cypher-export" target="_blank" download="movierec_knowledge_graph.cypher" class="btn-secondary graph-action-btn" title="Download Neo4j Cypher DDL & import script">
                 <i class="fas fa-database"></i> <span>Export Cypher (Neo4j)</span>
               </a>
               <button class="btn-glow graph-action-btn" id="graph-reset-view-btn">
@@ -254,7 +255,7 @@ export const GraphExplorer = {
 
   async loadStats() {
     try {
-      const res = await fetch('http://localhost:8000/api/graph/stats');
+      const res = await fetch(`${API_BASE}/graph/stats`);
       if (res.ok) {
         const stats = await res.json();
         document.getElementById('stat-total-nodes').innerText = stats.total_nodes.toLocaleString();
@@ -274,7 +275,7 @@ export const GraphExplorer = {
   async loadMovieSubgraph(movieId) {
     this.currentMovieId = movieId;
     try {
-      const res = await fetch(`http://localhost:8000/api/graph/movie/${movieId}?depth=1&max_nodes=32`);
+      const res = await fetch(`${API_BASE}/graph/movie/${movieId}?depth=1&max_nodes=32`);
       if (!res.ok) return;
       const data = await res.json();
 
@@ -689,7 +690,7 @@ export const GraphExplorer = {
     `;
 
     try {
-      const res = await fetch(`http://localhost:8000/api/graph/explore?name=${encodeURIComponent(name)}&limit=12`);
+      const res = await fetch(`${API_BASE}/graph/explore?name=${encodeURIComponent(name)}&limit=12`);
       if (!res.ok) {
         inspector.innerHTML = `<p style="color: var(--text-muted);">No extended relationships found.</p>`;
         return;
@@ -799,7 +800,7 @@ export const GraphExplorer = {
     `;
 
     try {
-      const res = await fetch(`http://localhost:8000/api/graph/path?source=${encodeURIComponent(source)}&target=${encodeURIComponent(target)}`);
+      const res = await fetch(`${API_BASE}/graph/path?source=${encodeURIComponent(source)}&target=${encodeURIComponent(target)}`);
       if (findBtn) findBtn.innerHTML = '<i class="fas fa-bolt"></i> Trace Connection';
 
       if (!res.ok) {

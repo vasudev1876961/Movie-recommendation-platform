@@ -2,6 +2,7 @@
 import { DataProvider } from '../api/tmdb.js';
 import { UI } from '../js/ui.js';
 import { MovieCard } from './movieCard.js';
+import { API_BASE } from '../js/config.js';
 
 export const CineCopilot = {
   sessionId: 'cinecopilot_' + Math.random().toString(36).substring(2, 10),
@@ -228,7 +229,7 @@ export const CineCopilot = {
         active_movie_id: this.activeMovieId
       };
 
-      const res = await fetch('http://localhost:8000/api/chat/message', {
+      const res = await fetch(`${API_BASE}/chat/message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -407,7 +408,7 @@ export const CineCopilot = {
 
   async clearSession(isDrawer = false) {
     try {
-      await fetch(`http://localhost:8000/api/chat/session/${this.sessionId}`, {
+      await fetch(`${API_BASE}/chat/session/${this.sessionId}`, {
         method: 'DELETE'
       });
     } catch (e) {

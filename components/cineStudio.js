@@ -1,6 +1,7 @@
 /* components/cineStudio.js */
 import { UI } from '../js/ui.js';
 import { Storage } from '../js/storage.js';
+import { API_BASE } from '../js/config.js';
 
 export const CineStudio = {
   containerEl: null,
@@ -43,8 +44,8 @@ export const CineStudio = {
     try {
       // 1. Fetch voices and vibes in parallel
       const [voicesRes, vibesRes] = await Promise.all([
-        fetch('http://localhost:8000/api/studio/voices'),
-        fetch('http://localhost:8000/api/studio/vibes')
+        fetch(`${API_BASE}/studio/voices`),
+        fetch(`${API_BASE}/studio/vibes`)
       ]);
 
       this.allVoices = voicesRes.ok ? await voicesRes.json() : [];
@@ -76,7 +77,7 @@ export const CineStudio = {
 
   async loadMovie(movieId) {
     try {
-      const res = await fetch(`http://localhost:8000/api/movies/${movieId}`);
+      const res = await fetch(`${API_BASE}/movies/${movieId}`);
       if (res.ok) {
         this.activeMovie = await res.json();
       } else {
@@ -485,7 +486,7 @@ export const CineStudio = {
 
   async generateRecut(customPrompt = null) {
     try {
-      const res = await fetch('http://localhost:8000/api/studio/recut', {
+      const res = await fetch(`${API_BASE}/studio/recut`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -571,7 +572,7 @@ export const CineStudio = {
 
   async generateDubManifest() {
     try {
-      const res = await fetch('http://localhost:8000/api/studio/dub', {
+      const res = await fetch(`${API_BASE}/studio/dub`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -783,7 +784,7 @@ export const CineStudio = {
     });
 
     try {
-      const res = await fetch('http://localhost:8000/api/movies?page=1&page_size=24');
+      const res = await fetch(`${API_BASE}/movies?page=1&page_size=24`);
       const data = res.ok ? await res.json() : { items: [] };
       const grid = document.getElementById('movie-picker-grid');
       
@@ -834,7 +835,7 @@ export const CineStudio = {
     }
 
     try {
-      const res = await fetch('http://localhost:8000/api/studio/export', {
+      const res = await fetch(`${API_BASE}/studio/export`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

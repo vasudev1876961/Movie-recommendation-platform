@@ -1,18 +1,19 @@
 /* api/tmdb.js */
 import { movies as localMovies } from '../data/movies.js';
 import { Storage } from '../js/storage.js';
+import { API_BASE, BACKEND_URL } from '../js/config.js';
 
 export class DataProvider {
   constructor() {
-    this.backendUrl = 'http://localhost:8000/api';
+    this.backendUrl = API_BASE;
     this.isBackendOnline = false;
     this.checkBackendStatus();
   }
 
   async checkBackendStatus() {
     try {
-      const response = await fetch('http://localhost:8000/');
-      if (response.ok) {
+      const response = await fetch(`${BACKEND_URL}/health`).catch(() => fetch(`${BACKEND_URL}/`));
+      if (response && response.ok) {
         const data = await response.json();
         if (data.status === 'online') {
           this.isBackendOnline = true;

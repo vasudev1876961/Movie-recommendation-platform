@@ -99,6 +99,9 @@ export const MovieCard = {
               <button class="pv-action-btn pv-studio-btn" data-action="ai-studio" data-id="${movie.id}" title="CineGen AI Studio Re-Cut" aria-label="AI Studio">
                 <i class="fas fa-sliders-h"></i>
               </button>
+              <button class="pv-action-btn pv-spatial-btn" data-action="spatial-theater" data-id="${movie.id}" title="Enter CineSpatial 3D AR Theater" aria-label="Spatial 3D AR">
+                <i class="fas fa-vr-cardboard"></i>
+              </button>
             </div>
             <span class="pv-drawer-rating">
               <i class="fas fa-star"></i> ${movie.rating ? Number(movie.rating).toFixed(1) : 'N/A'}
